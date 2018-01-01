@@ -1,27 +1,54 @@
 import java.util.*;
-import java.io.IOException;
 
 public class matrix01{
 	public static void main(String[] args){
-		System.out.println("TestPrint");
-		//Linux Only
-		//System.out.print("\033[H\033[2J");
-		clearConsole();
+
+		System.out.print("\033[H\033[2J");
 		System.out.flush();
+
+
+
+	}
+}
+
+public class Symbol{
+	int row;
+	int column;
+	int speed = 1;
+	int switchInterval = 0;
+	int value = None;
+
+	public void setValues(int r, int c){
+		row = r;
+		column = c;
 	}
 
-	public final static void clearConsole(){
-		final String osQuery = System.getProperty("os.name");
+	public void setRandomSymbol(){
 
-		try{
-			if(osQuery.contains("Windows")){
-				Runtime.getRuntime().exec("cmd");
-			}
-			else{
-				Runtime.getRuntime().exec("clear");
-			}
-		}catch(){
-			//
-		}
 	}
+
+	public void rain(){
+
+	}
+
+	public void symbolSwitch(){
+
+	}
+
+}
+
+public class Stream{
+
+	List<Charachter> symbols = new ArrayList<Charachter>();
+	int totalSymbols = random.randint(3, 10)
+	int speed = 1
+
+	public void generateSymbols(){
+
+	}
+
+	public void render(){
+		
+	}
+
 }
