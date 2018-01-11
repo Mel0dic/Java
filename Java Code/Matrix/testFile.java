@@ -1,12 +1,21 @@
-package jline.console.completer;
-
 import java.util.*;
-import jline.console.*;
+import java.awt.*; 
+import javax.swing.*;
 
-public class testFile{
+public class testFile extends JFrame{
 	public static void main(String[] args){
 
-		terminal terminalWidth = jline.TerminalFactory.get().getWidth();
+		JFrame frame = new JFrame("Frame Demo");
+
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		JLabel emptyLabel = new JLabel("");
+
+		frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
+
+		frame.pack();
+
+		frame.setVisible(true);
 
 	}
 }
