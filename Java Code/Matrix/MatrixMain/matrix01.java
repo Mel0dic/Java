@@ -4,13 +4,11 @@ import javax.swing.*;
 
 public class matrix01{
 
-	JFrame frame;
-	JLabel label;
-	char something;
-	String printString = "";
-	float fontSize = 20.00f;
-	int screenWidth = 750;
-	int screenHeight = 500;
+	private static final int FONT_SIZE = 11;
+	private static final int NUMBER_OF_REPEATS = 5;
+	private static JPanel panel = new JPanel(null);
+	private static Random random = new Random();
+	private static JLabel label[] = new JLabel[NUMBER_OF_REPEATS];
 
 	public static void main(String[] args){
 
@@ -21,60 +19,34 @@ public class matrix01{
 	}
 
 	private void go() {
-		//Set frame equal to a new JFrame window call test
-		frame = new JFrame("Test");
-		//Set the program to exit on close??????????????
+		JFrame frame = new JFrame();
+		frame.setSize(600, 400);
+		frame.setResizable(false);
+		frame.setMinimumSize(new Dimension(300, 200));
+		frame.setLocationRelativeTo(null);
+		frame.setTitle("MRain");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		//Set a new label with Hello as label
-		label = new JLabel();
-		label.setLayout(new GridLayout((screenWidth/((int)fontSize)), (screenHeight/((int)fontSize))));
+		frame.add(panel);
+		panel.setBackground(Color.BLACK);
 
-		//Add label to the center of the screen
-		frame.getContentPane().add(label);
-		//Set background color to black
-		frame.getContentPane().setBackground(Color.BLACK);
+		JLabel label = new JLabel(""+((char)(0x30A0)));
+		label.setForeground(Color.GREEN);
+		panel.add(label);
 
-		//Set text to be white
-		label.setForeground(Color.WHITE);
-		//Have the text be at the co-ordinates
-		label.setAlignmentX(0);
-		label.setAlignmentX(0);
-		//Set the font to current font with size of fontSize
-		label.setFont(label.getFont().deriveFont(fontSize));
+		label.setFont(label.getFont().deriveFont((float)FONT_SIZE));
+		label.setBounds(5*FONT_SIZE, 20*(FONT_SIZE / 2), FONT_SIZE, FONT_SIZE);
 
-		//Make the window appear
 		frame.setVisible(true);
-		//Make it so the window cannot be resized
-		frame.setResizable(false);
-		//Set the size of the window
-		frame.setSize(screenWidth, screenHeight);
-		//Set the windows location
-		frame.setLocation(375, 55);
 
-		//Call change words function
-		changeWords();
-	}
+		Symbol symbolic = new Symbol();
+		symbolic.setJLabel(label);
 
-	//Create private function changeWords
-	private void changeWords(){
-		//Create an infinite loop
 		while(true){
-			//Sleep the program for a second
 			try{
-				Thread.sleep(1000);
-			} catch (Exception exc){}
-			//Set a new random Katakana charachter to something
-			something = (char)(0x30A0 + (Math.random() * 95));
-			//Add something char to printString string
-			printString += something;
-			//Set the label to the string
-			label.setText(printString);
-			//Make new edit appear on window
-			frame.repaint();
-
-			//Print the char to console
-			System.out.println(something);
+				Thread.sleep(500);
+			}catch(Exception exe){}
+			symbolic.setRandomSymbol();
 		}
 	}
 }
