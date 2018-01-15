@@ -5,17 +5,19 @@ import javax.swing.*;
 public class testFile extends JFrame{
 	public static void main(String[] args){
 
-		JFrame frame = new JFrame("Frame Demo");
+		char something;
 
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		for(int i = 0; i < 96; i++){
 
-		JLabel emptyLabel = new JLabel("");
+			something = (char)(0x30A0 + i);
 
-		frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
+			System.out.println(something);
 
-		frame.pack();
+			try{
+				Thread.sleep(500);
+			}catch(Exception exe){}
 
-		frame.setVisible(true);
+		}
 
 	}
 }

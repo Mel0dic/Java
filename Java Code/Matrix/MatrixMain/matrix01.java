@@ -8,6 +8,9 @@ public class matrix01{
 	JLabel label;
 	char something;
 	String printString = "";
+	float fontSize = 20.00f;
+	int screenWidth = 750;
+	int screenHeight = 500;
 
 	public static void main(String[] args){
 
@@ -24,25 +27,28 @@ public class matrix01{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		//Set a new label with Hello as label
-		label = new JLabel("Hello");
+		label = new JLabel();
+		label.setLayout(new GridLayout((screenWidth/((int)fontSize)), (screenHeight/((int)fontSize))));
 
 		//Add label to the center of the screen
-		frame.getContentPane().add(BorderLayout.CENTER, label);
+		frame.getContentPane().add(label);
 		//Set background color to black
 		frame.getContentPane().setBackground(Color.BLACK);
 
 		//Set text to be white
 		label.setForeground(Color.WHITE);
-		//Have the text be in the center of the screen
-		label.setHorizontalAlignment(JLabel.CENTER);
-		label.setVerticalAlignment(JLabel.CENTER);
+		//Have the text be at the co-ordinates
+		label.setAlignmentX(0);
+		label.setAlignmentX(0);
+		//Set the font to current font with size of fontSize
+		label.setFont(label.getFont().deriveFont(fontSize));
 
 		//Make the window appear
 		frame.setVisible(true);
 		//Make it so the window cannot be resized
 		frame.setResizable(false);
 		//Set the size of the window
-		frame.setSize(750, 500);
+		frame.setSize(screenWidth, screenHeight);
 		//Set the windows location
 		frame.setLocation(375, 55);
 
@@ -59,15 +65,16 @@ public class matrix01{
 				Thread.sleep(1000);
 			} catch (Exception exc){}
 			//Set a new random Katakana charachter to something
-			something = (char)(0x30A0 + (Math.random() * 96));
+			something = (char)(0x30A0 + (Math.random() * 95));
 			//Add something char to printString string
 			printString += something;
 			//Set the label to the string
 			label.setText(printString);
 			//Make new edit appear on window
 			frame.repaint();
+
 			//Print the char to console
 			System.out.println(something);
 		}
 	}
-}	
+}
