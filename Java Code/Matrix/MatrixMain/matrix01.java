@@ -8,8 +8,8 @@ public class matrix01{
 	private static JPanel panel = new JPanel(null);
 	private static Random random = new Random();
 	private static JLabel label[] = new JLabel[30];
-	JFrame frame;
-	Streams streamClasses[] = new Stream[30];//Symbol symbols[] = new Symbol[((int) panel.getWidth()/FONT_SIZE)];
+	static JFrame frame;
+	private static Stream streamClasses[] = new Stream[30];//Symbol symbols[] = new Symbol[((int) panel.getWidth()/FONT_SIZE)];
 
 	public static void main(String[] args){
 
@@ -24,7 +24,8 @@ public class matrix01{
 				Thread.sleep(30);
 			}catch(Exception exe){}
 			for(int i = 0; i < 30; i++){
-				symbols[i].rain(label[i], FONT_SIZE);
+				streamClasses[i].render(panel, FONT_SIZE);
+				//label[i], FONT_SIZE
 			}
 		}
 
@@ -53,8 +54,9 @@ public class matrix01{
 	public void setUpLabels(){
 		for(int i = 0; i < 30; i++){
 			Stream streams = new Stream();
-			label[i] = symbolic.labelSetUp(FONT_SIZE, panel, i);
-			streamClasses[i] = stream;
+			//label[i] = symbolic.labelSetUp(FONT_SIZE, panel, i);
+			streams.generateSymbols(i, FONT_SIZE);
+			streamClasses[i] = streams;
 		}
 	}
 

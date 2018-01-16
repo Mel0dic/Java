@@ -4,6 +4,7 @@ import javax.swing.*;
 
 public class Symbol{
 	private int speed = 1;
+	private int FONT_SIZE;
 	private int row;
 	private int columns;
 	private int switchInterval = 0;
@@ -11,9 +12,7 @@ public class Symbol{
 	private JLabel label = new JLabel(""+((char)(0x30A0 + (Math.random() * 96))));
 	private JPanel panels;
 
-	public JLabel labelSetUp(int FONT_SIZE, JPanel panel, int column){
-		row = 0*(FONT_SIZE / 2);
-		columns = column*FONT_SIZE;
+	public JLabel labelSetUp(JPanel panel){
 		panels = panel;
 
 		label.setForeground(Color.GREEN);
@@ -22,6 +21,13 @@ public class Symbol{
 
 		label.setBounds(columns, row, FONT_SIZE, FONT_SIZE);
 		return label;
+	}
+
+	public void setPosition(int column, int position, int FONT_SIZ, int yPos){
+		FONT_SIZE = FONT_SIZ;
+
+		row = (yPos*(FONT_SIZE / 2)) - (position * FONT_SIZE);
+		columns = column*FONT_SIZE;
 	}
 
 	public void setRandomSymbol(){
@@ -33,7 +39,7 @@ public class Symbol{
 	}
 
 	public void rain(JLabel label, int FONT_SIZE){
-		row = row > panels.getHeight() ? 0 : (row + speed);
+		row = row > panels.getHeight() ? -20 : (row + speed);
 		label.setBounds(columns, row, FONT_SIZE, FONT_SIZE);
 		setRandomSymbol();
 	}

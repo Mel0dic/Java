@@ -7,17 +7,24 @@ public class Stream{
 	int totalSymbols = (int) Math.round(3 + (Math.random() * 10));
 	int speed = 1;
 	Symbol[] symbolArray = new Symbol[totalSymbols];
+	JLabel[] labels = new JLabel[totalSymbols];
 
-	public void generateSymbols(){
+	public void generateSymbols(int column, int FONT_SIZE){
+		int positioning = ((int)Math.round(Math.random() * 25));
 		for(int i = 0; i < totalSymbols; i++){
 			Symbol singleSymbol = new Symbol();
-			symbolArray.add(singleSymbol);
+			//System.out.println(singleSymbol);
+			singleSymbol.setPosition(column, i, FONT_SIZE, positioning);//((int)Math.round(Math.random() * 10))
+			symbolArray[i] = singleSymbol;
 		}
 	}
 
-	public void render(){
-		for(Symbol eachSymbol : symbolArray){
-			eachSymbol.rain();
+	public void render(JPanel panel, int FONT_SIZE){
+		for(int i = 0; i < totalSymbols; i++){
+			labels[i] = symbolArray[i].labelSetUp(panel);
+			symbolArray[i].rain(labels[i], FONT_SIZE);
+			System.out.println(labels[i]);
+			//System.out.println(symbolArray[i]);
 		}
 	}
 
