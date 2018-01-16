@@ -33,11 +33,8 @@ public class matrix01{
 				Thread.sleep(30);
 			}catch(Exception exe){}
 			for(int i = 0; i < 30; i++){
-				symbols[i].rain();
-				label[i].setBounds((symbols[i].getColumn()), (symbols[i].getRow()), FONT_SIZE, FONT_SIZE);
+				symbols[i].rain(label[i], FONT_SIZE);
 			}
-			// frame.revalidate();
-			// frame.repaint();
 		}
 	}
 

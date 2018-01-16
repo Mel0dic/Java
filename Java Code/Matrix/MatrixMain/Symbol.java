@@ -8,13 +8,15 @@ public class Symbol{
 	private int switchInterval = 0;
 	private String value;
 	private JLabel label = new JLabel(""+((char)(0x30A0 + (Math.random() * 96))));
+	private JPanel panels;
 
 	public JLabel labelSetUp(int FONT_SIZE, JPanel panel, int column){
 		row = 0*(FONT_SIZE / 2);
 		columns = column*FONT_SIZE;
+		panels = panel;
 
 		label.setForeground(Color.GREEN);
-		panel.add(label);
+		panels.add(label);
 		label.setFont(new Font("monospaced", Font.PLAIN, FONT_SIZE));
 
 		label.setBounds(columns, row, FONT_SIZE, FONT_SIZE);
@@ -22,17 +24,20 @@ public class Symbol{
 	}
 
 	public void setRandomSymbol(){
-		if(switchInterval < 25){
+		if(switchInterval < 10){
 			value = "" + (char)(0x30A0 + (Math.random() * 96));
 			label.setText(value);
 		}
 		symbolSwitch();
 	}
 
-	public void rain(){
+	public void rain(JLabel label, int FONT_SIZE){
 		row += 1;
+		if(row > panels.getHeight()){
+			row = 0;
+		}
+		label.setBounds(columns, row, FONT_SIZE, FONT_SIZE);
 		setRandomSymbol();
-
 	}
 
 	public void symbolSwitch(){
