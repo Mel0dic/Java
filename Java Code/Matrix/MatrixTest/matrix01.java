@@ -34,11 +34,8 @@ public class matrix01{
 		//Symbol symbols[] = new Symbol[((int) panel.getWidth()/FONT_SIZE)]; Would switch between 29 and 30 for seemingly no reason 30 is preffered - getWidth returned 600 / 590
 		Symbol symbols[] = new Symbol[30];
 
-		for(int i = 0; i < 30; i++){
-			Symbol symbolic = new Symbol();
-			label[i] = symbolic.labelSetUp(FONT_SIZE, panel, i);
-			symbols[i] = symbolic;
-		}
+		Symbol symbolic = new Symbol();
+		JLabel label = symbolic.labelSetUp(FONT_SIZE, panel, 15);
 
 
 
@@ -46,11 +43,10 @@ public class matrix01{
 			try{
 				Thread.sleep(500);
 			}catch(Exception exe){}
-			for(int i = 0; i < 30; i++){
-				symbols[i].rain();
-				label[i].setBounds((symbols[i].getColumn() * FONT_SIZE), (symbols[i].getRow() * (FONT_SIZE / 2)), FONT_SIZE, FONT_SIZE);
-			}
-			//frame.repaint();
+			symbolic.setRandomSymbol();
+			label.setBounds((15 * FONT_SIZE), (2 * (FONT_SIZE / 2)), FONT_SIZE, FONT_SIZE);
+			frame.revalidate();
+			frame.repaint();
 		}
 	}
 }

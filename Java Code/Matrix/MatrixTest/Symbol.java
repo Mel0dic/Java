@@ -19,7 +19,6 @@ public class Symbol{
 		//new Font("monospaced", Font.PLAIN, FONT_SIZE)
 		FONT_SIZE = FONT_SIZE;
 		column = column*FONT_SIZE;
-		row = row;
 		yPosition = row*(FONT_SIZE / 2);
 		label.setBounds(column, yPosition, FONT_SIZE, FONT_SIZE);
 		return label;
@@ -34,10 +33,10 @@ public class Symbol{
 	}
 
 	public void rain(){
-		yPosition = row*(FONT_SIZE / 2);
+		//yPosition = row*(FONT_SIZE / 2);
 		setRandomSymbol();
-		//label.setBounds(column, yPosition, FONT_SIZE, FONT_SIZE);
-
+		label.setBounds(0, yPosition, FONT_SIZE, FONT_SIZE);
+		row++;
 	}
 
 	public void symbolSwitch(){
