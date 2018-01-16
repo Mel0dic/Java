@@ -5,7 +5,7 @@ import java.util.*;
 import javax.swing.*;
 
 // The warning comes whenever you extend a class that is serialisable (or create a serialisable class of your own) and don't define serialVersionUID.
-@SuppressWarnings("serial")
+// @SuppressWarnings("serial")
 public class MainFrame extends JFrame { 
 
 private static final int FONT_SIZE = 10;

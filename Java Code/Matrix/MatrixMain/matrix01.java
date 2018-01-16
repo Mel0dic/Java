@@ -9,24 +9,15 @@ public class matrix01{
 	private static Random random = new Random();
 	private static JLabel label[] = new JLabel[30];
 	JFrame frame;
-	Symbol symbols[] = new Symbol[30];//Symbol symbols[] = new Symbol[((int) panel.getWidth()/FONT_SIZE)]; Would switch between 29 and 30 for seemingly no reason 30 is preffered - getWidth returned 600 / 590
+	Streams streamClasses[] = new Stream[30];//Symbol symbols[] = new Symbol[((int) panel.getWidth()/FONT_SIZE)];
 
 	public static void main(String[] args){
 
+		Toolkit.getDefaultToolkit().sync();
+
 		matrix01 main = new matrix01();
 
-		main.go();
-
-	}
-
-	private void go() {
-		jframeSetup();
-		setUpLabels();
-
-		frame.add(panel);
-		panel.setBackground(Color.BLACK);
-
-		frame.setVisible(true);
+		main.setup();
 
 		while(true){
 			try{
@@ -36,6 +27,17 @@ public class matrix01{
 				symbols[i].rain(label[i], FONT_SIZE);
 			}
 		}
+
+	}
+
+	private void setup() {
+		jframeSetup();
+		setUpLabels();
+
+		frame.add(panel);
+		panel.setBackground(Color.BLACK);
+
+		frame.setVisible(true);
 	}
 
 	public void jframeSetup(){
@@ -50,9 +52,9 @@ public class matrix01{
 
 	public void setUpLabels(){
 		for(int i = 0; i < 30; i++){
-			Symbol symbolic = new Symbol();
+			Stream streams = new Stream();
 			label[i] = symbolic.labelSetUp(FONT_SIZE, panel, i);
-			symbols[i] = symbolic;
+			streamClasses[i] = stream;
 		}
 	}
 

@@ -8,45 +8,56 @@ public class matrix01{
 	private static JPanel panel = new JPanel(null);
 	private static Random random = new Random();
 	private static JLabel label[] = new JLabel[30];
+	static JFrame frame;
+	private static Stream streamClasses[] = new Stream[30];//Symbol symbols[] = new Symbol[((int) panel.getWidth()/FONT_SIZE)];
 
 	public static void main(String[] args){
 
+		Toolkit.getDefaultToolkit().sync();
+
 		matrix01 main = new matrix01();
 
-		main.go();
+		main.setup();
+
+		while(true){
+			try{
+				Thread.sleep(30);
+			}catch(Exception exe){}
+			for(int i = 0; i < 30; i++){
+				streamClasses[i].render(panel, FONT_SIZE);
+				//label[i], FONT_SIZE
+			}
+		}
 
 	}
 
-	private void go() {
-		JFrame frame = new JFrame();
+	private void setup() {
+		jframeSetup();
+		setUpLabels();
+
+		frame.add(panel);
+		panel.setBackground(Color.BLACK);
+
+		frame.setVisible(true);
+	}
+
+	public void jframeSetup(){
+		frame = new JFrame();
 		frame.setSize(600, 400);
 		frame.setResizable(false);
 		frame.setMinimumSize(new Dimension(300, 200));
 		frame.setLocationRelativeTo(null);
 		frame.setTitle("MRain");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
 
-		frame.add(panel);
-		panel.setBackground(Color.BLACK);
-
-		frame.setVisible(true);
-
-		//Symbol symbols[] = new Symbol[((int) panel.getWidth()/FONT_SIZE)]; Would switch between 29 and 30 for seemingly no reason 30 is preffered - getWidth returned 600 / 590
-		Symbol symbols[] = new Symbol[30];
-
-		Symbol symbolic = new Symbol();
-		JLabel label = symbolic.labelSetUp(FONT_SIZE, panel, 15);
-
-
-
-		while(true){
-			try{
-				Thread.sleep(500);
-			}catch(Exception exe){}
-			symbolic.setRandomSymbol();
-			label.setBounds((15 * FONT_SIZE), (2 * (FONT_SIZE / 2)), FONT_SIZE, FONT_SIZE);
-			frame.revalidate();
-			frame.repaint();
+	public void setUpLabels(){
+		for(int i = 0; i < 30; i++){
+			Stream streams = new Stream();
+			//label[i] = symbolic.labelSetUp(FONT_SIZE, panel, i);
+			streams.generateSymbols(i, FONT_SIZE);
+			streamClasses[i] = streams;
 		}
 	}
+
 }
