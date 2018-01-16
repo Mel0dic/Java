@@ -44,13 +44,14 @@ public class matrix01{
 
 		while(true){
 			try{
-				Thread.sleep(500);
+				Thread.sleep(30);
 			}catch(Exception exe){}
 			for(int i = 0; i < 30; i++){
 				symbols[i].rain();
-				label[i].setBounds((symbols[i].getColumn() * FONT_SIZE), (symbols[i].getRow() * (FONT_SIZE / 2)), FONT_SIZE, FONT_SIZE);
+				label[i].setBounds((symbols[i].getColumn()), (symbols[i].getRow()), FONT_SIZE, FONT_SIZE);
 			}
-			//frame.repaint();
+			// frame.revalidate();
+			// frame.repaint();
 		}
 	}
 }

@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Symbol{
 	private int yPosition;
 	private int FONT_SIZE;
-	private int column;
+	private int columns;
 	private int row = 0;
 	private int speed = 1;
 	private int switchInterval = 0;
@@ -16,12 +16,10 @@ public class Symbol{
 		label.setForeground(Color.GREEN);
 		panel.add(label);
 		label.setFont(new Font("monospaced", Font.PLAIN, FONT_SIZE));
-		//new Font("monospaced", Font.PLAIN, FONT_SIZE)
 		FONT_SIZE = FONT_SIZE;
-		column = column*FONT_SIZE;
-		row = row;
+		columns = column*FONT_SIZE;
 		yPosition = row*(FONT_SIZE / 2);
-		label.setBounds(column, yPosition, FONT_SIZE, FONT_SIZE);
+		label.setBounds(columns, yPosition, FONT_SIZE, FONT_SIZE);
 		return label;
 	}
 
@@ -34,7 +32,7 @@ public class Symbol{
 	}
 
 	public void rain(){
-		yPosition = row*(FONT_SIZE / 2);
+		yPosition += 1;
 		setRandomSymbol();
 		//label.setBounds(column, yPosition, FONT_SIZE, FONT_SIZE);
 
@@ -54,11 +52,11 @@ public class Symbol{
 	}
 
 	public int getRow(){
-		return row;
+		return yPosition;
 	}
 
 	public int getColumn(){
-		return column;
+		return columns;
 	}
 
 	public JLabel getJLabel(){
