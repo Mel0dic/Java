@@ -3,23 +3,21 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Symbol{
-	private int yPosition;
-	private int FONT_SIZE;
+	private int row;
 	private int columns;
-	private int row = 0;
-	private int speed = 1;
 	private int switchInterval = 0;
 	private String value;
 	private JLabel label = new JLabel(""+((char)(0x30A0 + (Math.random() * 96))));
 
 	public JLabel labelSetUp(int FONT_SIZE, JPanel panel, int column){
+		row = 0*(FONT_SIZE / 2);
+		columns = column*FONT_SIZE;
+
 		label.setForeground(Color.GREEN);
 		panel.add(label);
 		label.setFont(new Font("monospaced", Font.PLAIN, FONT_SIZE));
-		FONT_SIZE = FONT_SIZE;
-		columns = column*FONT_SIZE;
-		yPosition = row*(FONT_SIZE / 2);
-		label.setBounds(columns, yPosition, FONT_SIZE, FONT_SIZE);
+
+		label.setBounds(columns, row, FONT_SIZE, FONT_SIZE);
 		return label;
 	}
 
@@ -32,9 +30,8 @@ public class Symbol{
 	}
 
 	public void rain(){
-		yPosition += 1;
+		row += 1;
 		setRandomSymbol();
-		//label.setBounds(column, yPosition, FONT_SIZE, FONT_SIZE);
 
 	}
 
@@ -52,7 +49,7 @@ public class Symbol{
 	}
 
 	public int getRow(){
-		return yPosition;
+		return row;
 	}
 
 	public int getColumn(){
