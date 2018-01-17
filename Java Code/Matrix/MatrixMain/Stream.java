@@ -13,7 +13,6 @@ public class Stream{
 		int positioning = ((int)Math.round(Math.random() * 25));
 		for(int i = 0; i < totalSymbols; i++){
 			Symbol singleSymbol = new Symbol();
-			//System.out.println(singleSymbol);
 			singleSymbol.setPosition(column, i, FONT_SIZE, positioning);//((int)Math.round(Math.random() * 10))
 			symbolArray[i] = singleSymbol;
 		}
@@ -23,8 +22,6 @@ public class Stream{
 		for(int i = 0; i < totalSymbols; i++){
 			labels[i] = symbolArray[i].labelSetUp(panel);
 			symbolArray[i].rain(labels[i], FONT_SIZE);
-			System.out.println(labels[i]);
-			//System.out.println(symbolArray[i]);
 		}
 	}
 
