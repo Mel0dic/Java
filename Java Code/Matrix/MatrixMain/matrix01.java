@@ -58,6 +58,7 @@ public class matrix01{
 			streams.generateSymbols(i, FONT_SIZE);
 			streamClasses[i] = streams;
 		}
+		frame.repaint();
 	}
 
 }
