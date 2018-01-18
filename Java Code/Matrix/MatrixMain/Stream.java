@@ -13,7 +13,7 @@ public class Stream{
 		int positioning = ((int)Math.round(Math.random() * 25));
 		for(int i = 0; i < totalSymbols; i++){
 			Symbol singleSymbol = new Symbol();
-			singleSymbol.setPosition(column, i, FONT_SIZE, positioning);//((int)Math.round(Math.random() * 10))
+			singleSymbol.setPosition(column, i, FONT_SIZE, positioning);
 			symbolArray[i] = singleSymbol;
 		}
 	}
