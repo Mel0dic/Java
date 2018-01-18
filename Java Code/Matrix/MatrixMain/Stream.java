@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Stream{
 
 	int totalSymbols = (int) Math.round(3 + (Math.random() * 10));
-	int speed = 1;
+	//int speed = 1;
 	Symbol[] symbolArray = new Symbol[totalSymbols];
 	JLabel[] labels = new JLabel[totalSymbols];
 

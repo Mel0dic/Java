@@ -4,11 +4,11 @@ import javax.swing.*;
 
 public class Symbol{
 	private int speed = 1;
-	private int FONT_SIZE;
-	private int row;
-	private int columns;
+	private int FONT_SIZE = 20;
+	private int row = 0;
+	private int columns = 0;
 	private int switchInterval = 0;
-	private String value;
+	private String value = "";
 	private JLabel label = new JLabel(""+((char)(0x30A0 + (Math.random() * 96))));
 	private JPanel panels;
 
