@@ -24,7 +24,7 @@ public class matrix01{
 
 		while(true){
 			try{
-				Thread.sleep(30);
+				Thread.sleep(500);
 			}catch(Exception exe){}
 			for(int i = 0; i < pWidth; i++){
 				streamClasses[i].render(panel, FONT_SIZE, pheight);
@@ -41,6 +41,8 @@ public class matrix01{
 		frame.setVisible(true);
 
 		pWidth = ((int) panel.getWidth()/FONT_SIZE);
+
+		System.out.println(pWidth);
 
 		label = new JLabel[pWidth];
 		streamClasses = new Stream[pWidth];
