@@ -2,7 +2,7 @@ import java.util.*;
 import java.awt.*; 
 import javax.swing.*;
 
-public class matrix01{
+public class matrix01 extends SwingWorker<String, Object>{
 
 	private static final int FONT_SIZE = 20;
 	private static JPanel panel = new JPanel(null);
@@ -11,6 +11,27 @@ public class matrix01{
 	private static JLabel label[];
 	static JFrame frame;
 	private static Stream streamClasses[];//Symbol symbols[] = new Symbol[((int) panel.getWidth()/FONT_SIZE)];
+	private static int pheight;
+
+	@Override
+	public String doInBackground() {
+		while(true){
+			try{
+				Thread.sleep(500);
+			}catch(Exception exe){}
+			for(int i = 0; i < pWidth; i++){
+				streamClasses[i].render(panel, FONT_SIZE, pheight);
+			}
+		}
+		//return "String";
+	}
+
+	@Override
+	protected void done() {
+		try{
+			System.out.println(get());
+		}catch (Exception ignore) {}
+	}
 
 	public static void main(String[] args){
 
@@ -22,14 +43,16 @@ public class matrix01{
 
 		int pheight = panel.getHeight();
 
-		while(true){
-			try{
-				Thread.sleep(500);
-			}catch(Exception exe){}
-			for(int i = 0; i < pWidth; i++){
-				streamClasses[i].render(panel, FONT_SIZE, pheight);
-			}
-		}
+		main.execute();
+
+		// while(true){
+		// 	try{
+		// 		Thread.sleep(500);
+		// 	}catch(Exception exe){}
+		// 	for(int i = 0; i < pWidth; i++){
+		// 		streamClasses[i].render(panel, FONT_SIZE, pheight);
+		// 	}
+		// }
 
 	}
 
@@ -40,7 +63,7 @@ public class matrix01{
 
 		frame.setVisible(true);
 
-		pWidth = ((int) panel.getWidth()/FONT_SIZE);
+		pWidth = ((int) panel.getWidth()/FONT_SIZE) - 1;
 
 		System.out.println(pWidth);
 
