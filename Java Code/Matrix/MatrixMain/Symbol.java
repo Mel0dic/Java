@@ -3,7 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Symbol{
-	private int speed = 3;
+	private int speed = 1;
 	private int FONT_SIZE = 20;
 	private int row = 0;
 	private int columns = 0;
