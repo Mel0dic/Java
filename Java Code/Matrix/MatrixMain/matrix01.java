@@ -24,7 +24,7 @@ public class matrix01{
 				Thread.sleep(30);
 			}catch(Exception exe){}
 			for(int i = 0; i < 30; i++){
-				streamClasses[i].render(panel, FONT_SIZE);
+				streamClasses[i].render(FONT_SIZE);
 				//label[i], FONT_SIZE
 			}
 		}
@@ -55,7 +55,7 @@ public class matrix01{
 		for(int i = 0; i < 30; i++){
 			Stream streams = new Stream();
 			//label[i] = symbolic.labelSetUp(FONT_SIZE, panel, i);
-			streams.generateSymbols(i, FONT_SIZE);
+			streams.generateSymbols(i, FONT_SIZE, panel);
 			streamClasses[i] = streams;
 		}
 		frame.repaint();

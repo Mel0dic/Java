@@ -9,18 +9,19 @@ public class Stream{
 	Symbol[] symbolArray = new Symbol[totalSymbols];
 	JLabel[] labels = new JLabel[totalSymbols];
 
-	public void generateSymbols(int column, int FONT_SIZE){
+	public void generateSymbols(int column, int FONT_SIZE, JPanel panel){
 		int positioning = ((int)Math.round(Math.random() * 25));
 		for(int i = 0; i < totalSymbols; i++){
 			Symbol singleSymbol = new Symbol();
 			singleSymbol.setPosition(column, i, FONT_SIZE, positioning);
 			symbolArray[i] = singleSymbol;
+			labels[i] = symbolArray[i].labelSetUp(panel);
 		}
 	}
 
-	public void render(JPanel panel, int FONT_SIZE){
+	public void render(int FONT_SIZE){
 		for(int i = 0; i < totalSymbols; i++){
-			labels[i] = symbolArray[i].labelSetUp(panel);
+			//labels[i] = symbolArray[i].labelSetUp(panel);
 			symbolArray[i].rain(labels[i], FONT_SIZE);
 		}
 	}
