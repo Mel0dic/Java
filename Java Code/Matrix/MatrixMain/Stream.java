@@ -9,7 +9,7 @@ public class Stream{
 	Symbol[] symbolArray = new Symbol[totalSymbols];
 	JLabel[] labels = new JLabel[totalSymbols];
 	int sleepTime = 0;
-	int spawnPos;
+	int spawnPos = (-1 * 20)	 - ((int)(Math.random() * 100));
 	boolean endRow = true;
 
 	public void generateSymbols(int column, int FONT_SIZE, JPanel panel){
