@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Stream{
 
 	int totalSymbols = (int) Math.round(3 + (Math.random() * 10));
-	int speed = 1 + ((int) Math.random() * 3);
+	int speed = (int)(1 + Math.random() * 3);
 	Symbol[] symbolArray = new Symbol[totalSymbols];
 	JLabel[] labels = new JLabel[totalSymbols];
 	int sleepTime = 0;
@@ -13,6 +13,7 @@ public class Stream{
 	boolean endRow = true;
 
 	public void generateSymbols(int column, int FONT_SIZE, JPanel panel){
+		System.out.println(speed);
 		int positioning = ((int)Math.round(Math.random() * 25));
 		for(int i = 0; i < totalSymbols; i++){
 			Symbol singleSymbol = new Symbol();
