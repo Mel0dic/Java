@@ -62,12 +62,13 @@ public class matrix01{
 
 class threadingTest extends Thread{
 
-	private static int column;
+	private static int columns;
 	private static Stream threadStream;
 	private static int FONT_SIZE = 20;
 
 	threadingTest(int column, Stream stream){
-		column = column;
+		columns = column;
+		System.out.println(column);
 		threadStream = stream;
 	}
 
@@ -77,7 +78,6 @@ class threadingTest extends Thread{
 				Thread.sleep(30);
 			}catch(Exception exe){}
 			threadStream.render(FONT_SIZE);
-			System.out.println(column);
 		}
 	}
 }
