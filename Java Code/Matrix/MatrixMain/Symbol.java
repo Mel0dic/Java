@@ -3,7 +3,6 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Symbol{
-	private int speed = 1;
 	private int FONT_SIZE = 20;
 	private int row = 0;
 	private int columns = 0;
@@ -38,16 +37,8 @@ public class Symbol{
 		symbolSwitch();
 	}
 
-	public void rain(JLabel label, int FONT_SIZE, int sleepTime){
-		if(row > panels.getHeight()){
-			row = -FONT_SIZE;
-			try{
-				Thread.sleep(100 * sleepTime);
-			}catch(Exception exe){}
-		}else{
-			row += speed;
-		}
-		//row = row > panels.getHeight() ? -20 : (row + speed);
+	public void rain(JLabel label, int sleepTime, int resetPos, int speed){
+		row = row > panels.getHeight() ? resetPos : (row + speed);
 		label.setBounds(columns, row, FONT_SIZE, FONT_SIZE);
 		setRandomSymbol();
 	}
