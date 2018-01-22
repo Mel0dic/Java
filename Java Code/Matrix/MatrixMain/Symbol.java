@@ -38,8 +38,16 @@ public class Symbol{
 		symbolSwitch();
 	}
 
-	public void rain(JLabel label, int FONT_SIZE){
-		row = row > panels.getHeight() ? -20 : (row + speed);
+	public void rain(JLabel label, int FONT_SIZE, int sleepTime){
+		if(row > panels.getHeight()){
+			row = -FONT_SIZE;
+			try{
+				Thread.sleep(100 * sleepTime);
+			}catch(Exception exe){}
+		}else{
+			row += speed;
+		}
+		//row = row > panels.getHeight() ? -20 : (row + speed);
 		label.setBounds(columns, row, FONT_SIZE, FONT_SIZE);
 		setRandomSymbol();
 	}
