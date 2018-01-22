@@ -14,8 +14,6 @@ public class matrix01{
 
 	public static void main(String[] args){
 
-		Toolkit.getDefaultToolkit().sync();
-
 		matrix01 main = new matrix01();
 
 		main.setup();
@@ -62,9 +60,8 @@ public class matrix01{
 
 }
 
-class threadingTest implements Runnable{
+class threadingTest extends Thread{
 
-	private static Thread t;
 	private static int column;
 	private static Stream threadStream;
 	private static int FONT_SIZE = 20;
@@ -80,14 +77,7 @@ class threadingTest implements Runnable{
 				Thread.sleep(30);
 			}catch(Exception exe){}
 			threadStream.render(FONT_SIZE);
+			System.out.println(column);
 		}
 	}
-
-	public void start () {
-		if (t == null) {
-			t = new Thread(this);
-			t.start ();
-		}
-	}
-
 }
