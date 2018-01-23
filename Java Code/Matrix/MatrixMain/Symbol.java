@@ -6,7 +6,7 @@ public class Symbol{
 
 	private int FONT_SIZE;
 	private int row = 0;
-	private int columns = 0;
+	private int column = 0;
 	private int switchInterval = 0;
 	private String value = "";
 	private JLabel label = new JLabel(""+((char)(0x30A0 + (Math.random() * 96))));
@@ -23,13 +23,13 @@ public class Symbol{
 		panels.add(label);
 		label.setFont(new Font("monospaced", Font.PLAIN, FONT_SIZE));
 
-		label.setBounds(columns, row, FONT_SIZE, FONT_SIZE);
+		label.setBounds(column, row, FONT_SIZE, FONT_SIZE);
 		return label;
 	}
 
-	public void setPosition(int column, int position, int yPos){
+	public void setPosition(int symbolColumn, int position, int yPos){
 		row = (yPos*(FONT_SIZE / 2)) - (position * FONT_SIZE);
-		columns = column*FONT_SIZE;
+		column = symbolColumn*FONT_SIZE;
 	}
 
 	public void setRandomSymbol(){
@@ -42,7 +42,7 @@ public class Symbol{
 
 	public void rain(JLabel label, int resetPos, int speed){
 		row = row > panels.getHeight() ? resetPos : (row + speed);
-		label.setBounds(columns, row, FONT_SIZE, FONT_SIZE);
+		label.setBounds(column, row, FONT_SIZE, FONT_SIZE);
 		setRandomSymbol();
 	}
 
@@ -60,7 +60,7 @@ public class Symbol{
 	}
 
 	public int getColumn(){
-		return columns;
+		return column;
 	}
 
 	public JLabel getJLabel(){
