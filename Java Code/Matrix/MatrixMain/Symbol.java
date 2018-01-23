@@ -3,13 +3,18 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Symbol{
-	private int FONT_SIZE = 20;
+
+	private int FONT_SIZE;
 	private int row = 0;
 	private int columns = 0;
 	private int switchInterval = 0;
 	private String value = "";
 	private JLabel label = new JLabel(""+((char)(0x30A0 + (Math.random() * 96))));
 	private JPanel panels;
+
+	Symbol(int fontSize){
+		FONT_SIZE = fontSize;
+	}
 
 	public JLabel labelSetUp(JPanel panel){
 		panels = panel;
@@ -22,38 +27,32 @@ public class Symbol{
 		return label;
 	}
 
-	public void setPosition(int column, int position, int FONT_SIZ, int yPos){
-		FONT_SIZE = FONT_SIZ;
-
+	public void setPosition(int column, int position, int yPos){
 		row = (yPos*(FONT_SIZE / 2)) - (position * FONT_SIZE);
 		columns = column*FONT_SIZE;
 	}
 
 	public void setRandomSymbol(){
-		if(switchInterval < 10){
+		if(switchInterval < 5){
 			value = "" + (char)(0x30A0 + (Math.random() * 96));
 			label.setText(value);
 		}
-		symbolSwitch();
+		switchInterval = (int)(Math.random() * 100);
 	}
 
-	public void rain(JLabel label, int sleepTime, int resetPos, int speed){
+	public void rain(JLabel label, int resetPos, int speed){
 		row = row > panels.getHeight() ? resetPos : (row + speed);
 		label.setBounds(columns, row, FONT_SIZE, FONT_SIZE);
 		setRandomSymbol();
 	}
 
-	public void symbolSwitch(){
-		switchInterval = (int)(Math.random() * 100);
-	}
 
 
 
 
 
-
-	public void setJLabel(JLabel v){
-		label = v;
+	public void setJLabel(JLabel inputLabel){
+		label = inputLabel;
 	}
 
 	public int getRow(){
