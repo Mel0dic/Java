@@ -7,11 +7,12 @@ public class matrix01{
 	private static final int FONT_SIZE = 20;
 	private static JPanel panel = new JPanel(null);
 	private static JFrame frame;
-	private static Stream streamClasses[] = new Stream[30];//Symbol symbols[] = new Symbol[((int) panel.getWidth()/FONT_SIZE)];
+	private static int panelWidth;
+	private static Stream streamClasses[];//Symbol symbols[] = new Symbol[((int) panel.getWidth()/FONT_SIZE)];
 
 	public static void main(String[] args){
 
-		Toolkit.getDefaultToolkit().sync();
+		//Toolkit.getDefaultToolkit().sync();
 
 		matrix01 main = new matrix01();
 
@@ -19,7 +20,7 @@ public class matrix01{
 
 		while(true){
 			try{Thread.sleep(30);}catch(Exception exe){}
-			for(int i = 0; i < 30; i++){
+			for(int i = 0; i < panelWidth; i++){
 				streamClasses[i].render();
 			}
 		}
@@ -28,12 +29,16 @@ public class matrix01{
 
 	private void setup() {
 		jframeSetup();
-		setUpLabels();
 
 		frame.add(panel);
 		panel.setBackground(Color.BLACK);
 
 		frame.setVisible(true);
+
+		panelWidth = ((int) panel.getWidth()/FONT_SIZE);
+		streamClasses = new Stream[panelWidth];
+
+		setUpLabels();
 	}
 
 	public void jframeSetup(){
@@ -47,7 +52,7 @@ public class matrix01{
 	}
 
 	public void setUpLabels(){
-		for(int i = 0; i < 30; i++){
+		for(int i = 0; i < panelWidth; i++){
 			Stream streams = new Stream(FONT_SIZE, i);
 			streams.generateSymbols(panel);
 			streamClasses[i] = streams;
