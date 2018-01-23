@@ -6,8 +6,6 @@ public class matrix01{
 
 	private static final int FONT_SIZE = 20;
 	private static JPanel panel = new JPanel(null);
-	private static Random random = new Random();
-	private static JLabel label[] = new JLabel[30];
 	private static JFrame frame;
 	private static Stream streamClasses[] = new Stream[30];//Symbol symbols[] = new Symbol[((int) panel.getWidth()/FONT_SIZE)];
 
@@ -55,5 +53,5 @@ public class matrix01{
 			streamClasses[i] = streams;
 		}
 	}
-	
+
 }

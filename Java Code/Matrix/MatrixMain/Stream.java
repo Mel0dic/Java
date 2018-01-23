@@ -10,7 +10,6 @@ public class Stream{
 	private int speed = (int)(1 + Math.random() * 3);
 	private int spawnPos = (-1 * 20)	 - ((int)(Math.random() * 100));
 	private int positioning = ((int)Math.round(Math.random() * 25));
-	private boolean endRow = true;
 	private Symbol[] symbolArray = new Symbol[totalSymbols];
 	private JLabel[] labels = new JLabel[totalSymbols];
 
