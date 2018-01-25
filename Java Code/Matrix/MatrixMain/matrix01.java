@@ -12,7 +12,7 @@ public class matrix01{
 
 	public static void main(String[] args){
 
-		//Toolkit.getDefaultToolkit().sync();
+		Toolkit.getDefaultToolkit().sync();
 
 		matrix01 main = new matrix01();
 
