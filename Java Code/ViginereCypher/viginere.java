@@ -1,5 +1,7 @@
 //Needed for Lists
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+//import java.awt.*; 
 
 //Create the class viginere
 public class viginere{
@@ -16,6 +18,7 @@ public class viginere{
 		System.out.println(encryptedValue);
 
 	}
+
 
 	//Define function encrypt public and static so that you don't need a instance of the class to access.
 	public static String encrypt(String toEncrypt, String encryptionKey){

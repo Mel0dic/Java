@@ -63,7 +63,7 @@ public class matrix01{
 		frame.setResizable(false);
 		//?
 		frame.setMinimumSize(new Dimension(300, 200));
-		//?
+		//Should appear at center of screen
 		frame.setLocationRelativeTo(null);
 		//Set the title of the window to "MRain"
 		frame.setTitle("MRain");
