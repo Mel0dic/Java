@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import java.awt.Color;
 
@@ -14,7 +15,7 @@ public class gui {
 	private JTextField txtCipherWord;
 	private JLabel lblNewLabel;
 	
-	//private static viginere cipher = new viginere();
+	//private static vigenere cipher = new vigenere();
 
 	/**
 	 * Launch the application.
@@ -57,21 +58,35 @@ public class gui {
 		frame.getContentPane().add(panel);
 		
 		JButton btnEnter = new JButton("Enter");
-		btnEnter.setBounds(100, 100, 89, 23);
+		btnEnter.setBounds(100, 76, 89, 23);
 		panel.add(btnEnter);
 
 		
-		lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(10, 134, 264, 27);
+		lblNewLabel = new JLabel("Enter your phrase to decrypt and decryption word.", SwingConstants.CENTER);
+		lblNewLabel.setBounds(10, 102, 264, 59);
 		panel.add(lblNewLabel);
 		
 		txtEnterPhraseTo = new JTextField("Enter phrase to encrypt");
+		txtEnterPhraseTo.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				txtEnterPhraseTo.setText("");
+			}
+		});
+		txtEnterPhraseTo.setBackground(Color.LIGHT_GRAY);
 		//txtEnterPhraseTo.setText("Enter phrase to encrypt");
 		txtEnterPhraseTo.setBounds(10, 11, 264, 23);
 		panel.add(txtEnterPhraseTo);
 		txtEnterPhraseTo.setColumns(10);
 		
 		txtCipherWord = new JTextField("Cipher Word");
+		txtCipherWord.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				txtCipherWord.setText("");
+			}
+		});
+		txtCipherWord.setBackground(Color.LIGHT_GRAY);
 		//txtCipherWord.setText("Cipher Word");
 		txtCipherWord.setBounds(100, 45, 89, 20);
 		panel.add(txtCipherWord);
@@ -80,18 +95,16 @@ public class gui {
 		
 		btnEnter.addActionListener(new ActionListener() { 
     		public void actionPerformed(ActionEvent e) { 
-        		encrypt(txtEnterPhraseTo.getText(), txtCipherWord.getText());
+        		encrypt(txtEnterPhraseTo, txtCipherWord);
     		} 
 		});
 	}
 	
-	public void encrypt(String something, String word) {
-		if(something == null || word == null) {
+	public void encrypt(JTextField something, JTextField word) {
+		if(something.getText().equals("") || word.getText().equals("")) {
 			lblNewLabel.setText("Please Fill Both Fields In");
-			System.out.println("Nope");
 		}else {
-			System.out.println(something);
-			lblNewLabel.setText(viginere.encrypt(something, word));
+			lblNewLabel.setText(viginere.encrypt(something.getText(), word.getText()));
 		}
 	}
 }
