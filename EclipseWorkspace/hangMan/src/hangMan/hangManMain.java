@@ -13,24 +13,26 @@ import java.util.Scanner;
 
 public class hangManMain {
 	
-	private static Random rand = new Random();
-	private static List<String> wordList = new ArrayList<>();
-	private static String wordToGuess;
-	private static int guesses = 4;
-	private static Scanner reader = new Scanner(System.in);
+	@SuppressWarnings("unused")
+	private Random rand = new Random();
+	private List<String> wordList = new ArrayList<>();
+	@SuppressWarnings("unused")
+	private String wordToGuess;
+	private int guesses = 4;
+	private Scanner reader = new Scanner(System.in);
 
 	public static void main(String[] args) {
 
-		getWords();
-		
-		wordToGuess = wordList.get(rand.nextInt(wordList.size()));
-		
-		play(wordToGuess);
+//		getWords();
+//		
+//		wordToGuess = wordList.get(rand.nextInt(wordList.size()));
+//		
+//		play(wordToGuess);
 
 
 	}
 
-	public static void getWords() {
+	public void getWords() {
 		Charset charset = Charset.forName("US-ASCII");
 		Path file = Paths.get("D:\\Code\\Java\\EclipseWorkspace\\hangMan\\src\\hangMan\\words.txt");
 		try (BufferedReader reader = Files.newBufferedReader(file, charset)) {
@@ -43,7 +45,7 @@ public class hangManMain {
 		}
 	}
 	
-	public static void play(String word) {
+	public void play(String word) {
 
 		int wordLength = word.length();
 		char[] wordArr = new char[wordLength];

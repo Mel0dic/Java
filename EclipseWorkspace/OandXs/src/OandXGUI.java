@@ -1,12 +1,6 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import java.awt.Component;
-import javax.swing.Box;
-import java.awt.BorderLayout;
-import javax.swing.JInternalFrame;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 
 public class OandXGUI {
 
@@ -42,7 +36,6 @@ public class OandXGUI {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GridBagLayout gridBagLayout = new GridBagLayout();
 	}
 
 }
