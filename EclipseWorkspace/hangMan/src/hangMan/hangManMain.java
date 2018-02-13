@@ -26,10 +26,7 @@ public class hangManMain {
 		wordToGuess = wordList.get(rand.nextInt(wordList.size()));
 		
 		play(wordToGuess);
-		
-//		for(String word : wordList) {
-//			System.out.println(word);
-//		}
+
 
 	}
 
@@ -47,8 +44,7 @@ public class hangManMain {
 	}
 	
 	public static void play(String word) {
-		System.out.println(word);
-		
+
 		int wordLength = word.length();
 		char[] wordArr = new char[wordLength];
 		List<Character> wrongLetters = new ArrayList<>();
@@ -75,17 +71,19 @@ public class hangManMain {
 						wordComplete++;
 					}
 				}
+				System.out.println(wordArr);
 			}else {
 				System.out.printf("Sorry %s is not in the word.%n%n", s);
 				wrongLetters.add(s);
 				guesses--;
+				System.out.println(wordArr);
 			}
-			System.out.println(wordArr);
 		}
 		if(wordComplete == wordLength) {
 			System.out.println("You won");
 		}else {
 			System.out.println("Unlucky you lost.");
+			System.out.printf("The word was %s%n", word);
 		}
 	}
 }
