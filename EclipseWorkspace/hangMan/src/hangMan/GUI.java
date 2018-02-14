@@ -67,13 +67,17 @@ public class GUI extends JPanel{
 		
 		//Add text field for entering guess 
 		textField = new JTextField();
-		textField.setBounds(30, 40, 18, 20);
+		textField.setBounds(30, 40, 68, 20);
 		add(textField);
 		textField.setColumns(10);
 		
 		//Add button for accepting guess
 		button = new JButton("Enter");
-		button.setBounds(58, 40, 72, 20);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		button.setBounds(108, 40, 72, 20);
 		add(button);
 		
 		//Add label under Graphic for the _ instead of letters
