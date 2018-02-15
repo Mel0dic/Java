@@ -36,6 +36,7 @@ public class hangManMain {
 	public String getRandomWord() {
 		Charset charset = Charset.forName("US-ASCII");
 		Path file = Paths.get("D:\\Code\\Java\\EclipseWorkspace\\hangMan\\src\\hangMan\\words.txt");
+		//Path file = Paths.get("C:\\Users\\bengr\\Documents\\GitHub\\Java\\EclipseWorkspace\\hangMan\\src\\hangMan\\words.txt");
 		try (BufferedReader reader = Files.newBufferedReader(file, charset)) {
 		    String line = null;
 		    while ((line = reader.readLine()) != null) {
