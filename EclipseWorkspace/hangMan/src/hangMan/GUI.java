@@ -30,6 +30,8 @@ public class GUI extends JPanel{
 	private List<Character> wrongLetters = new ArrayList<>();
 	private char[] wordArr;
 	private int wordComplete = 0;
+	private JLabel guessesLeft;
+	private int guessesRemaining = 4;
 	
 	public GUI() {
 		//Create Opening JFrame with button to start game
@@ -67,7 +69,7 @@ public class GUI extends JPanel{
 		
 		//Add text field for entering guess 
 		textField = new JTextField();
-		textField.setBounds(30, 40, 68, 20);
+		textField.setBounds(52, 40, 68, 20);
 		add(textField);
 		textField.setColumns(10);
 		
@@ -77,13 +79,21 @@ public class GUI extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		button.setBounds(108, 40, 72, 20);
+		button.setBounds(130, 40, 72, 20);
 		add(button);
 		
 		//Add label under Graphic for the _ instead of letters
 		lblNewLabel = new JLabel("This is where ____ goes");
 		lblNewLabel.setBounds(359, 286, 115, 14);
 		add(lblNewLabel);
+		
+		guessesLeft = new JLabel("You Have 4 Guesses Remaining!");
+		guessesLeft.setBounds(40, 71, 218, 27);
+		add(guessesLeft);
+		
+		JLabel lblEnterYourGuess = new JLabel("Enter Your Guess Here");
+		lblEnterYourGuess.setBounds(66, 15, 150, 14);
+		add(lblEnterYourGuess);
 	}
 	
 	public static void main(String[] args) {
@@ -129,11 +139,51 @@ public class GUI extends JPanel{
 					wordComplete++;
 				}
 			}
+			if(wordComplete == hangmanGame.getWordLength()) {
+				win();
+			}
 		}else {
 			wrongLetters.add(guesser);
 			count++;
+			guessesRemaining--;
+			guessesLeft.setText(String.format("You have %d guesses remaining!", guessesRemaining));
 			jf.repaint();
+			
+			if(guessesRemaining == 0) {
+				System.out.println("Game Over");
+				gameOver();
+			}
 		}
+	}
+	
+	public void win() {
+		startGUI endGamePanel = endGame();
+		JLabel winLabel = new JLabel("Congratulations You Win");
+		winLabel.setBounds(50, 200, 100, 20);
+		endGamePanel.add(winLabel);
+	}
+	
+	public void gameOver() {
+		startGUI endGamePanel = endGame();
+		JLabel loseLabel = new JLabel(String.format("Unlucky the word was %s", wordToGuess));
+		loseLabel.setBounds(50, 200, 300, 20);
+		endGamePanel.add(loseLabel);
+	}
+	
+	public startGUI endGame() {
+		JFrame endGameJF = new JFrame();
+		startGUI gui = new startGUI();
+		endGameJF.setSize(500, 350);
+		endGameJF.setResizable(false);
+		endGameJF.getContentPane().add(gui);
+		endGameJF.setLocationRelativeTo(null);
+		JButton restart = new JButton("Restart");
+		restart.setBounds(50, 125, 100, 20);
+		gui.add(restart);
+		jf.setVisible(false);
+		endGameJF.setVisible(true);
+		
+		return gui;
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -144,34 +194,23 @@ public class GUI extends JPanel{
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
 		if(count > 0) {
-			g2.drawLine(320, 10, 320, 260);
+			g2.drawLine(300, 260, 470, 260);
+			g2.setStroke(new BasicStroke(7));
+			g2.drawLine(320, 200, 400, 260);
+			g2.setStroke(new BasicStroke(10));
 		}
 		if(count > 1) {
+			g2.drawLine(320, 10, 320, 260);
 			g2.drawLine(320, 10, 445, 10);
 		}
 		if(count > 2) {
-			g2.drawLine(300, 260, 470, 260);
-		}
-		if(count > 3) {
-			g2.setStroke(new BasicStroke(7));
-			g2.drawLine(320, 200, 400, 260);
-		}
-		if(count > 4) {
 			g2.fillOval(370, 60, 30, 30);
-		}
-		if(count > 5) {
 			g2.drawLine(385, 70, 385, 135);
-		}
-		if(count > 6) {
 			g2.drawLine(385, 135, 390, 145);
-		}
-		if(count > 7) {
 			g2.drawLine(385, 135, 380, 145);
-		}
-		if(count > 8) {
 			g2.drawLine(370, 100, 400, 100);
 		}
-		if(count > 9) {
+		if(count > 3) {
 			g2.setStroke(new BasicStroke(3));
 			g2.drawLine(385, 10, 385, 135);
 		}
