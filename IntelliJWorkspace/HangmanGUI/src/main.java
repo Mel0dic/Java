@@ -1,6 +1,4 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class main {
 
@@ -25,6 +23,7 @@ public class main {
     }
 
     public void makeJFrame(){
+        mainJF = new JFrame();
         mainJF.setLocationRelativeTo(null);
         mainJF.setTitle("Test");
         mainJF.setSize(500, 350);
@@ -33,9 +32,7 @@ public class main {
     }
 
     public void makeStartPanel(){
-        //Create Opening JFrame with button to start game
-        mainJF = new JFrame();
-        mainJF.setLocationRelativeTo(null);
+        //Create Opening Panel with button to start game
         startGUI startPanel = new startGUI();
         JButton startButton = new JButton("Start Game");
         startButton.setBounds(50, 125, 100, 20);
@@ -48,7 +45,7 @@ public class main {
             makeMainPanel();
             mainJF.remove(startPanel);
             mainJF.add(gui);
-            gui.beginGame();
+            gui.beginGame(lblNewLabel, button, textField, guessesLeft, mainJF);
         });
 
         mainJF.add(startPanel);

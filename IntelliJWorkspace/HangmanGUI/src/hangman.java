@@ -20,17 +20,6 @@ public class hangman {
     private List<Character> wrongLetters;
     private int wordComplete;
 
-
-    public static void main(String[] args) {
-
-        hangman game1 = new hangman();
-
-        String wordToGuess = game1.getRandomWord();
-        game1.play(wordToGuess);
-
-
-    }
-
     public String getRandomWord() {
         Charset charset = Charset.forName("US-ASCII");
         Path file = Paths.get("D:\\Code\\Java\\EclipseWorkspace\\hangMan\\src\\hangMan\\words.txt");

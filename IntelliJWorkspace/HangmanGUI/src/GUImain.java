@@ -1,10 +1,5 @@
 
-import java.awt.BasicStroke;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,68 +27,12 @@ public class GUImain extends JPanel{
     private JLabel guessesLeft;
     private int guessesRemaining = 4;
 
-    public GUImain() {
-        //Create Opening JFrame with button to start game
-        mainJF = new JFrame();
-        mainJF.setLocationRelativeTo(null);
-        startGUI startPanel = new startGUI();
-        JButton startButton = new JButton("Start Game");
-        startButton.setBounds(50, 125, 100, 20);
-        startPanel.add(startButton);
-        mainJF.setSize(500, 350);
-        mainJF.setResizable(false);
-        mainJF.getContentPane().add(startPanel);
-        //Add event to button to switch frame on press and call beginGame
-        startButton.addActionListener(e -> {
-            mainJF.remove(startPanel);
-            mainJF.add(this);
-            beginGame();
-        });
-
-        mainJF.setVisible(true);
-
-        //Create new JFrame as main JFrame
-        jf = new JFrame();
-        jf.setLocationRelativeTo(null);
-        jf.setTitle("Test");
-        jf.setSize(500, 350);
-        jf.setResizable(false);
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        setLayout(null);
-        //Add the panel that this class extends
-        jf.getContentPane().add(this);
-
-        //Add text field for entering guess
-        textField = new JTextField();
-        textField.setBounds(52, 40, 68, 20);
-        add(textField);
-        textField.setColumns(10);
-
-        //Add button for accepting guess
-        button = new JButton("Enter");
-        button.addActionListener(e -> {
-            //todo something
-        });
-        button.setBounds(130, 40, 72, 20);
-        add(button);
-
-        //Add label under Graphic for the _ instead of letters
-        lblNewLabel = new JLabel("This is where ____ goes");
-        lblNewLabel.setBounds(359, 286, 115, 14);
-        add(lblNewLabel);
-
-        guessesLeft = new JLabel("You Have 4 Guesses Remaining!");
-        guessesLeft.setBounds(40, 71, 218, 27);
-        add(guessesLeft);
-
-        JLabel lblEnterYourGuess = new JLabel("Enter Your Guess Here");
-        lblEnterYourGuess.setBounds(66, 15, 150, 14);
-        add(lblEnterYourGuess);
-    }
-
     //beginGame creates the hangManGame class generates the random word
-    public void beginGame() {
+    public void beginGame(JLabel label, JButton button, JTextField tf, JLabel wrongJL, JFrame theJF) {
+        lblNewLabel = label;
+        jf = theJF;
+        guessesLeft = wrongJL;
+        textField = tf;
         hangmanGame = new hangman();
         wordToGuess = hangmanGame.getRandomWord();
         System.out.println(wordToGuess);
