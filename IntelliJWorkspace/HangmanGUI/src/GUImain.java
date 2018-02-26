@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 
 @SuppressWarnings("serial")
-public class GUItest extends JPanel{
+public class GUImain extends JPanel{
 
     private JFrame jf;
     private JFrame mainJF;
@@ -32,7 +32,7 @@ public class GUItest extends JPanel{
     private JLabel guessesLeft;
     private int guessesRemaining = 4;
 
-    public GUItest() {
+    public GUImain() {
         //Create Opening JFrame with button to start game
         mainJF = new JFrame();
         mainJF.setLocationRelativeTo(null);
@@ -72,9 +72,8 @@ public class GUItest extends JPanel{
 
         //Add button for accepting guess
         button = new JButton("Enter");
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-            }
+        button.addActionListener(e -> {
+            //todo something
         });
         button.setBounds(130, 40, 72, 20);
         add(button);
@@ -93,11 +92,6 @@ public class GUItest extends JPanel{
         add(lblEnterYourGuess);
     }
 
-    public static void main(String[] args) {
-        //Create new gui class
-        GUItest gui = new GUItest();
-    }
-
     //beginGame creates the hangManGame class generates the random word
     public void beginGame() {
         hangmanGame = new hangman();
@@ -111,8 +105,8 @@ public class GUItest extends JPanel{
         lblNewLabel.setText(labelString);
 
         button.addActionListener(e ->  {
-                play(textField.getText());
-                setLabel(); });
+            play(textField.getText());
+            setLabel(); });
     }
 
     public void setLabel() {
@@ -212,32 +206,5 @@ public class GUItest extends JPanel{
             g2.setStroke(new BasicStroke(3));
             g2.drawLine(385, 10, 385, 135);
         }
-    }
-}
-
-@SuppressWarnings("serial")
-class startGUI extends JPanel{
-    public startGUI(){
-        setLayout(null);
-    }
-
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D)g;
-
-        g2.setStroke(new BasicStroke(10));
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.drawLine(320, 10, 320, 260);
-        g2.drawLine(320, 10, 445, 10);
-        g2.drawLine(300, 260, 470, 260);
-        g2.setStroke(new BasicStroke(7));
-        g2.drawLine(320, 200, 400, 260);
-        g2.fillOval(370, 60, 30, 30);
-        g2.drawLine(385, 70, 385, 135);
-        g2.drawLine(385, 135, 390, 145);
-        g2.drawLine(385, 135, 380, 145);
-        g2.drawLine(370, 100, 400, 100);
-        g2.setStroke(new BasicStroke(3));
-        g2.drawLine(385, 10, 385, 135);
     }
 }
