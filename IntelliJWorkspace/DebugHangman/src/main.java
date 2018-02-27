@@ -11,6 +11,7 @@ public class main {
     public static void main(String[] args){
         main mainClass = new main();
         mainClass.makeJFrame();
+        mainClass.makeStartPanel();
         mainClass.makeMainPanel();
     }
 
@@ -37,8 +38,13 @@ public class main {
         //Add event to button to switch frame on press and call beginGame
         startButton.addActionListener(e -> {
             mainJF.remove(startPanel);
-            makeMainPanel();
+            mainJF.add(gui);
+            mainJF.repaint();
         });
+    }
+
+    public void idek(){
+        mainJF.add(gui);
     }
 
     public void makeMainPanel(){
@@ -46,17 +52,11 @@ public class main {
 
         //Add button for accepting guess
         enterGuessButton = new JButton("Enter");
+        enterGuessButton.setBounds(130, 40, 72, 20);
+        gui.add(enterGuessButton);
         enterGuessButton.addActionListener(e -> {
             //todo add enter guess
         });
-        enterGuessButton.setBounds(130, 40, 72, 20);
-        gui.add(enterGuessButton);
-        mainJF.add(gui);
-
-        //Repaint to update Panels
-        mainJF.repaint();
-
-        gui.updatePain();
     }
 
 }

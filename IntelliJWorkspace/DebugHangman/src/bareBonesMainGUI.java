@@ -35,19 +35,6 @@ public class bareBonesMainGUI extends JPanel{
         add(lblEnterYourGuess);
     }
 
-    //Test paint
-    public void updatePain(){
-        for(int i = 0; i < 5; i++) {
-            count++;
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            repaint();
-        }
-    }
-
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
