@@ -3,38 +3,33 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
+import javax.swing.*;
 
 @SuppressWarnings("serial")
 public class GUImain extends JPanel{
 
-    private JFrame jf;
-    private JFrame mainJF;
     private static int count = 0;
-    private JTextField textField;
-    private JLabel lblNewLabel;
-    private JButton button;
     private String labelString = "";
     private String wordToGuess;
     private hangman hangmanGame;
     private List<Character> wrongLetters = new ArrayList<>();
     private char[] wordArr;
-    private int wordComplete = 0;
-    private JLabel guessesLeft;
+    private int wordComplete = 0;;
     private int guessesRemaining = 4;
 
+    private JLabel lblNewLabel;
+    private JFrame jf;
+    private JLabel guessesLeft;
+    private JTextField textField;
+
     //beginGame creates the hangManGame class generates the random word
-    public void beginGame(JLabel label, JButton button, JTextField tf, JLabel wrongJL, JFrame theJF) {
+    public String beginGame(JLabel label, JTextField tf, JLabel wrongJL, JFrame theJF, String inputWord) {
         lblNewLabel = label;
         jf = theJF;
         guessesLeft = wrongJL;
         textField = tf;
         hangmanGame = new hangman();
-        wordToGuess = hangmanGame.getRandomWord();
+        wordToGuess = inputWord;
         System.out.println(wordToGuess);
         wordArr = new char[hangmanGame.getWordLength()];
         for(int i = 0; i < hangmanGame.getWordLength(); i++) {
@@ -43,9 +38,7 @@ public class GUImain extends JPanel{
         System.out.println(labelString);
         lblNewLabel.setText(labelString);
 
-        button.addActionListener(e ->  {
-            play(textField.getText());
-            setLabel(); });
+        return wordToGuess;
     }
 
     public void setLabel() {
@@ -85,36 +78,15 @@ public class GUImain extends JPanel{
     }
 
     public void win() {
-        startGUI endGamePanel = endGame();
         JLabel winLabel = new JLabel("Congratulations You Win");
         winLabel.setBounds(50, 200, 100, 20);
-        endGamePanel.add(winLabel);
+        add(winLabel);
     }
 
     public void gameOver() {
-        startGUI endGamePanel = endGame();
         JLabel loseLabel = new JLabel(String.format("Unlucky the word was %s", wordToGuess));
         loseLabel.setBounds(50, 200, 300, 20);
-        endGamePanel.add(loseLabel);
-    }
-
-    public startGUI endGame() {
-        JFrame endGameJF = new JFrame();
-        startGUI gui = new startGUI();
-        endGameJF.setSize(500, 350);
-        endGameJF.setResizable(false);
-        endGameJF.getContentPane().add(gui);
-        endGameJF.setLocationRelativeTo(null);
-        JButton restart = new JButton("Restart");
-        restart.setBounds(50, 125, 100, 20);
-        restart.addActionListener(e -> {
-            //todo add restart function
-        });
-        gui.add(restart);
-        jf.setVisible(false);
-        endGameJF.setVisible(true);
-
-        return gui;
+        add(loseLabel);
     }
 
     public void paintComponent(Graphics g) {

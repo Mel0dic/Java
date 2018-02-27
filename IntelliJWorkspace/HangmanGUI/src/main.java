@@ -10,12 +10,13 @@ public class main {
     private JButton button;
     private JLabel guessesLeft;
     private String wordToGuess = "PlaceHolder";
+    private startGUI endGamePanel;
 
     public static void main(String[] args) {
         main mainClass = new main();
+        mainClass.setUpGame();
         mainClass.makeJFrame();
         mainClass.makeStartPanel();
-        mainClass.makeEndPanel();
     }
 
     public main(){
@@ -29,27 +30,27 @@ public class main {
         mainJF.setSize(500, 350);
         mainJF.setResizable(false);
         mainJF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainJF.setVisible(true);
     }
 
-    public void makeStartPanel(){
+    public int makeStartPanel(){
         //Create Opening Panel with button to start game
         startGUI startPanel = new startGUI();
         JButton startButton = new JButton("Start Game");
         startButton.setBounds(50, 125, 100, 20);
         startPanel.add(startButton);
-        mainJF.setSize(500, 350);
-        mainJF.setResizable(false);
-        mainJF.getContentPane().add(startPanel);
+        mainJF.add(startPanel);
+
+
         //Add event to button to switch frame on press and call beginGame
         startButton.addActionListener(e -> {
             makeMainPanel();
             mainJF.remove(startPanel);
             mainJF.add(gui);
-            gui.beginGame(lblNewLabel, button, textField, guessesLeft, mainJF);
+            gui.beginGame(lblNewLabel, textField, guessesLeft, mainJF, wordToGuess);
         });
 
-        mainJF.add(startPanel);
-        mainJF.setVisible(true);
+        return 1;
     }
 
     public void makeMainPanel(){
@@ -66,7 +67,8 @@ public class main {
         //Add button for accepting guess
         button = new JButton("Enter");
         button.addActionListener(e -> {
-            //todo add restart game button
+            gui.play(textField.getText());
+            gui.setLabel();
         });
         button.setBounds(130, 40, 72, 20);
         gui.add(button);
@@ -86,8 +88,7 @@ public class main {
     }
 
     public void makeEndPanel(){
-        mainJF.remove(gui);
-        startGUI endGamePanel = new startGUI();
+        endGamePanel = new startGUI();
         JLabel loseLabel = new JLabel(String.format("Unlucky the word was %s", wordToGuess));
         loseLabel.setBounds(50, 200, 300, 20);
         endGamePanel.add(loseLabel);
@@ -97,7 +98,15 @@ public class main {
             //todo add restart function
         });
         endGamePanel.add(restart);
+
+        mainJF.remove(gui);
         mainJF.add(endGamePanel);
+    }
+
+    public void setUpGame(){
+        hangman mainHangman = new hangman();
+
+        wordToGuess = mainHangman.getRandomWord();
     }
 
 }
