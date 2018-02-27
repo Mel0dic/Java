@@ -16,20 +16,24 @@ public class GUImain extends JPanel{
     private char[] wordArr;
     private int wordComplete = 0;;
     private int guessesRemaining = 4;
+    private int win = 0;
 
     private JLabel lblNewLabel;
     private JFrame jf;
     private JLabel guessesLeft;
     private JTextField textField;
 
-    //beginGame creates the hangManGame class generates the random word
-    public String beginGame(JLabel label, JTextField tf, JLabel wrongJL, JFrame theJF, String inputWord) {
+    public void setup(JLabel label, JTextField tf, JLabel wrongJL, JFrame theJF, String inputWord){
         lblNewLabel = label;
         jf = theJF;
         guessesLeft = wrongJL;
         textField = tf;
         hangmanGame = new hangman();
         wordToGuess = inputWord;
+    }
+
+    //beginGame creates the hangManGame class generates the random word
+    public void beginGame() {
         System.out.println(wordToGuess);
         wordArr = new char[hangmanGame.getWordLength()];
         for(int i = 0; i < hangmanGame.getWordLength(); i++) {
@@ -37,8 +41,6 @@ public class GUImain extends JPanel{
         }
         System.out.println(labelString);
         lblNewLabel.setText(labelString);
-
-        return wordToGuess;
     }
 
     public void setLabel() {
@@ -81,12 +83,14 @@ public class GUImain extends JPanel{
         JLabel winLabel = new JLabel("Congratulations You Win");
         winLabel.setBounds(50, 200, 100, 20);
         add(winLabel);
+        win = 1;
     }
 
     public void gameOver() {
         JLabel loseLabel = new JLabel(String.format("Unlucky the word was %s", wordToGuess));
         loseLabel.setBounds(50, 200, 300, 20);
         add(loseLabel);
+        win = 2;
     }
 
     public void paintComponent(Graphics g) {
@@ -117,5 +121,9 @@ public class GUImain extends JPanel{
             g2.setStroke(new BasicStroke(3));
             g2.drawLine(385, 10, 385, 135);
         }
+    }
+
+    public int getWinCode(){
+        return win;
     }
 }

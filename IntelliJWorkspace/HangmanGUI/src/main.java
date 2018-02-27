@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 public class main {
 
@@ -19,10 +20,13 @@ public class main {
         mainClass.makeStartPanel();
     }
 
+    //Set up class
     public main(){
         gui = new GUImain();
     }
 
+
+    //Set up the JFrame
     public void makeJFrame(){
         mainJF = new JFrame();
         mainJF.setLocationRelativeTo(null);
@@ -33,7 +37,7 @@ public class main {
         mainJF.setVisible(true);
     }
 
-    public int makeStartPanel(){
+    public void makeStartPanel(){
         //Create Opening Panel with button to start game
         startGUI startPanel = new startGUI();
         JButton startButton = new JButton("Start Game");
@@ -43,14 +47,17 @@ public class main {
 
 
         //Add event to button to switch frame on press and call beginGame
-        startButton.addActionListener(e -> {
+        startButton.addActionListener((ActionEvent e) -> {
             makeMainPanel();
             mainJF.remove(startPanel);
             mainJF.add(gui);
-            gui.beginGame(lblNewLabel, textField, guessesLeft, mainJF, wordToGuess);
+            gui.setup(lblNewLabel, textField, guessesLeft, mainJF, wordToGuess);
+            gui.beginGame();
         });
 
-        return 1;
+        while(gui.getWinCode() == 1){
+            System.out.println("Win");
+        }
     }
 
     public void makeMainPanel(){
