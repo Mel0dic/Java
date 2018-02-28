@@ -24,8 +24,8 @@ public class hangmanGame {
         wordLength = lengthOfWord;
 
         wordLetters = new char[lengthOfWord];
-        for(char i : wordLetters){
-            i = '_';
+        for(int i = 0; i < wordLength; i++){
+            wordLetters[i] = '_';
         }
     }
 
@@ -51,12 +51,14 @@ public class hangmanGame {
 
     public String labelWord(){
         labelWord = "";
-        for(int i = 0; i < wordLength-1; i++){
-            if(i == (wordLength - 2)){
+        for(int i = 0; i < wordLength; i++){
+            if(i == (wordLength)){
                 labelWord += wordLetters[i];
+                System.out.println("Hi");
             }else{
                 labelWord += wordLetters[i];
                 labelWord += " ";
+                System.out.println("Bye");
             }
         }
         System.out.println("Word Here");
