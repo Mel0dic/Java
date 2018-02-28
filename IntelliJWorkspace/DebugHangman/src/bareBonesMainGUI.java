@@ -65,4 +65,16 @@ public class bareBonesMainGUI extends JPanel{
         }
     }
 
+    public char getGuess(){
+        return textField.getText().charAt(0);
+    }
+
+    public void setLetterToAndAlreadyGuessed(String setLabel){
+        letterToAndAlreadyGuessed.setText(setLabel);
+    }
+
+    private void updateCount(){
+        count++;
+    }
+
 }

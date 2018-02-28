@@ -4,15 +4,26 @@ public class main {
 
     private bareBonesMainGUI gui;
     private hangmanPaint startPanel;
+    private hangmanGame hangman;
 
     private JFrame mainJF;
     private JButton enterGuessButton;
+
+    private char guess;
+    private String guessedAndYetToGuessWithSpaces;
+    private int wordLength = 6;
+    private String randomWord;
 
     public static void main(String[] args){
         main mainClass = new main();
         mainClass.makeJFrame();
         mainClass.makeStartPanel();
         mainClass.makeMainPanel();
+    }
+
+    public main(){
+        hangman = new hangmanGame(6);
+        randomWord = hangman.getRandomWord();
     }
 
     //Set up the JFrame
@@ -39,12 +50,9 @@ public class main {
         startButton.addActionListener(e -> {
             mainJF.remove(startPanel);
             mainJF.add(gui);
+            mainJF.revalidate();
             mainJF.repaint();
         });
-    }
-
-    public void idek(){
-        mainJF.add(gui);
     }
 
     public void makeMainPanel(){
@@ -54,9 +62,25 @@ public class main {
         enterGuessButton = new JButton("Enter");
         enterGuessButton.setBounds(130, 40, 72, 20);
         gui.add(enterGuessButton);
+        //Update label of unguessed and guessed letters
+        gui.setLetterToAndAlreadyGuessed(hangman.labelWord());
         enterGuessButton.addActionListener(e -> {
-            //todo add enter guess
+            guess = gui.getGuess();
+            if(hangman.guess(guess) == true){hangman.updateGuessedLetters(guess);}
+            if(hangman.winLoseChecker() == 1){
+                win();
+            }else if(hangman.winLoseChecker() == 2){
+                lose();
+            }
         });
+    }
+
+    public void win(){
+        System.out.println("Win");
+    }
+
+    public void lose(){
+        System.out.println("Lose");
     }
 
 }
