@@ -9,9 +9,8 @@ public class main {
     private JFrame mainJF;
     private JButton enterGuessButton;
 
-    private char guess;
-    private String guessedAndYetToGuessWithSpaces;
-    private int wordLength = 6;
+    private char guess;;
+    private int wordLength;
     private String randomWord;
 
     public static void main(String[] args){
@@ -24,6 +23,7 @@ public class main {
     public main(){
         hangman = new hangmanGame(6);
         randomWord = hangman.getRandomWord();
+        wordLength = randomWord.length();
     }
 
     //Set up the JFrame
@@ -62,17 +62,31 @@ public class main {
         enterGuessButton = new JButton("Enter");
         enterGuessButton.setBounds(130, 40, 72, 20);
         gui.add(enterGuessButton);
-        //Update label of unguessed and guessed letters
+        //Update label of yet to guess and guessed letters
         gui.setLetterToAndAlreadyGuessed(hangman.labelWord());
         enterGuessButton.addActionListener(e -> {
-            guess = gui.getGuess();
-            if(hangman.guess(guess) == true){hangman.updateGuessedLetters(guess);}
-            if(hangman.winLoseChecker() == 1){
-                win();
-            }else if(hangman.winLoseChecker() == 2){
-                lose();
-            }
+            guessMade();
         });
+    }
+
+    public void guessMade(){
+        guess = gui.getGuess();
+
+        if(hangman.guess(guess) == true){
+            hangman.updateGuessedLetters(guess);
+            gui.setLetterToAndAlreadyGuessed(hangman.labelWord());
+        }else{
+            gui.updateGuessedLeft(hangman.getGuessesLeft());
+            gui.updateCount();
+        }
+
+        gui.resetGuessArea();
+
+        if(hangman.winLoseChecker() == 1){
+            win();
+        }else if(hangman.winLoseChecker() == 2){
+            lose();
+        }
     }
 
     public void win(){

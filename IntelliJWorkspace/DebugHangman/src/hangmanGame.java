@@ -15,7 +15,7 @@ public class hangmanGame {
     private char[] wordLetters;
     private String labelWord;
     private int guessedLetters = 0;
-    private int wrongGuesses = 5;
+    private int wrongGuesses = 4;
     private List<String> wordList = new ArrayList<>();
 
     Random rand = new Random();
@@ -46,7 +46,18 @@ public class hangmanGame {
 
         wordLength = word.length();
 
+        setBegginingWord();
+
+        System.out.println(word);
+
         return word;
+    }
+
+    public void setBegginingWord(){
+        wordLetters = new char[wordLength];
+        for(int i = 0; i < wordLength; i++){
+            wordLetters[i] = '_';
+        }
     }
 
     public String labelWord(){
@@ -54,21 +65,18 @@ public class hangmanGame {
         for(int i = 0; i < wordLength; i++){
             if(i == (wordLength)){
                 labelWord += wordLetters[i];
-                System.out.println("Hi");
             }else{
                 labelWord += wordLetters[i];
                 labelWord += " ";
-                System.out.println("Bye");
             }
         }
-        System.out.println("Word Here");
         System.out.println(labelWord);
         return labelWord;
     }
 
     //Add function to see if guess is char inside of word
     public boolean guess(Character guessMade){
-        if(word.indexOf(guessMade) > 0){
+        if(word.indexOf(guessMade) >= 0){
             return true;
         }else {
             wrongGuesses--;
@@ -90,12 +98,21 @@ public class hangmanGame {
     }
 
     public int winLoseChecker(){
-        if(guessedLetters == wordLength){
-            return 1;
-        }else if(wrongGuesses == 0){
+        if(wrongGuesses == 0){
             return 2;
+        }else if(guessedLetters >= wordLength){
+            for(char i : wordLetters){
+                if(i == '_'){
+                    return 0;
+                }
+            }
+            return 1;
         }
         return 0;
+    }
+
+    public int getGuessesLeft(){
+        return wrongGuesses;
     }
 
 }
