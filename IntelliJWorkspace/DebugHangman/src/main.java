@@ -9,9 +9,7 @@ public class main {
     private JFrame mainJF;
     private JButton enterGuessButton;
 
-    private char guess;;
-    private int wordLength;
-    private String randomWord;
+    private char guess;
 
     public static void main(String[] args){
         main mainClass = new main();
@@ -22,8 +20,7 @@ public class main {
 
     public main(){
         hangman = new hangmanGame(6);
-        randomWord = hangman.getRandomWord();
-        wordLength = randomWord.length();
+        hangman.getRandomWord();
     }
 
     //Set up the JFrame
@@ -90,11 +87,33 @@ public class main {
     }
 
     public void win(){
-        System.out.println("Win");
+        hangmanPaint paint = endGamePanel();
+
+        mainJF.remove(gui);
+        mainJF.add(paint);
+        mainJF.revalidate();
+        mainJF.repaint();
     }
 
     public void lose(){
-        System.out.println("Lose");
+        hangmanPaint paint = endGamePanel();
+
+        mainJF.remove(gui);
+        mainJF.add(paint);
+        mainJF.revalidate();
+        mainJF.repaint();
+    }
+
+    public hangmanPaint endGamePanel() {
+        hangmanPaint finale = new hangmanPaint();
+        JButton restart = new JButton("Restart");
+        restart.setBounds(50, 125, 100, 20);
+        restart.addActionListener(e -> {
+            //todo add restart function
+        });
+        finale.add(restart);
+
+        return finale;
     }
 
 }
