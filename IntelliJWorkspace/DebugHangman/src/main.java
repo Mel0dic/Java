@@ -5,6 +5,7 @@ public class main {
     private bareBonesMainGUI gui;
     private hangmanPaint startPanel;
     private hangmanGame hangman;
+    private hangmanPaint endGameJPanel;
 
     private JFrame mainJF;
     private JButton enterGuessButton;
@@ -87,19 +88,19 @@ public class main {
     }
 
     public void win(){
-        hangmanPaint paint = endGamePanel();
+        endGameJPanel = endGamePanel();
 
         mainJF.remove(gui);
-        mainJF.add(paint);
+        mainJF.add(endGameJPanel);
         mainJF.revalidate();
         mainJF.repaint();
     }
 
     public void lose(){
-        hangmanPaint paint = endGamePanel();
+        endGameJPanel = endGamePanel();
 
         mainJF.remove(gui);
-        mainJF.add(paint);
+        mainJF.add(endGameJPanel);
         mainJF.revalidate();
         mainJF.repaint();
     }
@@ -109,7 +110,16 @@ public class main {
         JButton restart = new JButton("Restart");
         restart.setBounds(50, 125, 100, 20);
         restart.addActionListener(e -> {
-            //todo add restart function
+            hangman = new hangmanGame(6);
+
+            makeStartPanel();
+            makeMainPanel();
+
+            mainJF.remove(endGameJPanel);
+            mainJF.add(startPanel);
+
+            mainJF.revalidate();
+            mainJF.repaint();
         });
         finale.add(restart);
 
