@@ -18,8 +18,18 @@
       <file leaf-file-name="main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="408">
               <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="1670">
+              <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+=======
+            <state relative-caret-position="51">
+              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+>>>>>>> 7df89121a636e33c0c3bbb187bf0d699ebb3bddf
+>>>>>>> 106caa34bb7d40388539a865083bc0a1670422bc
               <folding />
             </state>
           </provider>
@@ -28,8 +38,18 @@
       <file leaf-file-name="hangmanGame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hangmanGame.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="314">
+              <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+=======
+            <state relative-caret-position="1802">
+              <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+>>>>>>> 7df89121a636e33c0c3bbb187bf0d699ebb3bddf
+>>>>>>> 106caa34bb7d40388539a865083bc0a1670422bc
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2674#2675#0" expanded="true" />
@@ -102,8 +122,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/hangmanPaint.java" />
         <option value="$PROJECT_DIR$/src/bareBonesMainGUI.java" />
-        <option value="$PROJECT_DIR$/src/main.java" />
         <option value="$PROJECT_DIR$/src/hangmanGame.java" />
+        <option value="$PROJECT_DIR$/src/main.java" />
       </list>
     </option>
   </component>
@@ -128,10 +148,21 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="AndroidView" />
+=======
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+>>>>>>> 7df89121a636e33c0c3bbb187bf0d699ebb3bddf
+      <pane id="Scratches" />
+      <pane id="Scope" />
+>>>>>>> 106caa34bb7d40388539a865083bc0a1670422bc
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -332,6 +363,64 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/Random.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12771">
+          <caret line="387" column="0" lean-forward="false" selection-start-line="387" selection-start-column="0" selection-end-line="387" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bareBonesMainGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1584">
+          <caret line="48" column="46" lean-forward="false" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2137#2138#0" expanded="true" />
+            <element signature="e#2203#2204#0" expanded="true" />
+            <element signature="e#2267#2268#0" expanded="true" />
+            <element signature="e#2326#2327#0" expanded="true" />
+            <element signature="e#2573#2574#0" expanded="true" />
+            <element signature="e#2610#2611#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hangmanPaint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1023">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#206#207#0" expanded="true" />
+            <element signature="e#237#238#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hangmanGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="891">
+          <caret line="27" column="33" lean-forward="true" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2674#2675#0" expanded="true" />
+            <element signature="e#2711#2712#0" expanded="true" />
+            <element signature="e#3067#3068#0" expanded="true" />
+            <element signature="e#3102#3103#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -787,6 +876,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/hangmanPaint.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="33">
+          <caret line="387" column="0" lean-forward="false" selection-start-line="387" selection-start-column="0" selection-end-line="387" selection-end-column="0" />
+=======
         <state relative-caret-position="68">
           <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
           <folding>
@@ -815,10 +908,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1020">
           <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+>>>>>>> 7df89121a636e33c0c3bbb187bf0d699ebb3bddf
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/hangmanGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+=======
     <entry file="file://$PROJECT_DIR$/src/bareBonesMainGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -925,13 +1025,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/hangmanPaint.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+=======
+        <state relative-caret-position="1802">
+          <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+>>>>>>> 7df89121a636e33c0c3bbb187bf0d699ebb3bddf
+>>>>>>> 106caa34bb7d40388539a865083bc0a1670422bc
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#206#207#0" expanded="true" />
             <element signature="e#237#238#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1670">
+          <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
