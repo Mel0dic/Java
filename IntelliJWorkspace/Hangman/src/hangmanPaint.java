@@ -1,12 +1,12 @@
-
 import java.awt.BasicStroke;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
-class startGUI extends JPanel {
-    public startGUI() {
+class hangmanPaint extends JPanel {
+
+    public hangmanPaint() {
         setLayout(null);
     }
 
@@ -29,4 +29,3 @@ class startGUI extends JPanel {
         g2.drawLine(385, 10, 385, 135);
     }
 }
-
