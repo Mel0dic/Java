@@ -9,9 +9,10 @@ public class movingDot{
 	private JFrame frame;
 	private DrawPanel drawPanel;
 	private int x;
+	private int xSpeed=1;
 	private int y;
+	private int ySpeed=	1;
 	private int panelY;
-	private int dir = 360;
 
 	public static void main(String[] args){
 		new movingDot();
@@ -59,34 +60,18 @@ public class movingDot{
 				Thread.sleep(50);
 			}catch(Exception E){System.out.println(E);}
 			frame.repaint();
-			System.out.println(String.format("X = %d, Y = %d, Direction = %d", x, y, dir));
+			System.out.println(String.format("X = %d, Y = %d", x, y));
 		}
 	}
 
 	public void moveDot(){
-		if(dir > 0 && dir < 90){x--; y++;}
-		if(dir > 90 && dir < 180){x++;y++;}
-		if(dir > 180 && dir < 270){x++; y--;}
-		if(dir > 270 && dir < 360){x--; y--;}
-		if(dir == 90){x++;}
-		if(dir == 180){y++;}
-		if(dir == 270){x--;}
-		if(dir == 360){y--;}
+		x += xSpeed;
+		y += ySpeed;
 	}
 
 	public void changeDirection(){
-		if((drawPanel.getWidth() - 10) == y){
-			dir+= 180;
-		}
-		if((drawPanel.getHeight() - 10) == x){
-			dir+=180;
-		}
-		if(10 == x){
-			dir-=180;
-		}
-		if(10 == y){
-			dir-=180;
-		}
+		if(y <= 0 || y >= (drawPanel.getHeight()) ){ySpeed*=-1;}
+		if(x <= 0 || x >= (drawPanel.getWidth()) ){xSpeed*=-1;}
 	}
 
 }
