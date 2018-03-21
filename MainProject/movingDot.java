@@ -11,7 +11,7 @@ public class movingDot{
 	private int x;
 	private int y;
 	private int panelY;
-	private int dir = 1;
+	private int dir = 360;
 
 	public static void main(String[] args){
 		new movingDot();
@@ -49,8 +49,8 @@ public class movingDot{
 	}
 
 	public void moveTheDot(){
-		x = (drawPanel.getHeight()/2);
-		y = (drawPanel.getWidth()/2);
+		x = 150;
+		y = 150;
 		while(true){
 			panelY = drawPanel.getHeight()/2;
 			moveDot();
@@ -59,19 +59,34 @@ public class movingDot{
 				Thread.sleep(50);
 			}catch(Exception E){System.out.println(E);}
 			frame.repaint();
+			System.out.println(String.format("X = %d, Y = %d, Direction = %d", x, y, dir));
 		}
 	}
 
 	public void moveDot(){
-		if(dir > 270 || (dir < 90 && dir > 0)){x++;}
-		if(dir > 90 && dir < 270){x--;}
-		if(dir > 0 && dir < 180){y--;}
-		if(dir > 180 && dir < 360){y++;}
+		if(dir > 0 && dir < 90){x--; y++;}
+		if(dir > 90 && dir < 180){x++;y++;}
+		if(dir > 180 && dir < 270){x++; y--;}
+		if(dir > 270 && dir < 360){x--; y--;}
+		if(dir == 90){x++;}
+		if(dir == 180){y++;}
+		if(dir == 270){x--;}
+		if(dir == 360){y--;}
 	}
 
 	public void changeDirection(){
-		if((drawPanel.getWidth() - 10) == y){dir-=180;}
-		if((drawPanel.getHeight() - 10) == x){dir-=180;}
+		if((drawPanel.getWidth() - 10) == y){
+			dir+= 180;
+		}
+		if((drawPanel.getHeight() - 10) == x){
+			dir+=180;
+		}
+		if(10 == x){
+			dir-=180;
+		}
+		if(10 == y){
+			dir-=180;
+		}
 	}
 
 }
