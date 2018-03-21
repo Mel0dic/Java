@@ -14,7 +14,7 @@ final public class Tester {
     boolean up = false;
     boolean down = true;
     boolean left = false;
-    boolean right = true;
+    boolean right = false;
 
     public static void main(String[] args) {
         new Tester().go();
