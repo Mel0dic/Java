@@ -3,9 +3,15 @@ import javax.swing.JFrame;
 import java.awt.Graphics;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.PointerInfo;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
+import java.util.Random;
 
 public class movingDot{
 
+	private Random rand = new Random();
 	private JFrame frame;
 	private DrawPanel drawPanel;
 	private int x;
@@ -13,6 +19,7 @@ public class movingDot{
 	private int y;
 	private int ySpeed=	1;
 	private int panelY;
+	private int puckDirection = 0;
 
 	public static void main(String[] args){
 		new movingDot();
@@ -31,6 +38,9 @@ public class movingDot{
 		frame.setSize(300, 300);
 		frame.setLocation(375, 55);
 
+		xSpeed = rand.nextInt(1) - 1;
+		ySpeed = rand.nextInt(1) - 1;
+
 		moveTheDot();
 	}
 
@@ -40,13 +50,11 @@ public class movingDot{
 			g.fillRect(0, 0, this.getWidth(), 5);
 			g.fillRect((this.getWidth()-5), 0, 5, this.getHeight());
 			g.fillRect(0, (this.getHeight()-5), this.getWidth(), 5);
-			g.fillRect(x, y, 10, 10);
+			g.setColor(Color.black);
+			g.fillOval(x, y, 10, 10);
 			g.fillRect(5, panelY, 10, 30);
 		}
 
-		public int gH(){
-			return this.getHeight();
-		}
 	}
 
 	public void moveTheDot(){
@@ -57,7 +65,7 @@ public class movingDot{
 			moveDot();
 			changeDirection();
 			try{
-				Thread.sleep(50);
+				Thread.sleep(5);
 			}catch(Exception E){System.out.println(E);}
 			frame.repaint();
 			System.out.println(String.format("X = %d, Y = %d", x, y));
@@ -70,8 +78,30 @@ public class movingDot{
 	}
 
 	public void changeDirection(){
-		if(y <= 0 || y >= (drawPanel.getHeight()) ){ySpeed*=-1;}
-		if(x <= 0 || x >= (drawPanel.getWidth()) ){xSpeed*=-1;}
+		if(y <= 5 || y >= (drawPanel.getHeight()-15) ){ySpeed*=-1;}
+		if(x <= 0 || x >= (drawPanel.getWidth()-15) ){xSpeed*=-1;}
 	}
 
+}
+
+class Control implements KeyListener{
+
+	int puckDirection = 0;
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getKeyCode()==e.VK_UP){
+			puckDirection = -1;
+		}else if(e.getKeyCode()==e.VK_DOWN){
+			puckDirection = 1;
+		}
+
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		puckDirection = 0;
+	}
+	
 }
