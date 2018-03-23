@@ -21,6 +21,7 @@ public class movingDot{
 	private int ySpeed=	1;
 	private int panelY;
 	private int puckDirection = 0;
+	private double old_time = 1;
 
 	public static void main(String[] args){
 		new movingDot();
@@ -66,6 +67,7 @@ public class movingDot{
 			moveDot();
 			movePadel();
 			changeDirection();
+			System.out.println(String.format("FPS = %2.0d", get_fps()));
 			try{
 				Thread.sleep(10);
 			}catch(Exception E){System.out.println(E);}
@@ -117,5 +119,13 @@ public class movingDot{
 		@Override
 		public void keyTyped(KeyEvent e){}
 	}
+
+	public double get_fps(double old_time){
+		double new_time = System.getTime().nanoseconds();
+    	double delta = new_time - old_time;
+    	double fps = 1 / (delta * 1000);
+    	old_time = new_time;
+    	return fps;
+	};
 
 }
