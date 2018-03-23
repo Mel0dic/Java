@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.util.Random;
+import java.lang.Math;
 
 public class movingDot{
 
@@ -36,10 +37,10 @@ public class movingDot{
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setSize(300, 300);
-		frame.setLocation(375, 55);
+		frame.setLocation(375, 55);	
 
-		xSpeed = rand.nextInt(1) - 1;
-		ySpeed = rand.nextInt(1) - 1;
+		xSpeed = 1;
+		ySpeed = (int) Math.pow(-1, rand.nextInt(3)+1);
 
 		moveTheDot();
 	}
@@ -54,21 +55,22 @@ public class movingDot{
 			g.fillOval(x, y, 10, 10);
 			g.fillRect(5, panelY, 10, 30);
 		}
-
 	}
 
 	public void moveTheDot(){
+		frame.addKeyListener(new MoveCircle());
 		x = 150;
 		y = 150;
+		panelY = drawPanel.getHeight()/2;
 		while(true){
-			panelY = drawPanel.getHeight()/2;
 			moveDot();
+			movePadel();
 			changeDirection();
 			try{
-				Thread.sleep(5);
+				Thread.sleep(10);
 			}catch(Exception E){System.out.println(E);}
 			frame.repaint();
-			System.out.println(String.format("X = %d, Y = %d", x, y));
+			// System.out.println(String.format("X = %d, Y = %d", x, y));
 		}
 	}
 
@@ -77,9 +79,43 @@ public class movingDot{
 		y += ySpeed;
 	}
 
+	public void movePadel(){
+		if(panelY > 5 && (panelY) < (drawPanel.getHeight()-35)){panelY += puckDirection;}
+		else if(panelY == 5 && puckDirection == 1){panelY += puckDirection;}
+		else if(panelY >= (drawPanel.getHeight()-35) && puckDirection == -1){panelY += puckDirection;}
+	}
+
 	public void changeDirection(){
+		//If puck reaches the top / bottom change the direction of the puck
 		if(y <= 5 || y >= (drawPanel.getHeight()-15) ){ySpeed*=-1;}
-		if(x <= 0 || x >= (drawPanel.getWidth()-15) ){xSpeed*=-1;}
+		//If puck reaches either side change direction
+		if(x >= (drawPanel.getWidth()-15) ){xSpeed*=-1;}
+		//If puck hits padel
+		if(x == 15 && y >= panelY && y <= (panelY + 30)){xSpeed*=-1;}
+
+		//Temp
+		if(x < 0){x = 150; y = 150; xSpeed = 1;}
+	}
+
+	class MoveCircle implements KeyListener {
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			//If UP Arrow is pressed set direction to -1
+			if(e.getKeyCode() == KeyEvent.VK_UP){puckDirection = -1;}
+			//If Down Arrow is pressed set direction to 1
+			if(e.getKeyCode() == KeyEvent.VK_DOWN){puckDirection = 1;}
+		}
+
+		//Set the direction to 0 after the release of the key.
+		@Override
+		public void keyReleased(KeyEvent e) {
+			puckDirection = 0;
+		}
+
+		//Need For Compilation without errors
+		@Override
+		public void keyTyped(KeyEvent e){}
 	}
 
 }
