@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.util.Random;
 import java.lang.Math;
+import java.lang.System;
 
 public class movingDot{
 
@@ -63,11 +64,12 @@ public class movingDot{
 		x = 150;
 		y = 150;
 		panelY = drawPanel.getHeight()/2;
+		double first_Time = System.currentTimeMillis();		
 		while(true){
 			moveDot();
 			movePadel();
 			changeDirection();
-			System.out.println(String.format("FPS = %2.0d", get_fps()));
+			System.out.println(String.format("FPS = %2.0f", get_fps(first_Time)));
 			try{
 				Thread.sleep(10);
 			}catch(Exception E){System.out.println(E);}
@@ -121,7 +123,7 @@ public class movingDot{
 	}
 
 	public double get_fps(double old_time){
-		double new_time = System.getTime().nanoseconds();
+		double new_time = System.currentTimeMillis();
     	double delta = new_time - old_time;
     	double fps = 1 / (delta * 1000);
     	old_time = new_time;
