@@ -64,12 +64,11 @@ public class movingDot{
 		x = 150;
 		y = 150;
 		panelY = drawPanel.getHeight()/2;
-		double first_Time = System.currentTimeMillis();		
 		while(true){
 			moveDot();
 			movePadel();
 			changeDirection();
-			System.out.println(String.format("FPS = %2.0f", get_fps(first_Time)));
+			// System.out.println(String.format("FPS = %2.0f", get_fps(first_Time)));
 			try{
 				Thread.sleep(10);
 			}catch(Exception E){System.out.println(E);}
@@ -121,13 +120,5 @@ public class movingDot{
 		@Override
 		public void keyTyped(KeyEvent e){}
 	}
-
-	public double get_fps(double old_time){
-		double new_time = System.currentTimeMillis();
-    	double delta = new_time - old_time;
-    	double fps = 1 / (delta * 1000);
-    	old_time = new_time;
-    	return fps;
-	};
 
 }
