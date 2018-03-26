@@ -6,7 +6,12 @@ import java.io.IOException;
 public class loadFileToLevel{
 
 	public static void main(String[] args){
-		
+		loadFileToLevel main = new loadFileToLevel();
+		try{
+			main.openFile();
+		}catch(IOException e){
+			System.out.println(e);
+		}
 	}
 
 	public void openFile() throws IOException{
