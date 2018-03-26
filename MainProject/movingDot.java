@@ -10,6 +10,7 @@ import java.awt.event.MouseListener;
 import java.util.Random;
 import java.lang.Math;
 import java.lang.System;
+import java.awt.Font;
 
 public class movingDot{
 
@@ -22,6 +23,7 @@ public class movingDot{
 	private int ySpeed=	1;
 	private int panelY;
 	private int puckDirection = 0;
+	private int points = 0;
 	private double old_time = 1;
 
 	public static void main(String[] args){
@@ -56,11 +58,14 @@ public class movingDot{
 			g.setColor(Color.black);
 			g.fillOval(x, y, 10, 10);
 			g.fillRect(5, panelY, 10, 30);
+			g.setFont(new Font("Arial", Font.BOLD, 20));
+			// g.setColor(Color.yellow);
+			g.drawString(Integer.toString(points), 265, 23);
 		}
 	}
 
 	public void moveTheDot(){
-		frame.addKeyListener(new MoveCircle());
+		frame.addKeyListener(new MoveThePadel());
 		x = 150;
 		y = 150;
 		panelY = drawPanel.getHeight()/2;
@@ -96,11 +101,11 @@ public class movingDot{
 		//If puck hits padel
 		if(x == 15 && y >= panelY && y <= (panelY + 30)){xSpeed*=-1;}
 
-		//Temp
-		if(x < 0){x = 150; y = 150; xSpeed = 1;}
+		//If ball passes past homepoint
+		if(x < 0){x = 150; y = 150; xSpeed = 1; points++;}
 	}
 
-	class MoveCircle implements KeyListener {
+	class MoveThePadel implements KeyListener {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
