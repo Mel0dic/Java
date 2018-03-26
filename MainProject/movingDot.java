@@ -66,8 +66,8 @@ public class movingDot{
 
 	public void moveTheDot(){
 		frame.addKeyListener(new MoveThePadel());
-		x = 150;
-		y = 150;
+		x = drawPanel.getWidth()/2;
+		y = drawPanel.getHeight()/2;
 		panelY = drawPanel.getHeight()/2;
 		while(true){
 			moveDot();
