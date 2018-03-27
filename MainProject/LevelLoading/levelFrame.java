@@ -43,7 +43,22 @@ public class levelFrame{
 
 	class DrawPanel extends JPanel{
 		public void paintComponent(Graphics g){
-			g.fillRect(0, 0, 25, 25);
+			paintLevel(g);
+		}
+	}
+
+	public void paintLevel(Graphics g){
+		int xPos = 0;
+		int yPos = 0;
+		for(List<Character> nextArray : levelList){
+			for(Character c : nextArray){
+				if(c == '*'){
+					g.fillRect(xPos, yPos, 25, 25);
+				}
+				xPos += 25;
+			}
+			xPos = 0;
+			yPos += 25;
 		}
 	}
 
