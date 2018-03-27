@@ -2,16 +2,27 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
+import java.util.ArrayList;
 
 public class loadFileToLevel{
 
+	//Need a 2D list for each char
+	private List<List<Character>> levelList = new ArrayList<List<Character>>();
+	private int count = 0;
+	private char[] charsInLine;
+
 	public static void main(String[] args){
 		loadFileToLevel main = new loadFileToLevel();
+	}
+
+	public List<List<Character>> getArrayOfArray(){
 		try{
-			main.openFile();
+			openFile();
 		}catch(IOException e){
 			System.out.println(e);
 		}
+		return levelList;
 	}
 
 	public void openFile() throws IOException{
@@ -24,7 +35,12 @@ public class loadFileToLevel{
 
 		//While the br.readLine() does not return null
 		while( (line = br.readLine())!= null ){
-			System.out.println(line);
+			charsInLine = line.toCharArray();
+			levelList.add(new ArrayList<Character>());
+			for(char c : charsInLine){
+				levelList.get(count).add(c);
+			}
+			count++;
 		}
 	}
 
