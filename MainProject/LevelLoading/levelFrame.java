@@ -20,8 +20,12 @@ public class levelFrame{
 	public levelFrame(){
 		loadFileToLevel mainClass = new loadFileToLevel();
 		levelList = mainClass.getArrayOfArray();
-		windowWidth = (levelList.get(0).size() * 25);
-		windowHeight = (levelList.size() * 25);
+		windowWidth = (levelList.get(0).size() * 10);
+		windowHeight = (levelList.size() * 10);
+		System.out.println(levelList.size());
+		System.out.println(levelList.get(0).size());
+		System.out.println(windowHeight);
+		System.out.println(windowWidth);
 		makeJFrame();
 	}
 
@@ -35,10 +39,11 @@ public class levelFrame{
 
 		frame.pack();
 
-		frame.setSize(windowWidth, windowHeight);
+		frame.setSize(windowWidth+10, windowHeight+10);
 		frame.setVisible(true);
-		frame.setResizable(false);
+		frame.setResizable(true);
 		frame.setLocation(375, 55);
+
 	}
 
 	class DrawPanel extends JPanel{
@@ -53,13 +58,16 @@ public class levelFrame{
 		for(List<Character> nextArray : levelList){
 			for(Character c : nextArray){
 				if(c == '*'){
-					g.fillRect(xPos, yPos, 25, 25);
+					g.fillRect(xPos, yPos, 10, 10);
+					// System.out.println(String.format("xPos = %d yPos = %d", xPos, yPos));
 				}
-				xPos += 25;
+				xPos += 10;
 			}
+			System.out.println(xPos);
 			xPos = 0;
-			yPos += 25;
+			yPos += 10;
 		}
+		System.out.println(yPos);
 	}
 
 }
