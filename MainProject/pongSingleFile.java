@@ -102,7 +102,12 @@ public class movingDot{
 		if(x == 15 && y >= panelY && y <= (panelY + 30)){xSpeed*=-1;}
 
 		//If ball passes past homepoint
-		if(x < 0){x = 150; y = 150; xSpeed = 1; points++;}
+		if(x < 0){
+			x = 150;
+			y = 150;
+			xSpeed = 1;
+			points++;
+		}
 	}
 
 	class MoveThePadel implements KeyListener {
