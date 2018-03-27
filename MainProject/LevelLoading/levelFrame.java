@@ -22,10 +22,6 @@ public class levelFrame{
 		levelList = mainClass.getArrayOfArray();
 		windowWidth = (levelList.get(0).size() * 10);
 		windowHeight = (levelList.size() * 10);
-		System.out.println(levelList.size());
-		System.out.println(levelList.get(0).size());
-		System.out.println(windowHeight);
-		System.out.println(windowWidth);
 		makeJFrame();
 	}
 
@@ -39,9 +35,9 @@ public class levelFrame{
 
 		frame.pack();
 
-		frame.setSize(windowWidth+10, windowHeight+10);
+		frame.setSize(windowWidth+16, windowHeight+39);
 		frame.setVisible(true);
-		frame.setResizable(true);
+		frame.setResizable(false);
 		frame.setLocation(375, 55);
 
 	}
@@ -59,15 +55,12 @@ public class levelFrame{
 			for(Character c : nextArray){
 				if(c == '*'){
 					g.fillRect(xPos, yPos, 10, 10);
-					// System.out.println(String.format("xPos = %d yPos = %d", xPos, yPos));
 				}
 				xPos += 10;
 			}
-			System.out.println(xPos);
 			xPos = 0;
 			yPos += 10;
 		}
-		System.out.println(yPos);
 	}
 
 }
