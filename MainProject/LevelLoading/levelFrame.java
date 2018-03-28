@@ -1,7 +1,9 @@
 import javax.swing.JPanel;
 import javax.swing.JFrame;
+import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
+import java.awt.Color;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -30,12 +32,12 @@ public class levelFrame{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		drawPanel = new DrawPanel();
+		drawPanel.setPreferredSize(new Dimension(windowWidth , windowHeight));
 
-		frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+		frame.getContentPane().add(drawPanel);
 
 		frame.pack();
 
-		frame.setSize(windowWidth+16, windowHeight+39);
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setLocation(375, 55);
@@ -53,8 +55,13 @@ public class levelFrame{
 		int yPos = 0;
 		for(List<Character> nextArray : levelList){
 			for(Character c : nextArray){
-				if(c == '*'){
-					g.fillRect(xPos, yPos, 10, 10);
+				switch(c){
+					case '*':	g.setColor(Color.black);
+								g.fillRect(xPos, yPos, 10, 10);
+								break;
+					case 'X':	g.setColor(Color.red);
+								g.fillRect(xPos, yPos, 10, 10);
+								break;
 				}
 				xPos += 10;
 			}
