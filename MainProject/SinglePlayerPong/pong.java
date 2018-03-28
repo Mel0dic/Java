@@ -1,8 +1,8 @@
 import javax.swing.JPanel;
 import javax.swing.JFrame;
-import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.Random;
 import java.lang.Math;
 import java.lang.System;
@@ -53,12 +53,13 @@ public class pong{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		drawPanel = new DrawPanel();
+		drawPanel.setPreferredSize(new Dimension(300 , 300));
 
-		frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+		frame.getContentPane().add(drawPanel);
 
 		frame.pack();
 
-		frame.setSize(300, 300);
+		// frame.setSize(300, 300);
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setLocation(375, 55);
