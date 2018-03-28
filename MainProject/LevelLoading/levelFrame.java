@@ -13,6 +13,7 @@ public class levelFrame{
 	private List<List<Character>> levelList;
 	private int windowWidth;
 	private int windowHeight;
+	private int blockSize = 10;
 
 	public static void main(String[] args){
 		new levelFrame();
@@ -21,8 +22,8 @@ public class levelFrame{
 	public levelFrame(){
 		loadFileToLevel mainClass = new loadFileToLevel();
 		levelList = mainClass.getArrayOfArray();
-		windowWidth = (levelList.get(0).size() * 10);
-		windowHeight = (levelList.size() * 10);
+		windowWidth = (levelList.get(0).size() * blockSize);
+		windowHeight = (levelList.size() * blockSize);
 		makeJFrame();
 	}
 
@@ -56,16 +57,16 @@ public class levelFrame{
 			for(Character c : nextArray){
 				switch(c){
 					case '*':	g.setColor(Color.black);
-								g.fillRect(xPos, yPos, 10, 10);
+								g.fillRect(xPos, yPos, blockSize, blockSize);
 								break;
 					case 'X':	g.setColor(Color.red);
-								g.fillRect(xPos, yPos, 10, 10);
+								g.fillRect(xPos, yPos, blockSize, blockSize);
 								break;
 				}
-				xPos += 10;
+				xPos += blockSize;
 			}
 			xPos = 0;
-			yPos += 10;
+			yPos += blockSize;
 		}
 	}
 
