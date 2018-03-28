@@ -34,7 +34,7 @@ public class pong{
 		while(true){
 			ball.update();
 			playerPadel.update();
-			collisionDetection();
+			checkCollision();
 			try{
 				Thread.sleep(10);
 			}catch(Exception E){System.out.println(E);}
@@ -42,7 +42,7 @@ public class pong{
 		}
 	}
 
-	public void collisionDetection(){
+	public void checkCollision(){
 		if(ball.touches(playerPadel)){
 			ball.switchDirection();
 		}
