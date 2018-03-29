@@ -31,7 +31,7 @@ public class main{
 			mainPlayer.moverPlayer();
 			frame.repaint();
 			try{
-				Thread.sleep(10);
+				Thread.sleep(5);
 			}catch(Exception E){System.out.println(E);}
 		}
 	}
