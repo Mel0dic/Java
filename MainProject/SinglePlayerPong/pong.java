@@ -59,7 +59,6 @@ public class pong{
 
 		frame.pack();
 
-		// frame.setSize(300, 300);
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setLocation(375, 55);
