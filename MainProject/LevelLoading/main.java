@@ -23,6 +23,17 @@ public class main{
 		paintLevel = new levelFrame(blockSize);
 		makeJFrame();
 		mainPlayer = new player(frame);
+		startGame();
+	}
+
+	public void startGame(){
+		while(true){
+			mainPlayer.moverPlayer();
+			try{
+				Thread.sleep(5);
+			}catch(Exception E){System.out.println(E);}
+			frame.repaint();
+		}
 	}
 
 	public void makeJFrame(){

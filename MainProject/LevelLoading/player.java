@@ -13,12 +13,10 @@ public class player{
 
 	public player(JFrame frame){
 		frame.addKeyListener(new playerMovement());
-		while(true){
-			System.out.println(playerDirection);
-			try{
-				Thread.sleep(1000);
-			}catch(Exception E){System.out.println(E);}
-		}
+	}
+
+	public void moverPlayer(){
+		x+=playerDirection;
 	}
 
 	class playerMovement implements KeyListener {
@@ -26,9 +24,9 @@ public class player{
 		@Override
 		public void keyPressed(KeyEvent e) {
 			//If UP Arrow is pressed set direction to -1
-			if(e.getKeyCode() == KeyEvent.VK_RIGHT){playerDirection = -1;}
+			if(e.getKeyCode() == KeyEvent.VK_RIGHT){playerDirection = 1;}
 			//If Down Arrow is pressed set direction to 1
-			if(e.getKeyCode() == KeyEvent.VK_LEFT){playerDirection = 1;}
+			if(e.getKeyCode() == KeyEvent.VK_LEFT){playerDirection = -1;}
 			//If Space button is pressed call jump function
 			if(e.getKeyCode() == KeyEvent.VK_SPACE){jump();}
 		}
@@ -50,6 +48,10 @@ public class player{
 
 	public void drawPlayer(Graphics g, int blockSize){
 		g.fillRect(x, y, (blockSize/2), (blockSize/2));
+	}
+
+	public int getPlayerDirection(){
+		return playerDirection;
 	}
 
 }
