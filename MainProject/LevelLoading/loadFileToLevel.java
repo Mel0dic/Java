@@ -18,14 +18,14 @@ public class loadFileToLevel{
 
 	public List<List<Character>> getArrayOfArray(){
 		try{
-			openFile();
+			createArray();
 		}catch(IOException e){
 			System.out.println(e);
 		}
 		return levelList;
 	}
 
-	public void openFile() throws IOException{
+	public void createArray() throws IOException{
 		//Get file location and create instance of the file "converts given pathname string into an abstract pathname"
 		File file = new File("level.txt");
 		//Create BufferedReader with FileReader
