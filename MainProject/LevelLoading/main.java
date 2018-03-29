@@ -29,10 +29,10 @@ public class main{
 	public void startGame(){
 		while(true){
 			mainPlayer.moverPlayer();
-			try{
-				Thread.sleep(5);
-			}catch(Exception E){System.out.println(E);}
 			frame.repaint();
+			try{
+				Thread.sleep(10);
+			}catch(Exception E){System.out.println(E);}
 		}
 	}
 
