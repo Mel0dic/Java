@@ -72,30 +72,29 @@ public class pong{
 			drawPadel(g);
 			drawScore(g);
 		}
-	}
 
-	public void drawBall(Graphics g){
-		g.setColor(Color.black);
-		g.fillOval(ball.getXpos(), ball.getYpos(), 10, 10);
-	}
+		public void drawBall(Graphics g){
+			g.setColor(Color.black);
+			g.fillOval(ball.getXpos(), ball.getYpos(), 10, 10);
+		}
 
-	public void drawPadel(Graphics g){
-		g.setColor(Color.black);
-		g.fillRect(5, playerPadel.getPadelY(), 10, 30);
-	}
+		public void drawPadel(Graphics g){
+			g.setColor(Color.black);
+			g.fillRect(5, playerPadel.getPadelY(), 10, 30);
+		}
 
-	public void drawBorder(Graphics g){
-		g.setColor(Color.red);
-		g.fillRect(0, 0, panelWidth, 5);
-		g.fillRect((panelWidth-5), 0, 5, panelHeight);
-		g.fillRect(0, (panelHeight-5), panelWidth, 5);
-	}
+		public void drawBorder(Graphics g){
+			g.setColor(Color.red);
+			g.fillRect(0, 0, panelWidth, 5);
+			g.fillRect((panelWidth-5), 0, 5, panelHeight);
+			g.fillRect(0, (panelHeight-5), panelWidth, 5);
+		}
 
-	public void drawScore(Graphics g){
-		g.setColor(Color.black);
-		g.setFont(new Font("Arial", Font.BOLD, 20));
-		// g.setColor(Color.yellow);
-		g.drawString(Integer.toString(ball.getPoints()), 265, 23);
+		public void drawScore(Graphics g){
+			g.setColor(Color.black);
+			g.setFont(new Font("Arial", Font.BOLD, 20));
+			// g.setColor(Color.yellow);
+			g.drawString(Integer.toString(ball.getPoints()), 265, 23);
+		}
 	}
-
 }
