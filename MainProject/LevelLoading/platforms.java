@@ -1,0 +1,48 @@
+import java.util.List;
+import java.util.ArrayList;
+
+public class platforms{
+
+	private List<List<Integer>> platformCoords = new ArrayList<List<Integer>>();;
+
+	public platforms(List<List<Character>> theMap, int blockSize){
+		int widthOfMap = theMap.get(0).size();
+		int heightOfMap = theMap.size();
+		int blocksFound = 0;
+		int start;
+		int end;
+		for(int i = 0; i < heightOfMap; i++){
+			for(int p = 0; p < widthOfMap; p++){
+				if(theMap.get(i).get(p) == 'X'){
+					start = p * blockSize;
+					end = start;
+					while(theMap.get(i).get(p) == 'X'){
+						end += blockSize;
+						p++;
+					}
+					platformCoords.add(new ArrayList<Integer>());
+					platformCoords.get(blocksFound).add(start);
+					platformCoords.get(blocksFound).add(end);
+					platformCoords.get(blocksFound).add(i * blockSize);
+					blocksFound++;
+				}
+			}
+		}
+	}
+
+	public List<List<Integer>> getPlatforms(){
+		return platformCoords;
+	}
+
+	public boolean playerOnPlatform(player mainP){
+		int playerX = mainP.getX();
+		int playerY = mainP.getY();
+		for(List<Integer> secondDimension : platformCoords){
+			if(playerX >= secondDimension.get(0) && playerX <= secondDimension.get(1) && playerY == secondDimension.get(3)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+}

@@ -30,6 +30,7 @@ public class levelFrame{
 				switch(c){
 					case '*':	g.setColor(Color.black);
 								g.fillRect(xPos, yPos, blockSize, blockSize);
+								// System.out.println(yPos);
 								break;
 					case 'X':	g.setColor(Color.red);
 								g.fillRect(xPos, yPos, blockSize, blockSize);
@@ -40,6 +41,10 @@ public class levelFrame{
 			xPos = 0;
 			yPos += blockSize;
 		}
+	}
+
+	public List<List<Character>> getMap(){
+		return levelList;
 	}
 
 	public int getWindowHeight(){

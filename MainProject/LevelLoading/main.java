@@ -13,6 +13,7 @@ public class main{
 	private levelFrame paintLevel;
 	private DrawPanel drawPanel;
 	private player mainPlayer;
+	private platforms allPlatforms;
 	private int blockSize = 10;
 
 	public static void main(String[] args){
@@ -23,6 +24,7 @@ public class main{
 		paintLevel = new levelFrame(blockSize);
 		makeJFrame();
 		mainPlayer = new player(frame);
+		allPlatforms = new platforms(paintLevel.getMap(), blockSize);
 		startGame();
 	}
 
@@ -30,6 +32,7 @@ public class main{
 		while(true){
 			mainPlayer.moverPlayer();
 			frame.repaint();
+			mainPlayer.playerOnPlatform(allPlatforms.getPlatforms(), 190);
 			try{
 				Thread.sleep(5);
 			}catch(Exception E){System.out.println(E);}
