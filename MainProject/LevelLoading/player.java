@@ -62,7 +62,7 @@ public class player{
 			countJump = 0;
 		}
 		for(List<Integer> secondDimension : platformCoords){
-			if((x >= secondDimension.get(0) && x <= secondDimension.get(1) && (y + playerSize) == secondDimension.get(2)) || (y + playerSize) >= floor){
+			if(((x+playerSize) >= secondDimension.get(0) && x <= secondDimension.get(1) && (y + playerSize) == secondDimension.get(2)) || (y + playerSize) >= floor){
 				playerYDirection = 0;
 				return;
 			}
