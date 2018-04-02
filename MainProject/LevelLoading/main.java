@@ -32,7 +32,7 @@ public class main{
 
 	public void startGame(){
 		while(isRunning){
-			FPScounter.StartCounter();
+			FPS.StartCounter();
 			mainPlayer.moverPlayer();
 			frame.repaint();
 			mainPlayer.playerOnPlatform(allPlatforms.getPlatforms(), 190);
@@ -42,7 +42,7 @@ public class main{
 			}catch(Exception e){
 				System.out.println(e);
 			}
-			FPScounter.StopAndPost();
+			FPS.StopCountPrintFPS();
 		}
 	}
 
