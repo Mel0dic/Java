@@ -15,13 +15,15 @@ public class platforms{
 		int end;
 		for(int i = 0; i < heightOfMap; i++){
 			for(int p = 0; p < widthOfMap; p++){
-				if(theMap.get(i).get(p) == 'X'){
+				if(theMap.get(i).get(p) == 'X' || theMap.get(i).get(p) == '~'){
 					start = p * blockSize;
 					end = start;
-					while(theMap.get(i).get(p) == 'X'){
-						end += blockSize;
-						p++;
-					}
+					if(theMap.get(i).get(p) == 'X'){
+						while(theMap.get(i).get(p) == 'X'){
+							end += blockSize;
+							p++;
+						}
+					}else{end += blockSize;}
 					platformCoords.add(new ArrayList<Integer>());
 					platformCoords.get(blocksFound).add(start);
 					platformCoords.get(blocksFound).add(end);

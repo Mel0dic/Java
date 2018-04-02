@@ -23,23 +23,35 @@ public class player{
 	private boolean jump = false;
 
 	public player(JFrame frame, int blockSize, int leftWall, int rightWall, int spawnX, int spawnY){
+		//add a key listener to frame with a new playerMovement object for controls
 		frame.addKeyListener(new playerMovement());
+		//set player size to be half of blockSize
 		playerSize = (int) blockSize/2;
+		//Set vars to arguments
 		this.blockSize = blockSize;
 		this.leftWall = leftWall;
+		//Set right wall to right wall + playerSize
 		this.rightWall = rightWall + playerSize;
+		//Set x to spawn position plus half player size to be in middle of block
 		x = spawnX + ((int) playerSize / 2);
+		//Set y to spawn position - player size
 		y = spawnY - playerSize;
 	}
 
 	public void moverPlayer(){
+		//if x is between the walls add the direction
 		if(x > leftWall && x < rightWall){
 			x+=playerXDirection;
-		}else if(x == rightWall && playerXDirection == -1){
-			x+=playerXDirection;
-		}else if(x == leftWall && playerXDirection == 1){
+		}
+		//else if x is at right wall check to see if player direction is going left then add playerDirection
+		else if(x == rightWall && playerXDirection == -1){
 			x+=playerXDirection;
 		}
+		//else if x is at left wall check to see if player direction is going right then add playerDirection
+		else if(x == leftWall && playerXDirection == 1){
+			x+=playerXDirection;
+		}
+		//add playerYDirection to y
 		y+=playerYDirection;
 	}
 
@@ -47,11 +59,11 @@ public class player{
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			//If UP Arrow is pressed set direction to -1
+			//If UP Arrow is pressed set direction to speed
 			if(e.getKeyCode() == KeyEvent.VK_RIGHT){playerXDirection = speed;}
-			//If Down Arrow is pressed set direction to 1
+			//If Down Arrow is pressed set direction to negative speed
 			if(e.getKeyCode() == KeyEvent.VK_LEFT){playerXDirection = -speed;}
-			//If Space button is pressed call jump function
+			//If Space button is pressed set jump to true
 			if(e.getKeyCode() == KeyEvent.VK_SPACE){
 				jump = true;
 			}
@@ -70,36 +82,49 @@ public class player{
 	}
 
 	public void playerOnPlatform(List<List<Integer>> platformCoords, int floor){
+		//If jump is set to true and the player is on a platform or player has not been jump for longer than 50 loops
 		if(jump && ((countJump > 0 && countJump < 50) || playerYDirection == 0)){
+			//Add -1 which is going towards the top of the screen
 			playerYDirection = -1;
+			//Add 1 to the countJump
 			countJump++;
+			//return from function
 			return;
 		}else{
+			//set the count to 0
 			countJump = 0;
 		}
+		//Loop through the second dimension of the array
 		for(List<Integer> secondDimension : platformCoords){
-			if(((x+playerSize) >= secondDimension.get(0) && x <= secondDimension.get(1) && (y + playerSize) == secondDimension.get(2)) || (y + playerSize) >= floor){
+			//if player is between on the platform and on at the y position of the platform or is on the floor of the level
+			if(((x+playerSize) >= secondDimension.get(0) && x <= secondDimension.get(1) && (y + playerSize) == secondDimension.get(2)) || (y + playerSize) == floor){
+				//Set the y direction to 0
 				playerYDirection = 0;
+				//return from function
 				return;
 			}
 		}
+		//set the y direction to 1
 		playerYDirection = 1;
 	}
 
+	//paint the player
 	public void drawPlayer(Graphics g){
-		playerSize = (int)(blockSize/2);
 		g.setColor(Color.orange);
 		g.fillRect(x, y, playerSize, playerSize);
 	}
 
+	//get player x direction
 	public int getPlayerXDirection(){
 		return playerXDirection;
 	}
 
+	//get player x position
 	public int getX(){
 		return x;
 	}
 
+	//get player y position
 	public int getY(){
 		return y;
 	}
