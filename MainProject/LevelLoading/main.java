@@ -25,7 +25,7 @@ public class main{
 		paintLevel = new levelFrame(blockSize);
 		makeJFrame();
 		allPlatforms = new platforms(paintLevel.getMap(), blockSize);
-		mainPlayer = new player(frame, blockSize, (allPlatforms.getLeftWall() * blockSize), (allPlatforms.getRightWall() * blockSize));
+		mainPlayer = new player(frame, blockSize, (allPlatforms.getLeftWall() * blockSize), (allPlatforms.getRightWall() * blockSize), paintLevel.getSpawnX(), paintLevel.getSpawnY());
 		// mainPlayer = new player(frame, blockSize, 10, 395);
 		startGame();
 	}
@@ -60,6 +60,7 @@ public class main{
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setLocation(375, 55);
+		frame.repaint();
 	}
 
 	class DrawPanel extends JPanel{

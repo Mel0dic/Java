@@ -22,12 +22,14 @@ public class player{
 	private int blockSize;
 	private boolean jump = false;
 
-	public player(JFrame frame, int blockSize, int leftWall, int rightWall){
+	public player(JFrame frame, int blockSize, int leftWall, int rightWall, int spawnX, int spawnY){
 		frame.addKeyListener(new playerMovement());
 		playerSize = (int) blockSize/2;
 		this.blockSize = blockSize;
 		this.leftWall = leftWall;
 		this.rightWall = rightWall + playerSize;
+		x = spawnX + ((int) playerSize / 2);
+		y = spawnY - playerSize;
 	}
 
 	public void moverPlayer(){

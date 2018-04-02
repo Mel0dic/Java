@@ -6,13 +6,13 @@ public class FPS{
 	private static int frameTimes = 0;
 	private static short frames = 0;
 
-	//
+	//Get the start time
 	public final static void StartCounter(){
 		//Get the start time in milliseconds then casting as an integer
 		startTime = (int) System.currentTimeMillis();
 	}
 
-	//
+	//Get end time and output FPS
 	public final static void StopCountPrintFPS(){
 		//Get the second time in milliseconds casting it to an integer
 		endTime = (int) System.currentTimeMillis();
