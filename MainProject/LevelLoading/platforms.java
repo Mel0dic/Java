@@ -3,7 +3,9 @@ import java.util.ArrayList;
 
 public class platforms{
 
-	private List<List<Integer>> platformCoords = new ArrayList<List<Integer>>();;
+	private List<List<Integer>> platformCoords = new ArrayList<List<Integer>>();
+	private int rightWall;
+	private int leftWall;
 
 	public platforms(List<List<Character>> theMap, int blockSize){
 		int widthOfMap = theMap.get(0).size();
@@ -28,21 +30,27 @@ public class platforms{
 				}
 			}
 		}
+		int i = 0;
+		while(theMap.get(0).get(i) == '*'){
+			i++;
+		}
+		leftWall = i;
+		while(theMap.get(0).get(i) != '*'){
+			i++;
+		}
+		rightWall = i-1;
 	}
 
 	public List<List<Integer>> getPlatforms(){
 		return platformCoords;
 	}
 
-	public boolean playerOnPlatform(player mainP){
-		int playerX = mainP.getX();
-		int playerY = mainP.getY();
-		for(List<Integer> secondDimension : platformCoords){
-			if(playerX >= secondDimension.get(0) && playerX <= secondDimension.get(1) && playerY == secondDimension.get(3)){
-				return true;
-			}
-		}
-		return false;
+	public int getLeftWall(){
+		return leftWall;
+	}
+
+	public int getRightWall(){
+		return rightWall;
 	}
 
 }

@@ -14,16 +14,30 @@ public class player{
 	private int playerYDirection = 0;
 	private int x = 100;
 	private int y = 100;
+	private int speed = 1;
 	private int playerSize;
 	private int countJump = 0;
+	private int leftWall;
+	private int rightWall;
+	private int blockSize;
 	private boolean jump = false;
 
-	public player(JFrame frame){
+	public player(JFrame frame, int blockSize, int leftWall, int rightWall){
 		frame.addKeyListener(new playerMovement());
+		playerSize = (int) blockSize/2;
+		this.blockSize = blockSize;
+		this.leftWall = leftWall;
+		this.rightWall = rightWall + playerSize;
 	}
 
 	public void moverPlayer(){
-		x+=playerXDirection;
+		if(x > leftWall && x < rightWall){
+			x+=playerXDirection;
+		}else if(x == rightWall && playerXDirection == -1){
+			x+=playerXDirection;
+		}else if(x == leftWall && playerXDirection == 1){
+			x+=playerXDirection;
+		}
 		y+=playerYDirection;
 	}
 
@@ -32,9 +46,9 @@ public class player{
 		@Override
 		public void keyPressed(KeyEvent e) {
 			//If UP Arrow is pressed set direction to -1
-			if(e.getKeyCode() == KeyEvent.VK_RIGHT){playerXDirection = 1;}
+			if(e.getKeyCode() == KeyEvent.VK_RIGHT){playerXDirection = speed;}
 			//If Down Arrow is pressed set direction to 1
-			if(e.getKeyCode() == KeyEvent.VK_LEFT){playerXDirection = -1;}
+			if(e.getKeyCode() == KeyEvent.VK_LEFT){playerXDirection = -speed;}
 			//If Space button is pressed call jump function
 			if(e.getKeyCode() == KeyEvent.VK_SPACE){
 				jump = true;
@@ -70,7 +84,7 @@ public class player{
 		playerYDirection = 1;
 	}
 
-	public void drawPlayer(Graphics g, int blockSize){
+	public void drawPlayer(Graphics g){
 		playerSize = (int)(blockSize/2);
 		g.setColor(Color.orange);
 		g.fillRect(x, y, playerSize, playerSize);

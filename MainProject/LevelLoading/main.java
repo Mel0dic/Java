@@ -15,6 +15,7 @@ public class main{
 	private player mainPlayer;
 	private platforms allPlatforms;
 	private int blockSize = 10;
+	private boolean isRunning = true;
 
 	public static void main(String[] args){
 		new main();
@@ -23,19 +24,25 @@ public class main{
 	public main(){
 		paintLevel = new levelFrame(blockSize);
 		makeJFrame();
-		mainPlayer = new player(frame);
 		allPlatforms = new platforms(paintLevel.getMap(), blockSize);
+		mainPlayer = new player(frame, blockSize, (allPlatforms.getLeftWall() * blockSize), (allPlatforms.getRightWall() * blockSize));
+		// mainPlayer = new player(frame, blockSize, 10, 395);
 		startGame();
 	}
 
 	public void startGame(){
-		while(true){
+		while(isRunning){
+			FPScounter.StartCounter();
 			mainPlayer.moverPlayer();
 			frame.repaint();
 			mainPlayer.playerOnPlatform(allPlatforms.getPlatforms(), 190);
+			// System.out.println(javax.swing.SwingUtilities.isEventDispatchThread());
 			try{
 				Thread.sleep(5);
-			}catch(Exception E){System.out.println(E);}
+			}catch(Exception e){
+				System.out.println(e);
+			}
+			FPScounter.StopAndPost();
 		}
 	}
 
@@ -57,8 +64,9 @@ public class main{
 
 	class DrawPanel extends JPanel{
 		public void paintComponent(Graphics g){
+			super.paintComponent(g);
 			paintLevel.paintLevel(g);
-			mainPlayer.drawPlayer(g, blockSize);
+			mainPlayer.drawPlayer(g);
 		}
 	}
 
