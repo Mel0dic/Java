@@ -110,6 +110,7 @@ public class player{
 
 	//paint the player
 	public void drawPlayer(Graphics g){
+		// System.out.println(String.format("X = %d Y = %d PlayerSize = %d", x, y, playerSize));
 		g.setColor(Color.orange);
 		g.fillRect(x, y, playerSize, playerSize);
 	}

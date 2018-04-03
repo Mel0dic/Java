@@ -13,33 +13,47 @@ public class platforms{
 		int blocksFound = 0;
 		int start;
 		int end;
+		//Loop through each element in the 2D array
 		for(int i = 0; i < heightOfMap; i++){
 			for(int p = 0; p < widthOfMap; p++){
+				//If the char is X for platform or ~ for spawn point
 				if(theMap.get(i).get(p) == 'X' || theMap.get(i).get(p) == '~'){
+					//Set the co-ordinates for the start of the platform 
 					start = p * blockSize;
+					//Set the end of the platform to be the same as the start
 					end = start;
+					//If the block is a platform
 					if(theMap.get(i).get(p) == 'X'){
+						//While the chars are platform pieces increase the end co-ords of the platform
 						while(theMap.get(i).get(p) == 'X'){
 							end += blockSize;
+							//Increase the loop
 							p++;
 						}
+					//If it is a spawnpoint set it to be only one block
 					}else{end += blockSize;}
+					//Add a new list with the start, end and y co-ords
 					platformCoords.add(new ArrayList<Integer>());
 					platformCoords.get(blocksFound).add(start);
 					platformCoords.get(blocksFound).add(end);
 					platformCoords.get(blocksFound).add(i * blockSize);
+					//Increase the amount of platforms found
 					blocksFound++;
 				}
 			}
 		}
 		int i = 0;
+		//Look for the end of the left wall
 		while(theMap.get(0).get(i) == '*'){
 			i++;
 		}
+		//Set left wall to i
 		leftWall = i;
+		//Continue untill the right wall is found
 		while(theMap.get(0).get(i) != '*'){
 			i++;
 		}
+		//Set the right wall to be one less than found
 		rightWall = i-1;
 	}
 

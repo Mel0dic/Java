@@ -20,7 +20,9 @@ public class levelFrame{
 		blockSize = theBlockSize;
 		loadFileToLevel mainClass = new loadFileToLevel();
 		levelList = mainClass.getArrayOfArray();
+		//Set windows width to size of the first list multiplied by blocksize
 		windowWidth = (levelList.get(0).size() * blockSize);
+		//Set window height to be the array size multiplied by blocksize
 		windowHeight = (levelList.size() * blockSize);
 		startLoop();
 	}
@@ -30,12 +32,15 @@ public class levelFrame{
 		int yPos = 0;
 		for(List<Character> nextArray : levelList){
 			for(Character c : nextArray){
+				//If the char is the spawn position set the position of it
 				if(c == '~'){
 					spawnX = xPos;
 					spawnY = yPos;
 				}
+				//Increase by block size
 				xPos += blockSize;
 			}
+			//Set x to 0 increase y
 			xPos = 0;
 			yPos += blockSize;
 		}
@@ -44,16 +49,20 @@ public class levelFrame{
 	public void paintLevel(Graphics g){
 		int xPos = 0;
 		int yPos = 0;
+		//Loop through every char
 		for(List<Character> nextArray : levelList){
 			for(Character c : nextArray){
 				switch(c){
+					//If the char is wall char set the color to black fill the block
 					case '*':	g.setColor(Color.black);
 								g.fillRect(xPos, yPos, blockSize, blockSize);
 								// System.out.println(yPos);
 								break;
+					//If the char is a platform char set the color to red and fill the position
 					case 'X':	g.setColor(Color.red);
 								g.fillRect(xPos, yPos, blockSize, blockSize);
 								break;
+					//If the position if the spawn point set the color to pink and fill the square
 					case '~':	g.setColor(Color.pink);
 								g.fillRect(xPos, yPos, blockSize, blockSize);
 								break;

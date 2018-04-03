@@ -35,9 +35,13 @@ public class loadFileToLevel{
 
 		//While the br.readLine() does not return null
 		while( (line = br.readLine())!= null ){
+			//Get a char array from the line
 			charsInLine = line.toCharArray();
+			//Add the array to array of arrays
 			levelList.add(new ArrayList<Character>());
+			//Loop through the chars in charsInLine
 			for(char c : charsInLine){
+				//Add the char to the list
 				levelList.get(count).add(c);
 			}
 			count++;
