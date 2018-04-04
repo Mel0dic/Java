@@ -28,10 +28,10 @@ public class main{
 		paintLevel = new levelFrame(blockSize);
 		//Make the jframe
 		makeJFrame();
-		//Set allPlatforms to new platforms object geting the 2D array from painLevel and passing that
+		//Set allPlatforms to new platforms object geting the 2D array from paintLevel and passing that
 		allPlatforms = new platforms(paintLevel.getMap(), blockSize);
 		//Set mainPlayer to new player passing wall positions and spawn point
-		mainPlayer = new player(frame, blockSize, (allPlatforms.getLeftWall() * blockSize), (allPlatforms.getRightWall() * blockSize), paintLevel.getSpawnX(), paintLevel.getSpawnY());
+		mainPlayer = new player(frame, blockSize, (allPlatforms.getLeftWall() * blockSize), (allPlatforms.getRightWall() * blockSize), paintLevel.getSpawnX(), paintLevel.getSpawnY(), paintLevel.getFinishX(), paintLevel.getFinishY());
 		// mainPlayer = new player(frame, blockSize, 10, 395);
 		floor = paintLevel.getFloor();
 		//Call start game function
@@ -50,6 +50,10 @@ public class main{
 			frame.repaint();
 			//Check if the player is on a platform passing a 2D array of platform coordinates and the level of the floor
 			mainPlayer.playerOnPlatform(allPlatforms.getPlatforms(), floor);
+			//Check if player made it to end point
+			if(mainPlayer.playerAtWin()){
+				//Do ?
+			}
 			//Sleep game for 5 miliseconds
 			try{
 				Thread.sleep(5);

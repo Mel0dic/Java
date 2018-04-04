@@ -20,9 +20,11 @@ public class player{
 	private int leftWall;
 	private int rightWall;
 	private int blockSize;
+	private int finishX;
+	private int finishY;
 	private boolean jump = false;
 
-	public player(JFrame frame, int blockSize, int leftWall, int rightWall, int spawnX, int spawnY){
+	public player(JFrame frame, int blockSize, int leftWall, int rightWall, int spawnX, int spawnY, int finishX, int finishY){
 		//add a key listener to frame with a new playerMovement object for controls
 		frame.addKeyListener(new playerMovement());
 		//set player size to be half of blockSize
@@ -32,6 +34,9 @@ public class player{
 		this.leftWall = leftWall;
 		//Set right wall to right wall + playerSize
 		this.rightWall = rightWall + playerSize;
+
+		this.finishX = finishX;
+		this.finishY = finishY;
 		//Set x to spawn position plus half player size to be in middle of block
 		x = spawnX + ((int) playerSize / 2);
 		//Set y to spawn position - player size
@@ -106,6 +111,14 @@ public class player{
 		}
 		//set the y direction to 1
 		playerYDirection = 1;
+	}
+
+	public boolean playerAtWin(){
+		if(x > finishX && x < (finishX + blockSize) && y == (finishY - playerSize)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	//paint the player

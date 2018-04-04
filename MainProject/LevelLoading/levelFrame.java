@@ -16,10 +16,14 @@ public class levelFrame{
 	private int spawnX;
 	private int spawnY;
 	private int floor = 0;
+	private int halfBlock;
+	private int finishX;
+	private int finishY;	
 	private boolean floorSet = false;
 
 	public levelFrame(int theBlockSize){
 		blockSize = theBlockSize;
+		halfBlock = (int) blockSize / 2;
 		loadFileToLevel mainClass = new loadFileToLevel();
 		levelList = mainClass.getArrayOfArray();
 		//Set windows width to size of the first list multiplied by blocksize
@@ -39,6 +43,11 @@ public class levelFrame{
 				if(c == '~'){
 					spawnX = xPos;
 					spawnY = yPos;
+				}
+				//If the char is O set the end position
+				if(c == 'O'){
+					finishX = xPos;
+					finishY = yPos;
 				}
 				//Look for the floor by seeing if the count matches the width
 				if(c == '*' || c == '~'){
@@ -79,6 +88,13 @@ public class levelFrame{
 					case '~':	g.setColor(Color.pink);
 								g.fillRect(xPos, yPos, blockSize, blockSize);
 								break;
+					//If the char is O (finish point) set the color to be a checkered flag
+					case 'O':	g.setColor(Color.black);
+								g.fillRect(xPos, yPos, blockSize, blockSize);
+								g.setColor(Color.white);
+								g.fillRect((xPos + 1), (yPos + 1), (halfBlock - 1), (halfBlock - 1));
+								g.fillRect((xPos + halfBlock), (yPos + halfBlock), (halfBlock-1), (halfBlock-1));
+								break;
 				}
 				xPos += blockSize;
 			}
@@ -97,6 +113,14 @@ public class levelFrame{
 
 	public int getSpawnY(){
 		return spawnY;
+	}
+
+	public int getFinishX(){
+		return finishX;
+	}
+
+	public int getFinishY(){
+		return finishY;
 	}
 
 	public int getFloor(){
