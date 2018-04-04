@@ -30,6 +30,7 @@ public class platforms{
 							//Increase the loop
 							p++;
 						}
+						p--;
 					//If it is a spawnpoint set it to be only one block
 					}else{end += blockSize;}
 					//Add a new list with the start, end and y co-ords
