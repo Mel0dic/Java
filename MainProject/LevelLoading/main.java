@@ -16,6 +16,8 @@ public class main{
 	private platforms allPlatforms;
 	private int blockSize = 10;
 	private boolean isRunning = true;
+	private int currentFPS = 0;
+	private int floor;
 
 	public static void main(String[] args){
 		new main();
@@ -31,11 +33,13 @@ public class main{
 		//Set mainPlayer to new player passing wall positions and spawn point
 		mainPlayer = new player(frame, blockSize, (allPlatforms.getLeftWall() * blockSize), (allPlatforms.getRightWall() * blockSize), paintLevel.getSpawnX(), paintLevel.getSpawnY());
 		// mainPlayer = new player(frame, blockSize, 10, 395);
+		floor = paintLevel.getFloor();
 		//Call start game function
 		startGame();
 	}
 
 	public void startGame(){
+		int tempFPS = 0;
 		//Create infinite loop
 		while(isRunning){
 			//Start the fps counter (all functions and vars are static no need to create an object)
@@ -45,7 +49,7 @@ public class main{
 			//Repaint the frame
 			frame.repaint();
 			//Check if the player is on a platform passing a 2D array of platform coordinates and the level of the floor
-			mainPlayer.playerOnPlatform(allPlatforms.getPlatforms(), 190);
+			mainPlayer.playerOnPlatform(allPlatforms.getPlatforms(), floor);
 			//Sleep game for 5 miliseconds
 			try{
 				Thread.sleep(5);
@@ -53,7 +57,10 @@ public class main{
 				System.out.println(e);
 			}
 			//Tell FPS counter frame has been completed and to update frame count accordingly
-			FPS.StopCountPrintFPS();
+			tempFPS = FPS.StopCountPrintFPS();
+			if(tempFPS != 0){
+				currentFPS = tempFPS;
+			}
 		}
 	}
 
@@ -92,6 +99,8 @@ public class main{
 			paintLevel.paintLevel(g);
 			//Call draw player on player object
 			mainPlayer.drawPlayer(g);
+			//Draw the fps
+			g.drawString(Integer.toString(currentFPS), 0, (floor+blockSize));
 		}
 	}
 

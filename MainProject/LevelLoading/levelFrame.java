@@ -15,6 +15,8 @@ public class levelFrame{
 	private int blockSize;
 	private int spawnX;
 	private int spawnY;
+	private int floor = 0;
+	private boolean floorSet = false;
 
 	public levelFrame(int theBlockSize){
 		blockSize = theBlockSize;
@@ -30,6 +32,7 @@ public class levelFrame{
 	public void startLoop(){
 		int xPos = 0;
 		int yPos = 0;
+		int floorCount = 0;
 		for(List<Character> nextArray : levelList){
 			for(Character c : nextArray){
 				//If the char is the spawn position set the position of it
@@ -37,8 +40,18 @@ public class levelFrame{
 					spawnX = xPos;
 					spawnY = yPos;
 				}
+				//Look for the floor by seeing if the count matches the width
+				if(c == '*' || c == '~'){
+					floorCount++;
+				}
 				//Increase by block size
 				xPos += blockSize;
+			}
+			if(floorCount == levelList.get(0).size() && !floorSet){
+				floor = yPos;
+				floorSet = true;
+			}else{
+				floorCount = 0;
 			}
 			//Set x to 0 increase y
 			xPos = 0;
@@ -84,6 +97,10 @@ public class levelFrame{
 
 	public int getSpawnY(){
 		return spawnY;
+	}
+
+	public int getFloor(){
+		return floor;
 	}
 
 	public int getWindowHeight(){
