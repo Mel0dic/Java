@@ -22,6 +22,7 @@ public class player{
 	private int blockSize;
 	private int finishX;
 	private int finishY;
+	private int jumpHeight = 50;
 	private boolean jump = false;
 
 	public player(JFrame frame, int blockSize, int leftWall, int rightWall, int spawnX, int spawnY, int finishX, int finishY){
@@ -34,7 +35,7 @@ public class player{
 		this.leftWall = leftWall;
 		//Set right wall to right wall + playerSize
 		this.rightWall = rightWall + playerSize;
-
+		//Set the coordinates for the finish block
 		this.finishX = finishX;
 		this.finishY = finishY;
 		//Set x to spawn position plus half player size to be in middle of block
@@ -87,8 +88,8 @@ public class player{
 	}
 
 	public void playerOnPlatform(List<List<Integer>> platformCoords, int floor){
-		//If jump is set to true and the player is on a platform or player has not been jump for longer than 50 loops
-		if(jump && ((countJump > 0 && countJump < 50) || playerYDirection == 0)){
+		//If jump is set to true and the player is on a platform or player has not been jump for longer than jumpHeight loops
+		if(jump && ((countJump > 0 && countJump < jumpHeight) || playerYDirection == 0)){
 			//Add -1 which is going towards the top of the screen
 			playerYDirection = -1;
 			//Add 1 to the countJump

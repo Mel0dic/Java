@@ -16,13 +16,12 @@ public class platforms{
 		//Loop through each element in the 2D array
 		for(int i = 0; i < heightOfMap; i++){
 			for(int p = 0; p < widthOfMap; p++){
-				//If the char is X for platform or ~ for spawn point
+				//If the char is X for platform or ~ for spawn point or O for end point
 				if(theMap.get(i).get(p) == 'X' || theMap.get(i).get(p) == '~' || theMap.get(i).get(p) == 'O'){
 					//Set the co-ordinates for the start of the platform 
 					start = p * blockSize;
 					//Set the end of the platform to be the same as the start
 					end = start;
-					//If the block is a platform
 					//While the chars are platform pieces increase the end co-ords of the platform
 					while(theMap.get(i).get(p) == 'X' || theMap.get(i).get(p) == '~' || theMap.get(i).get(p) == 'O'){
 						end += blockSize;

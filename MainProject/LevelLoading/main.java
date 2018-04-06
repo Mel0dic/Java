@@ -33,6 +33,7 @@ public class main{
 		//Set mainPlayer to new player passing wall positions and spawn point
 		mainPlayer = new player(frame, blockSize, (allPlatforms.getLeftWall() * blockSize), (allPlatforms.getRightWall() * blockSize), paintLevel.getSpawnX(), paintLevel.getSpawnY(), paintLevel.getFinishX(), paintLevel.getFinishY());
 		// mainPlayer = new player(frame, blockSize, 10, 395);
+		//Get the floor level
 		floor = paintLevel.getFloor();
 		//Call start game function
 		startGame();
@@ -52,7 +53,7 @@ public class main{
 			mainPlayer.playerOnPlatform(allPlatforms.getPlatforms(), floor);
 			//Check if player made it to end point
 			if(mainPlayer.playerAtWin()){
-				//Do ?
+				//Do something when win
 			}
 			//Sleep game for 5 miliseconds
 			try{
