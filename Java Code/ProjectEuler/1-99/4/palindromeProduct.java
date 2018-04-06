@@ -39,8 +39,12 @@ public class palindromeProduct{
 			firstHalf = Arrays.copyOfRange(stringArray, 0, stringHalfSize);
 			secondHalf = Arrays.copyOfRange(stringArray, (stringHalfSize + 1), stringArray.length);
 		}
+		List<Character> tempList = new ArrayList<Character>();
+		for(int i = firstHalf.length-1; i >= 0; i--){
+			tempList.add(firstHalf[i]);
+		}
 		for(int i = 0; i < stringHalfSize; i++){
-			if(firstHalf[i] != secondHalf[i]){
+			if(tempList.get(i) != secondHalf[i]){
 				return false;
 			}
 		}
