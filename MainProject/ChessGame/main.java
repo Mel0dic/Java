@@ -70,7 +70,7 @@ public class main{
 				int x = e.getX();
 				int y = e.getY();
 
-				System.out.println(x+","+y);
+				board.highlightBox(x, y);
 			}
 			public void mouseClicked(MouseEvent e){}
 			public void mouseEntered(MouseEvent e){}

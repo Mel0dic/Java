@@ -5,6 +5,7 @@ import java.awt.Color;
 public class chessBoard{
 
 	private int spaceSize;
+	private boolean boxToHighlight = false;
 
 	public chessBoard(int spaceSize){
 		this.spaceSize = spaceSize;
@@ -28,6 +29,10 @@ public class chessBoard{
 				}
 			}
 		}
+	}
+
+	public void highlightBox(int x, int y){
+		System.out.println(x + ", " + y);
 	}
 
 }
