@@ -1,17 +1,16 @@
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 import java.awt.Dimension;
-import java.awt.PointerInfo;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseListener;
 import java.awt.Color;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
 
 public class main{
 
 	private JFrame frame;
 	private DrawPanel drawPanel;
+	private chessBoard board;
 	private boolean isRunning = true;
 	private int spaceSize = 50;
 
@@ -22,6 +21,8 @@ public class main{
 	public main(){
 		//Make the jframe
 		makeJFrame();
+		//
+		board = new chessBoard(spaceSize);
 		//Call start game function
 		startGame();
 	}
@@ -29,7 +30,6 @@ public class main{
 	public void startGame(){
 		//Create infinite loop
 		while(isRunning){
-			System.out.println(Color.black);
 			try{
 				Thread.sleep(5);
 			}catch(Exception e){
@@ -63,6 +63,20 @@ public class main{
 		frame.setLocation(375, 55);
 		//call repaint on frame
 		frame.repaint();
+
+		drawPanel.addMouseListener(new MouseListener() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				int x = e.getX();
+				int y = e.getY();
+
+				System.out.println(x+","+y);
+			}
+			public void mouseClicked(MouseEvent e){}
+			public void mouseEntered(MouseEvent e){}
+			public void mouseExited(MouseEvent e){}
+			public void mouseReleased(MouseEvent e){}
+		});
 	}
 
 	class DrawPanel extends JPanel{
@@ -70,21 +84,7 @@ public class main{
 			//Super the paintComponent method
 			super.paintComponent(g);
 			//Draw the squares
-			drawBoard(g);
-		}
-	}
-
-	public void drawBoard(Graphics g){
-		for(int i = 0; i < 8; i++){
-			for(int j = 0; j < 8; j++){
-				if(j % 2 == 0 && i % 2 == 0){
-					g.setColor(Color.black);
-					g.fillRect((j * spaceSize), (i * spaceSize), spaceSize, spaceSize);
-				}else if(j % 2 != 0 && i % 2 != 0){
-					g.setColor(Color.black);
-					g.fillRect((j * spaceSize), (i * spaceSize), spaceSize, spaceSize);
-				}
-			}
+			board.drawBoard(g);
 		}
 	}
 
