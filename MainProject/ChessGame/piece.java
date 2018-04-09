@@ -14,30 +14,74 @@ public class piece{
 
 }
 
-class pawn{
+class pawn extends piece{
 
-	public void paintPawn(){
-		
+	public pawn(){
+
+	}
+
+	public void paintPawn(Graphics2D g2){
+
 	}
 
 }
 
-class king{
+class king extends piece{
+
+	public king(){
+		
+	}
+
+	public void paintKing(Graphics2D g2){
+
+	}
 
 }
 
-class queen{
+class queen extends piece{
+
+	public queen(){
+		
+	}
+
+	public void paintQueen(Graphics2D g2){
+
+	}
 
 }
 
-class bishop{
+class bishop extends piece{
+
+	public pawn(){
+		
+	}
+
+	public void paintPawn(Graphics2D g2){
+
+	}
 
 }
 
-class knight{
+class knight extends piece{
+
+	public knight(){
+		
+	}
+
+	public void paintKnight(Graphics2D g2){
+
+	}
 
 }
 
-class castle{
+class castle extends piece{
+
+	public castle(){
+		
+	}
+
+	public void paintPawn(Graphics2D g2){
+
+	}
 
 }
