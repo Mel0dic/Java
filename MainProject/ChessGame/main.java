@@ -2,6 +2,7 @@ import javax.swing.JPanel;
 import javax.swing.JFrame;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
@@ -35,6 +36,7 @@ public class main{
 			}catch(Exception e){
 				System.out.println(e);
 			}
+			frame.repaint();
 		}
 	}
 
@@ -83,8 +85,10 @@ public class main{
 		public void paintComponent(Graphics g){
 			//Super the paintComponent method
 			super.paintComponent(g);
+			//Cast the graphics object into a 2D graphics object
+			Graphics2D g2 = (Graphics2D) g;
 			//Draw the squares
-			board.drawBoard(g);
+			board.drawBoard(g2);
 		}
 	}
 
