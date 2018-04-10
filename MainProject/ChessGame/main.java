@@ -15,6 +15,7 @@ public class main{
 	private boolean isRunning = true;
 	private int spaceSize = 50;
 	private pieces blackTeam;
+	private pieces whiteTeam;
 
 	public static void main(String[] args){
 		new main();
@@ -22,6 +23,13 @@ public class main{
 
 	public main(){
 		blackTeam = new pieces("black", spaceSize);
+		whiteTeam = new pieces("white", spaceSize);
+		pawn.setDrawings();
+		castle.setDrawings();
+		bishop.setDrawings();
+		queen.setDrawings();
+		king.setDrawings();
+		knight.setDrawings();
 		//Make and paint the board
 		board = new chessBoard(spaceSize);
 		//Make the jframe
@@ -91,8 +99,9 @@ public class main{
 			Graphics2D g2 = (Graphics2D) g;
 			//Draw the squares
 			board.drawBoard(g2);
-			//Draw piece
+			//Draw pieces
 			blackTeam.paintTeam(g, this);
+			whiteTeam.paintTeam(g, this);
 		}
 	}
 

@@ -28,6 +28,7 @@ class pawn extends piece{
 
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
+	private String pieceColor;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -42,11 +43,16 @@ class pawn extends piece{
 	public pawn(int xStartPosition, int yStartPosition, String pieceColor){
 		//Super the initial variables to piece
 		super(xStartPosition, yStartPosition);
+		this.pieceColor = pieceColor;
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
 		//Paint the image at x, y
-		g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
+		if(pieceColor.equals("white")){
+			g.drawImage(imgWhite, (this.xPosition-7), (this.yPosition-6), panel);
+		}else if(pieceColor.equals("black")){
+			g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
+		}
 	}
 
 }
@@ -55,6 +61,7 @@ class king extends piece{
 
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
+	private String pieceColor;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -68,11 +75,16 @@ class king extends piece{
 
 	public king(int xStartPosition, int yStartPosition, String pieceColor){
 		super(xStartPosition, yStartPosition);
+		this.pieceColor = pieceColor;
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
 		//Paint the image at x, y
-		g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
+		if(pieceColor.equals("white")){
+			g.drawImage(imgWhite, (this.xPosition-7), (this.yPosition-6), panel);
+		}else if(pieceColor.equals("black")){
+			g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
+		}
 	}
 
 }
@@ -81,6 +93,7 @@ class queen extends piece{
 
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
+	private String pieceColor;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -94,11 +107,16 @@ class queen extends piece{
 
 	public queen(int xStartPosition, int yStartPosition, String pieceColor){
 		super(xStartPosition, yStartPosition);
+		this.pieceColor = pieceColor;
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
 		//Paint the image at x, y
-		g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
+		if(pieceColor.equals("white")){
+			g.drawImage(imgWhite, (this.xPosition-7), (this.yPosition-6), panel);
+		}else if(pieceColor.equals("black")){
+			g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
+		}
 	}
 
 }
@@ -107,6 +125,7 @@ class bishop extends piece{
 
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
+	private String pieceColor;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -120,11 +139,16 @@ class bishop extends piece{
 
 	public bishop(int xStartPosition, int yStartPosition, String pieceColor){
 		super(xStartPosition, yStartPosition);
+		this.pieceColor = pieceColor;
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
 		//Paint the image at x, y
-		g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
+		if(pieceColor.equals("white")){
+			g.drawImage(imgWhite, (this.xPosition-7), (this.yPosition-6), panel);
+		}else if(pieceColor.equals("black")){
+			g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
+		}
 	}
 
 }
@@ -133,6 +157,7 @@ class knight extends piece{
 
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
+	private String pieceColor;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -146,11 +171,16 @@ class knight extends piece{
 
 	public knight(int xStartPosition, int yStartPosition, String pieceColor){
 		super(xStartPosition, yStartPosition);
+		this.pieceColor = pieceColor;
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
 		//Paint the image at x, y
-		g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
+		if(pieceColor.equals("white")){
+			g.drawImage(imgWhite, (this.xPosition-7), (this.yPosition-6), panel);
+		}else if(pieceColor.equals("black")){
+			g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
+		}
 	}
 
 }
@@ -159,6 +189,7 @@ class castle extends piece{
 
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
+	private String pieceColor;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -172,11 +203,16 @@ class castle extends piece{
 
 	public castle(int xStartPosition, int yStartPosition, String pieceColor){
 		super(xStartPosition, yStartPosition);
+		this.pieceColor = pieceColor;
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
 		//Paint the image at x, y
-		g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
+		if(pieceColor.equals("white")){
+			g.drawImage(imgWhite, (this.xPosition-7), (this.yPosition-6), panel);
+		}else if(pieceColor.equals("black")){
+			g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
+		}
 	}
 
 }
