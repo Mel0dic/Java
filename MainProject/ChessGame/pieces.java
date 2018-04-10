@@ -50,4 +50,30 @@ public class pieces{
 		theQueen.paintPiece(g, panel);
 	}
 
+	public piece isPieceInSquare(int x, int y){
+		for(pawn i : pawns){
+			if(x == i.getX() && y == i.getY()){
+				return i;
+			}
+		}
+		for(int i = 0; i < 2; i++){
+			if(x == castles[i].getX() && y == castles[i].getY()){
+				return castles[i];
+			}
+			if(x == bishops[i].getX() && y == bishops[i].getY()){
+				return bishops[i];
+			}
+			if(x == knights[i].getX() && y == knights[i].getY()){
+				return knights[i];
+			}
+		}
+		if(x == theKing.getX() && y == theKing.getY()){
+			return theKing;
+		}
+		if(x == theQueen.getX() && y == theQueen.getY()){
+			return theQueen;
+		}
+		return null;
+	}
+
 }

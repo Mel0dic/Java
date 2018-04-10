@@ -16,6 +16,7 @@ public class main{
 	private int spaceSize = 50;
 	private pieces blackTeam;
 	private pieces whiteTeam;
+	private int turn = 0;
 
 	public static void main(String[] args){
 		new main();
@@ -82,13 +83,30 @@ public class main{
 				int x = e.getX();
 				int y = e.getY();
 
-				board.highlightBox(x, y);
+				board.getBox(x, y);
+				checkPosition();
 			}
 			public void mouseClicked(MouseEvent e){}
 			public void mouseEntered(MouseEvent e){}
 			public void mouseExited(MouseEvent e){}
 			public void mouseReleased(MouseEvent e){}
 		});
+	}
+
+	public void checkPosition(){
+		if(turn == 0){
+			if(whiteTeam.isPieceInSquare(board.gethightlightedBoxXPosition(), board.gethightlightedBoxYPosition()) != null){
+				board.setPieceInSpace(true);
+			}else{
+				board.setPieceInSpace(false);
+			}
+		}else if(turn == 1){
+			if(blackTeam.isPieceInSquare(board.gethightlightedBoxXPosition(), board.gethightlightedBoxYPosition()) != null){
+				board.setPieceInSpace(true);
+			}else{
+				board.setPieceInSpace(false);
+			}
+		}
 	}
 
 	class DrawPanel extends JPanel{

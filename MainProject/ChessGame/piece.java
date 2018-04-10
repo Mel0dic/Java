@@ -22,6 +22,14 @@ public class piece{
 		yPosition = yPosition;
 	}
 
+	public int getX(){
+		return xPosition;
+	}
+
+	public int getY(){
+		return yPosition;
+	}
+
 }
 
 class pawn extends piece{

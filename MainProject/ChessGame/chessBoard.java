@@ -7,10 +7,13 @@ import java.awt.Color;
 public class chessBoard{
 
 	private boolean boxToHighlight = false;
+	private boolean pieceInSpace = false;
 	private int boxToHighlightX;
 	private int boxToHighlightY;
 	private int spaceSize;
 	private int boardSize;
+	private int tempBoxToHighlightX;
+	private int tempBoxToHighlightY;
 
 	public chessBoard(int spaceSize){
 		this.spaceSize = spaceSize;
@@ -35,7 +38,7 @@ public class chessBoard{
 				}
 			}
 		}
-		if(boxToHighlight){
+		if(boxToHighlight && pieceInSpace){
 			//Copy current stroke
 			Stroke oldStroke = g2.getStroke();
 			//Set Stroke Thickness
@@ -51,20 +54,40 @@ public class chessBoard{
 		}
 	}
 
-	public void highlightBox(int x, int y){
-		if(x == boxToHighlightX && y == boxToHighlightY){
-			boxToHighlight = false;
-			return;
-		}
+	public void getBox(int x, int y){
+		tempBoxToHighlightX = -1;
+		tempBoxToHighlightY = -1;
 		boxToHighlight = true;
 		for(int i = 0; i < boardSize; i+=spaceSize){
 			if(x >= i && x < (i + spaceSize)){
-				boxToHighlightX = i;
+				tempBoxToHighlightX = i;
 			}
 			if(y >= i && y < (i + spaceSize)){
-				boxToHighlightY = i;
+				tempBoxToHighlightY = i;
 			}
 		}
+		if(tempBoxToHighlightX == boxToHighlightX && tempBoxToHighlightY == boxToHighlightY){
+			boxToHighlight = false;
+			boxToHighlightX = -1;
+			boxToHighlightY = -1;
+			return;
+		}else{
+			boxToHighlightX = tempBoxToHighlightX;
+			boxToHighlightY = tempBoxToHighlightY;
+			return;
+		}
+	}
+
+	public void setPieceInSpace(boolean que){
+		pieceInSpace = que;
+	}
+
+	public int gethightlightedBoxXPosition(){
+		return boxToHighlightX;
+	}
+
+	public int gethightlightedBoxYPosition(){
+		return boxToHighlightY;
 	}
 
 }
