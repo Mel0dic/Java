@@ -1,5 +1,6 @@
 import javax.swing.JPanel;
 import java.awt.Graphics;
+import java.util.List;
 
 public class pieces{
 
@@ -53,28 +54,28 @@ public class pieces{
 		theQueen.paintPiece(g, panel);
 	}
 
-	public piece isPieceInSquare(int x, int y){
+	public List<List<Integer>> isPieceInSquare(int x, int y){
 		for(pawn i : pawns){
 			if(x == i.getX() && y == i.getY()){
-				return i;
+				return i.movablePositions();
 			}
 		}
 		for(int i = 0; i < 2; i++){
 			if(x == castles[i].getX() && y == castles[i].getY()){
-				return castles[i];
+				return castles[i].movablePositions();
 			}
 			if(x == bishops[i].getX() && y == bishops[i].getY()){
-				return bishops[i];
+				return bishops[i].movablePositions();
 			}
 			if(x == knights[i].getX() && y == knights[i].getY()){
-				return knights[i];
+				return knights[i].movablePositions();
 			}
 		}
 		if(x == theKing.getX() && y == theKing.getY()){
-			return theKing;
+			return theKing.movablePositions();
 		}
 		if(x == theQueen.getX() && y == theQueen.getY()){
-			return theQueen;
+			return theQueen.movablePositions();
 		}
 		return null;
 	}

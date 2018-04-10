@@ -3,10 +3,13 @@ import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.util.List;
 
 public class chessBoard{
 
+	private List<List<Integer>> canMoveTo;
 	private boolean boxToHighlight = false;
+	private boolean canMoveToHighlight = false;
 	private boolean pieceInSpace = false;
 	private int boxToHighlightX;
 	private int boxToHighlightY;
@@ -52,6 +55,21 @@ public class chessBoard{
 			//Reset the stroke
 			g2.setStroke(oldStroke);
 		}
+		if(canMoveToHighlight){
+			//Copy current stroke
+			Stroke oldStroke = g2.getStroke();
+			//Set Stroke Thickness
+			int thickness = 2;
+			//Set the new stroke
+			g2.setStroke(new BasicStroke(thickness));
+			//Set color to blue
+			g2.setColor(Color.blue);
+			for(List<Integer> i : canMoveTo){
+				g2.drawRect((i.get(0)+(thickness/2)), (i.get(1)+(thickness/2)), (spaceSize-thickness), (spaceSize-thickness));
+			}
+			//Reset the stroke
+			g2.setStroke(oldStroke);
+		}
 	}
 
 	public void getBox(int x, int y){
@@ -78,8 +96,13 @@ public class chessBoard{
 		}
 	}
 
+	public void setCanMoveTo(List<List<Integer>> canMoveToTheseSpaces){
+		canMoveTo = canMoveToTheseSpaces;
+	}
+
 	public void setPieceInSpace(boolean que){
 		pieceInSpace = que;
+		canMoveToHighlight = que;
 	}
 
 	public int gethightlightedBoxXPosition(){

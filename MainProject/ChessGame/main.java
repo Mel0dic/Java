@@ -1,5 +1,6 @@
 import javax.swing.JPanel;
 import javax.swing.JFrame;
+import java.util.List;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -94,15 +95,20 @@ public class main{
 	}
 
 	public void checkPosition(){
+		List<List<Integer>> canMoveTo;
 		if(turn == 0){
-			if(whiteTeam.isPieceInSquare(board.gethightlightedBoxXPosition(), board.gethightlightedBoxYPosition()) != null){
+			canMoveTo = whiteTeam.isPieceInSquare(board.gethightlightedBoxXPosition(), board.gethightlightedBoxYPosition());
+			if(canMoveTo != null){
 				board.setPieceInSpace(true);
+				board.setCanMoveTo(canMoveTo);
 			}else{
 				board.setPieceInSpace(false);
 			}
 		}else if(turn == 1){
-			if(blackTeam.isPieceInSquare(board.gethightlightedBoxXPosition(), board.gethightlightedBoxYPosition()) != null){
+			canMoveTo = blackTeam.isPieceInSquare(board.gethightlightedBoxXPosition(), board.gethightlightedBoxYPosition());
+			if(canMoveTo != null){
 				board.setPieceInSpace(true);
+				board.setCanMoveTo(canMoveTo);
 			}else{
 				board.setPieceInSpace(false);
 			}

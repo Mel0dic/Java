@@ -90,6 +90,7 @@ class king extends piece{
 	private static BufferedImage imgBlack;
 	private String pieceColor;
 	private int moveForward;
+	private List<List<Integer>> canMoveToCoords;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -116,6 +117,14 @@ class king extends piece{
 		}
 	}
 
+	public List<List<Integer>> movablePositions(){
+		canMoveToCoords = new ArrayList<List<Integer>>();
+		canMoveToCoords.add(new ArrayList<Integer>());
+		canMoveToCoords.get(0).add(xPosition);
+		canMoveToCoords.get(0).add((yPosition + moveForward));
+		return canMoveToCoords;
+	}
+
 }
 
 class queen extends piece{
@@ -124,6 +133,7 @@ class queen extends piece{
 	private static BufferedImage imgBlack;
 	private String pieceColor;
 	private int moveForward;
+	private List<List<Integer>> canMoveToCoords;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -150,6 +160,14 @@ class queen extends piece{
 		}
 	}
 
+	public List<List<Integer>> movablePositions(){
+		canMoveToCoords = new ArrayList<List<Integer>>();
+		canMoveToCoords.add(new ArrayList<Integer>());
+		canMoveToCoords.get(0).add(xPosition);
+		canMoveToCoords.get(0).add((yPosition + moveForward));
+		return canMoveToCoords;
+	}
+
 }
 
 class bishop extends piece{
@@ -158,6 +176,7 @@ class bishop extends piece{
 	private static BufferedImage imgBlack;
 	private String pieceColor;
 	private int moveForward;
+	private List<List<Integer>> canMoveToCoords;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -184,6 +203,14 @@ class bishop extends piece{
 		}
 	}
 
+	public List<List<Integer>> movablePositions(){
+		canMoveToCoords = new ArrayList<List<Integer>>();
+		canMoveToCoords.add(new ArrayList<Integer>());
+		canMoveToCoords.get(0).add(xPosition);
+		canMoveToCoords.get(0).add((yPosition + moveForward));
+		return canMoveToCoords;
+	}
+
 }
 
 class knight extends piece{
@@ -192,6 +219,7 @@ class knight extends piece{
 	private static BufferedImage imgBlack;
 	private String pieceColor;
 	private int moveForward;
+	private List<List<Integer>> canMoveToCoords;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -218,6 +246,14 @@ class knight extends piece{
 		}
 	}
 
+	public List<List<Integer>> movablePositions(){
+		canMoveToCoords = new ArrayList<List<Integer>>();
+		canMoveToCoords.add(new ArrayList<Integer>());
+		canMoveToCoords.get(0).add(xPosition);
+		canMoveToCoords.get(0).add((yPosition + moveForward));
+		return canMoveToCoords;
+	}
+
 }
 
 class castle extends piece{
@@ -226,6 +262,7 @@ class castle extends piece{
 	private static BufferedImage imgBlack;
 	private String pieceColor;
 	private int moveForward;
+	private List<List<Integer>> canMoveToCoords;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -250,6 +287,14 @@ class castle extends piece{
 		}else if(pieceColor.equals("black")){
 			g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
 		}
+	}
+
+	public List<List<Integer>> movablePositions(){
+		canMoveToCoords = new ArrayList<List<Integer>>();
+		canMoveToCoords.add(new ArrayList<Integer>());
+		canMoveToCoords.get(0).add(xPosition);
+		canMoveToCoords.get(0).add((yPosition + moveForward));
+		return canMoveToCoords;
 	}
 
 }
