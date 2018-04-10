@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
+import java.util.List;
+import java.util.ArrayList;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JPanel;
@@ -37,6 +39,9 @@ class pawn extends piece{
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
 	private String pieceColor;
+	private int moveForward;
+	private int numberOfMoves = 0;
+	private List<List<Integer>> canMoveToCoords;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -48,10 +53,11 @@ class pawn extends piece{
 		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public pawn(int xStartPosition, int yStartPosition, String pieceColor){
+	public pawn(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
 		//Super the initial variables to piece
 		super(xStartPosition, yStartPosition);
 		this.pieceColor = pieceColor;
+		this.moveForward = moveForward;
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
@@ -63,6 +69,19 @@ class pawn extends piece{
 		}
 	}
 
+	public List<List<Integer>> movablePositions(){
+		canMoveToCoords = new ArrayList<List<Integer>>();
+		canMoveToCoords.add(new ArrayList<Integer>());
+		canMoveToCoords.get(0).add(xPosition);
+		canMoveToCoords.get(0).add((yPosition + moveForward));
+		if(numberOfMoves == 0){
+			canMoveToCoords.add(new ArrayList<Integer>());
+			canMoveToCoords.get(1).add(xPosition);
+			canMoveToCoords.get(1).add(yPosition + (moveForward * 2));
+		}
+		return canMoveToCoords;
+	}
+
 }
 
 class king extends piece{
@@ -70,6 +89,7 @@ class king extends piece{
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
 	private String pieceColor;
+	private int moveForward;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -81,9 +101,10 @@ class king extends piece{
 		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public king(int xStartPosition, int yStartPosition, String pieceColor){
+	public king(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
 		super(xStartPosition, yStartPosition);
 		this.pieceColor = pieceColor;
+		this.moveForward = moveForward;
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
@@ -102,6 +123,7 @@ class queen extends piece{
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
 	private String pieceColor;
+	private int moveForward;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -113,9 +135,10 @@ class queen extends piece{
 		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public queen(int xStartPosition, int yStartPosition, String pieceColor){
+	public queen(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
 		super(xStartPosition, yStartPosition);
 		this.pieceColor = pieceColor;
+		this.moveForward = moveForward;
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
@@ -134,6 +157,7 @@ class bishop extends piece{
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
 	private String pieceColor;
+	private int moveForward;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -145,9 +169,10 @@ class bishop extends piece{
 		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public bishop(int xStartPosition, int yStartPosition, String pieceColor){
+	public bishop(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
 		super(xStartPosition, yStartPosition);
 		this.pieceColor = pieceColor;
+		this.moveForward = moveForward;
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
@@ -166,6 +191,7 @@ class knight extends piece{
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
 	private String pieceColor;
+	private int moveForward;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -177,9 +203,10 @@ class knight extends piece{
 		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public knight(int xStartPosition, int yStartPosition, String pieceColor){
+	public knight(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
 		super(xStartPosition, yStartPosition);
 		this.pieceColor = pieceColor;
+		this.moveForward = moveForward;
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
@@ -198,6 +225,7 @@ class castle extends piece{
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
 	private String pieceColor;
+	private int moveForward;
 
 	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
@@ -209,9 +237,10 @@ class castle extends piece{
 		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public castle(int xStartPosition, int yStartPosition, String pieceColor){
+	public castle(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
 		super(xStartPosition, yStartPosition);
 		this.pieceColor = pieceColor;
+		this.moveForward = moveForward;
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
