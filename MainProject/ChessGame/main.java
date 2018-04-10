@@ -14,16 +14,19 @@ public class main{
 	private chessBoard board;
 	private boolean isRunning = true;
 	private int spaceSize = 50;
+	private pawn testPiece;
 
 	public static void main(String[] args){
 		new main();
 	}
 
 	public main(){
+		//Make testPiece
+		testPiece = new pawn(0, 0, Color.black);
+		//Make and paint the board
+		board = new chessBoard(spaceSize);
 		//Make the jframe
 		makeJFrame();
-		//
-		board = new chessBoard(spaceSize);
 		//Call start game function
 		startGame();
 	}
@@ -89,6 +92,8 @@ public class main{
 			Graphics2D g2 = (Graphics2D) g;
 			//Draw the squares
 			board.drawBoard(g2);
+			//Draw piece
+			testPiece.paintPiece(g, this);
 		}
 	}
 
