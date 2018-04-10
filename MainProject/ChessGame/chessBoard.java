@@ -65,7 +65,6 @@ public class chessBoard{
 				boxToHighlightY = i;
 			}
 		}
-		System.out.println(x + ", " + y);
 	}
 
 }

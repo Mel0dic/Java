@@ -14,15 +14,14 @@ public class main{
 	private chessBoard board;
 	private boolean isRunning = true;
 	private int spaceSize = 50;
-	private pawn testPiece;
+	private pieces blackTeam;
 
 	public static void main(String[] args){
 		new main();
 	}
 
 	public main(){
-		//Make testPiece
-		testPiece = new pawn(0, 0, Color.black);
+		blackTeam = new pieces("black", spaceSize);
 		//Make and paint the board
 		board = new chessBoard(spaceSize);
 		//Make the jframe
@@ -93,7 +92,7 @@ public class main{
 			//Draw the squares
 			board.drawBoard(g2);
 			//Draw piece
-			testPiece.paintPiece(g, this);
+			blackTeam.paintTeam(g, this);
 		}
 	}
 

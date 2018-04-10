@@ -9,14 +9,12 @@ import javax.imageio.ImageIO;
 
 public class piece{
 
-	public Color pieceColor;
 	public int xPosition;
 	public int yPosition;
 
-	public piece(int xStartPosition, int yStartPosition, Color pieceColor){
+	public piece(int xStartPosition, int yStartPosition){
 		xPosition = xStartPosition;
 		yPosition = yStartPosition;
-		this.pieceColor = pieceColor;
 	}
 
 	final public void movePiece(int x, int y){
@@ -28,80 +26,157 @@ public class piece{
 
 class pawn extends piece{
 
-	private BufferedImage imgBlack;
+	private static BufferedImage imgWhite;
+	private static BufferedImage imgBlack;
 
-	public pawn(int xStartPosition, int yStartPosition, Color pieceColor){
-		//Super the initial variables to piece
-		super(xStartPosition, yStartPosition, pieceColor);
+	public static void setDrawings(){
 		//Get the image for the piece and print exception if there is one
 		try{
+			//Get the black image
 			imgBlack = ImageIO.read(new File("ChessPieceImages\\pawnBlack.png"));
+			//Get the white image
+			imgWhite = ImageIO.read(new File("ChessPieceImages\\pawnWhite.png"));
 		}catch(IOException ex){ ex.printStackTrace(); }
+	}
+
+	public pawn(int xStartPosition, int yStartPosition, String pieceColor){
+		//Super the initial variables to piece
+		super(xStartPosition, yStartPosition);
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
 		//Paint the image at x, y
-		g.drawImage(imgBlack, this.xPosition, this.yPosition, panel);
+		g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
 	}
 
 }
 
 class king extends piece{
 
-	public king(int xStartPosition, int yStartPosition, Color pieceColor){
-		super(xStartPosition, yStartPosition, pieceColor);
+	private static BufferedImage imgWhite;
+	private static BufferedImage imgBlack;
+
+	public static void setDrawings(){
+		//Get the image for the piece and print exception if there is one
+		try{
+			//Get the black image
+			imgBlack = ImageIO.read(new File("ChessPieceImages\\kingBlack.png"));
+			//Get the white image
+			imgWhite = ImageIO.read(new File("ChessPieceImages\\kingWhite.png"));
+		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public void paintPiece(Graphics g){
-		g.setColor(this.pieceColor);
+	public king(int xStartPosition, int yStartPosition, String pieceColor){
+		super(xStartPosition, yStartPosition);
+	}
+
+	public void paintPiece(Graphics g, JPanel panel){
+		//Paint the image at x, y
+		g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
 	}
 
 }
 
 class queen extends piece{
 
-	public queen(int xStartPosition, int yStartPosition, Color pieceColor){
-		super(xStartPosition, yStartPosition, pieceColor);
+	private static BufferedImage imgWhite;
+	private static BufferedImage imgBlack;
+
+	public static void setDrawings(){
+		//Get the image for the piece and print exception if there is one
+		try{
+			//Get the black image
+			imgBlack = ImageIO.read(new File("ChessPieceImages\\queenBlack.png"));
+			//Get the white image
+			imgWhite = ImageIO.read(new File("ChessPieceImages\\queenWhite.png"));
+		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public void paintPiece(Graphics g){
-		g.setColor(this.pieceColor);
+	public queen(int xStartPosition, int yStartPosition, String pieceColor){
+		super(xStartPosition, yStartPosition);
+	}
+
+	public void paintPiece(Graphics g, JPanel panel){
+		//Paint the image at x, y
+		g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
 	}
 
 }
 
 class bishop extends piece{
 
-	public bishop(int xStartPosition, int yStartPosition, Color pieceColor){
-		super(xStartPosition, yStartPosition, pieceColor);
+	private static BufferedImage imgWhite;
+	private static BufferedImage imgBlack;
+
+	public static void setDrawings(){
+		//Get the image for the piece and print exception if there is one
+		try{
+			//Get the black image
+			imgBlack = ImageIO.read(new File("ChessPieceImages\\bishopBlack.png"));
+			//Get the white image
+			imgWhite = ImageIO.read(new File("ChessPieceImages\\bishopWhite.png"));
+		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public void paintPiece(Graphics g){
-		g.setColor(this.pieceColor);
+	public bishop(int xStartPosition, int yStartPosition, String pieceColor){
+		super(xStartPosition, yStartPosition);
+	}
+
+	public void paintPiece(Graphics g, JPanel panel){
+		//Paint the image at x, y
+		g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
 	}
 
 }
 
 class knight extends piece{
 
-	public knight(int xStartPosition, int yStartPosition, Color pieceColor){
-		super(xStartPosition, yStartPosition, pieceColor);
+	private static BufferedImage imgWhite;
+	private static BufferedImage imgBlack;
+
+	public static void setDrawings(){
+		//Get the image for the piece and print exception if there is one
+		try{
+			//Get the black image
+			imgBlack = ImageIO.read(new File("ChessPieceImages\\knightBlack.png"));
+			//Get the white image
+			imgWhite = ImageIO.read(new File("ChessPieceImages\\knightWhite.png"));
+		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public void paintPiece(Graphics g){
-		g.setColor(this.pieceColor);
+	public knight(int xStartPosition, int yStartPosition, String pieceColor){
+		super(xStartPosition, yStartPosition);
+	}
+
+	public void paintPiece(Graphics g, JPanel panel){
+		//Paint the image at x, y
+		g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
 	}
 
 }
 
 class castle extends piece{
 
-	public castle(int xStartPosition, int yStartPosition, Color pieceColor){
-		super(xStartPosition, yStartPosition, pieceColor);
+	private static BufferedImage imgWhite;
+	private static BufferedImage imgBlack;
+
+	public static void setDrawings(){
+		//Get the image for the piece and print exception if there is one
+		try{
+			//Get the black image
+			imgBlack = ImageIO.read(new File("ChessPieceImages\\castleBlack.png"));
+			//Get the white image
+			imgWhite = ImageIO.read(new File("ChessPieceImages\\castleWhite.png"));
+		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public void paintPiece(Graphics g){
-		g.setColor(this.pieceColor);
+	public castle(int xStartPosition, int yStartPosition, String pieceColor){
+		super(xStartPosition, yStartPosition);
+	}
+
+	public void paintPiece(Graphics g, JPanel panel){
+		//Paint the image at x, y
+		g.drawImage(imgBlack, (this.xPosition-7), (this.yPosition-6), panel);
 	}
 
 }
