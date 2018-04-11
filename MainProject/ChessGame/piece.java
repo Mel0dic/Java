@@ -13,10 +13,14 @@ public class piece{
 
 	public int xPosition;
 	public int yPosition;
+	public String pieceColor;
+	public int moveForward;
 
-	public piece(int xStartPosition, int yStartPosition){
+	public piece(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
 		xPosition = xStartPosition;
 		yPosition = yStartPosition;
+		this.pieceColor = pieceColor;
+		this.moveForward = moveForward;
 	}
 
 	final public void movePiece(int x, int y){
@@ -38,8 +42,6 @@ class pawn extends piece{
 
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
-	private String pieceColor;
-	private int moveForward;
 	private int numberOfMoves = 0;
 	private List<List<Integer>> canMoveToCoords;
 
@@ -55,9 +57,7 @@ class pawn extends piece{
 
 	public pawn(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
 		//Super the initial variables to piece
-		super(xStartPosition, yStartPosition);
-		this.pieceColor = pieceColor;
-		this.moveForward = moveForward;
+		super(xStartPosition, yStartPosition, pieceColor, moveForward);
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
@@ -88,8 +88,6 @@ class king extends piece{
 
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
-	private String pieceColor;
-	private int moveForward;
 	private List<List<Integer>> canMoveToCoords;
 
 	public static void setDrawings(){
@@ -103,9 +101,7 @@ class king extends piece{
 	}
 
 	public king(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
-		super(xStartPosition, yStartPosition);
-		this.pieceColor = pieceColor;
-		this.moveForward = moveForward;
+		super(xStartPosition, yStartPosition, pieceColor, moveForward);
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
@@ -131,8 +127,6 @@ class queen extends piece{
 
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
-	private String pieceColor;
-	private int moveForward;
 	private List<List<Integer>> canMoveToCoords;
 
 	public static void setDrawings(){
@@ -146,9 +140,7 @@ class queen extends piece{
 	}
 
 	public queen(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
-		super(xStartPosition, yStartPosition);
-		this.pieceColor = pieceColor;
-		this.moveForward = moveForward;
+		super(xStartPosition, yStartPosition, pieceColor, moveForward);
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
@@ -174,8 +166,6 @@ class bishop extends piece{
 
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
-	private String pieceColor;
-	private int moveForward;
 	private List<List<Integer>> canMoveToCoords;
 
 	public static void setDrawings(){
@@ -189,9 +179,7 @@ class bishop extends piece{
 	}
 
 	public bishop(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
-		super(xStartPosition, yStartPosition);
-		this.pieceColor = pieceColor;
-		this.moveForward = moveForward;
+		super(xStartPosition, yStartPosition, pieceColor, moveForward);
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
@@ -217,8 +205,6 @@ class knight extends piece{
 
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
-	private String pieceColor;
-	private int moveForward;
 	private List<List<Integer>> canMoveToCoords;
 
 	public static void setDrawings(){
@@ -232,9 +218,7 @@ class knight extends piece{
 	}
 
 	public knight(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
-		super(xStartPosition, yStartPosition);
-		this.pieceColor = pieceColor;
-		this.moveForward = moveForward;
+		super(xStartPosition, yStartPosition, pieceColor, moveForward);
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
@@ -260,8 +244,6 @@ class castle extends piece{
 
 	private static BufferedImage imgWhite;
 	private static BufferedImage imgBlack;
-	private String pieceColor;
-	private int moveForward;
 	private List<List<Integer>> canMoveToCoords;
 
 	public static void setDrawings(){
@@ -275,9 +257,7 @@ class castle extends piece{
 	}
 
 	public castle(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
-		super(xStartPosition, yStartPosition);
-		this.pieceColor = pieceColor;
-		this.moveForward = moveForward;
+		super(xStartPosition, yStartPosition, pieceColor, moveForward);
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
