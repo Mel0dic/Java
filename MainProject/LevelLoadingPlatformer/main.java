@@ -39,6 +39,10 @@ public class main{
 		startGame();
 	}
 
+	/*
+	*
+	*
+	*/
 	public void startGame(){
 		int tempFPS = 0;
 		//Create infinite loop
