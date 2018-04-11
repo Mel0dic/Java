@@ -15,12 +15,14 @@ public class piece{
 	public int yPosition;
 	public String pieceColor;
 	public int moveForward;
+	public int spaceSize;
 
-	public piece(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
+	public piece(int xStartPosition, int yStartPosition, String pieceColor, int moveForward, int spaceSize){
 		xPosition = xStartPosition;
 		yPosition = yStartPosition;
 		this.pieceColor = pieceColor;
 		this.moveForward = moveForward;
+		this.spaceSize = spaceSize;
 	}
 
 	final public void movePiece(int x, int y){
@@ -55,9 +57,9 @@ class pawn extends piece{
 		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public pawn(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
+	public pawn(int xStartPosition, int yStartPosition, String pieceColor, int moveForward, int spaceSize){
 		//Super the initial variables to piece
-		super(xStartPosition, yStartPosition, pieceColor, moveForward);
+		super(xStartPosition, yStartPosition, pieceColor, moveForward, spaceSize);
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
@@ -100,8 +102,8 @@ class king extends piece{
 		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public king(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
-		super(xStartPosition, yStartPosition, pieceColor, moveForward);
+	public king(int xStartPosition, int yStartPosition, String pieceColor, int moveForward, int spaceSize){
+		super(xStartPosition, yStartPosition, pieceColor, moveForward, spaceSize);
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
@@ -115,9 +117,18 @@ class king extends piece{
 
 	public List<List<Integer>> movablePositions(){
 		canMoveToCoords = new ArrayList<List<Integer>>();
-		canMoveToCoords.add(new ArrayList<Integer>());
-		canMoveToCoords.get(0).add(xPosition);
-		canMoveToCoords.get(0).add((yPosition + moveForward));
+		int movesForward = 0;
+		while((yPosition + (moveForward * movesForward)) >= 0 && (yPosition + (moveForward * movesForward)) <= (8 * 50)){
+			canMoveToCoords.add(new ArrayList<Integer>());
+			canMoveToCoords.get(movesForward).add(xPosition);
+			canMoveToCoords.get(movesForward).add(yPosition + (movesForward * moveForward));
+			movesForward++;
+		}
+		movesForward = 0;
+		// while((xPosition + (spaceSize * movesForward))){
+
+		// }
+		System.out.println(canMoveToCoords);
 		return canMoveToCoords;
 	}
 
@@ -139,8 +150,8 @@ class queen extends piece{
 		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public queen(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
-		super(xStartPosition, yStartPosition, pieceColor, moveForward);
+	public queen(int xStartPosition, int yStartPosition, String pieceColor, int moveForward, int spaceSize){
+		super(xStartPosition, yStartPosition, pieceColor, moveForward, spaceSize);
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
@@ -178,8 +189,8 @@ class bishop extends piece{
 		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public bishop(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
-		super(xStartPosition, yStartPosition, pieceColor, moveForward);
+	public bishop(int xStartPosition, int yStartPosition, String pieceColor, int moveForward, int spaceSize){
+		super(xStartPosition, yStartPosition, pieceColor, moveForward, spaceSize);
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
@@ -217,8 +228,8 @@ class knight extends piece{
 		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public knight(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
-		super(xStartPosition, yStartPosition, pieceColor, moveForward);
+	public knight(int xStartPosition, int yStartPosition, String pieceColor, int moveForward, int spaceSize){
+		super(xStartPosition, yStartPosition, pieceColor, moveForward, spaceSize);
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){
@@ -256,8 +267,8 @@ class castle extends piece{
 		}catch(IOException ex){ ex.printStackTrace(); }
 	}
 
-	public castle(int xStartPosition, int yStartPosition, String pieceColor, int moveForward){
-		super(xStartPosition, yStartPosition, pieceColor, moveForward);
+	public castle(int xStartPosition, int yStartPosition, String pieceColor, int moveForward, int spaceSize){
+		super(xStartPosition, yStartPosition, pieceColor, moveForward, spaceSize);
 	}
 
 	public void paintPiece(Graphics g, JPanel panel){

@@ -28,17 +28,17 @@ public class pieces{
 		}
 		int xPosition = 0;
 		for(int i = 0; i < 8; i++){
-			pawns[i] = new pawn(xPosition, pawnRow, colour, moveForward);
+			pawns[i] = new pawn(xPosition, pawnRow, colour, moveForward, spaceSize);
 			xPosition += spaceSize;
 		}
-		theKing = new king((spaceSize * 3), mainRow, colour, moveForward);
-		theQueen = new queen((spaceSize * 4), mainRow, colour, moveForward);
-		castles[0] = new castle(0, mainRow, colour, moveForward);
-		castles[1] = new castle((spaceSize * 7), mainRow, colour, moveForward);
-		bishops[0] = new bishop((spaceSize * 2), mainRow, colour, moveForward);
-		bishops[1] = new bishop((spaceSize * 5), mainRow, colour, moveForward);
-		knights[0] = new knight(spaceSize, mainRow, colour, moveForward);
-		knights[1] = new knight((spaceSize * 6), mainRow, colour, moveForward);
+		theKing = new king((spaceSize * 3), mainRow, colour, moveForward, spaceSize);
+		theQueen = new queen((spaceSize * 4), mainRow, colour, moveForward, spaceSize);
+		castles[0] = new castle(0, mainRow, colour, moveForward, spaceSize);
+		castles[1] = new castle((spaceSize * 7), mainRow, colour, moveForward, spaceSize);
+		bishops[0] = new bishop((spaceSize * 2), mainRow, colour, moveForward, spaceSize);
+		bishops[1] = new bishop((spaceSize * 5), mainRow, colour, moveForward, spaceSize);
+		knights[0] = new knight(spaceSize, mainRow, colour, moveForward, spaceSize);
+		knights[1] = new knight((spaceSize * 6), mainRow, colour, moveForward, spaceSize);
 	}
 
 	public void paintTeam(Graphics g, JPanel panel){
