@@ -96,16 +96,23 @@ public class main{
 
 	public void checkPosition(){
 		List<List<Integer>> canMoveTo;
+		List<List<Integer>> tempCanMoveTo;
 		if(turn == 0){
-			canMoveTo = whiteTeam.isPieceInSquare(board.gethightlightedBoxXPosition(), board.gethightlightedBoxYPosition());
+			canMoveTo = whiteTeam.getPieceInSquare(board.gethightlightedBoxXPosition(), board.gethightlightedBoxYPosition());
 			if(canMoveTo != null){
 				board.setPieceInSpace(true);
-				board.setCanMoveTo(canMoveTo);
+				tempCanMoveTo = canMoveTo;
+				for(int i = 0; i < canMoveTo.size(); i++){
+					if(whiteTeam.isPieceInSquare(canMoveTo.get(i).get(0), canMoveTo.get(i).get(1))){
+						tempCanMoveTo.remove(i);
+					}
+				}
+				board.setCanMoveTo(tempCanMoveTo);
 			}else{
 				board.setPieceInSpace(false);
 			}
 		}else if(turn == 1){
-			canMoveTo = blackTeam.isPieceInSquare(board.gethightlightedBoxXPosition(), board.gethightlightedBoxYPosition());
+			canMoveTo = blackTeam.getPieceInSquare(board.gethightlightedBoxXPosition(), board.gethightlightedBoxYPosition());
 			if(canMoveTo != null){
 				board.setPieceInSpace(true);
 				board.setCanMoveTo(canMoveTo);
