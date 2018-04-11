@@ -73,6 +73,7 @@ class pawn extends piece{
 
 	public List<List<List<Integer>>> movablePositions(){
 		canMoveToCoords = new ArrayList<List<List<Integer>>>();
+		//Create a 3D array an array for each direction then an array for each spot in that direction
 		return canMoveToCoords;
 	}
 
