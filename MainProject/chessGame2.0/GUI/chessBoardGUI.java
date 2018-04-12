@@ -1,7 +1,10 @@
+package GUI;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Color;
 
 /**
  *
@@ -10,13 +13,14 @@ import java.awt.Graphics2D;
 
 public class chessBoardGUI extends JPanel{
 
-	/**
-	 *
-	 *
-	 *
-	**/
-	public chessBoardGUI(){
+	private byte spaceSize;
 
+	/**
+	 * chessBoardGUI constructor
+	 * @param spaceSize size of each square on the chess board
+	**/
+	public chessBoardGUI(byte spaceSize){
+		this.spaceSize = spaceSize;
 	}
 
 

@@ -1,3 +1,5 @@
+package Game;
+
 public class Player{
 
 	private piece[][] piecePositions = new piece[8][8];

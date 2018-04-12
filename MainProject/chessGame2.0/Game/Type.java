@@ -1,3 +1,4 @@
+package Game;
 
 /**
  * Create an enum to hava a constant we can set to pieces.
