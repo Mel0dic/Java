@@ -75,4 +75,13 @@ public class Player {
         }
     }
 
+    public Piece pieceInSquare(int x, int y){
+        for(Pawn i : pawns){
+            if(x == i.x && y == i.y){
+                return i;
+            }
+        }
+        return null;
+    }
+
 }

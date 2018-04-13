@@ -36,8 +36,10 @@ public class Pawn extends Piece{
         try{
             //Get the black image
             blackImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
+            //blackImg = ImageIO.read(new File("C:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
             //Get the white image
             whiteImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
+            //whiteImg = ImageIO.read(new File("C:\\U\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
             //If there was an IOException print it out
         }catch(IOException e){ System.out.println(e); }
     }
@@ -65,11 +67,11 @@ public class Pawn extends Piece{
      */
     public boolean isValidMove(byte newX, byte newY){
         if(movesMade == 0){
-            if(Math.abs(x - newX) < 3 && newY == y){
+            if(Math.abs(y - newY) < 3 && newX == x){
                 return true;
             }
         }else{
-            if(Math.abs(x - newX) == 1){
+            if(Math.abs(y - newY) == 1 && x == newX){
                 return true;
             }
         }

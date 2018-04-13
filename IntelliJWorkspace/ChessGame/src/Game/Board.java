@@ -52,29 +52,39 @@ public class Board{
      * @param clickedY y co-ordinate of the mouse click
      */
     public void clickedSquare(int clickedX, int clickedY){
-        if(squareToHighlight){
-            System.out.println("Hello");
+        if(squareToHighlight && turn.isPlayerInSquare((byte)clickedCoordinates[0], (byte)clickedCoordinates[1])){
+            int[] tempCo = simplifyCoordinates(clickedX, clickedY);
+            System.out.println(turn.pieceInSquare(clickedCoordinates[0], clickedCoordinates[1]).isValidMove((byte)tempCo[0], (byte)tempCo[1]));
         }
-
-        //Initialise with a new array of size 2
-        clickedCoordinates = new int[2];
-        //Loop 0-7
-        for(int i = 0; i < 8; i++){
-            //If the x is greater than or equal to i * spaceSize and less that (i + 1) * spaceSize set 0 in array to i
-            if(clickedX >= (i * spaceSize) && clickedX < ((i+1) * spaceSize)){
-                clickedCoordinates[0] = i;
-            }
-            //If the y is greater than or equal to i * spaceSize and less that (i + 1) * spaceSize set 1 in array to i
-            if(clickedY >= (i * spaceSize) && clickedY < ((i + 1) * spaceSize)){
-                clickedCoordinates[1] = i;
-            }
-        }
+        clickedCoordinates = simplifyCoordinates(clickedX, clickedY);
         if(turn.isPlayerInSquare((byte)clickedCoordinates[0], (byte)clickedCoordinates[1])){
-            System.out.println("Yes");
             squareToHighlight = true;
         }else{
             squareToHighlight = false;
         }
+    }
+
+    /**
+     * Function to simplify the co-ordinates into co-ordinates for an 8x8 grid
+     * @param clickedX
+     * @param clickedY
+     * @return
+     */
+    public int[] simplifyCoordinates(int clickedX, int clickedY){
+        //Initialise with a new array of size 2
+        int[] tempCoords = new int[2];
+        //Loop 0-7
+        for(int i = 0; i < 8; i++){
+            //If the x is greater than or equal to i * spaceSize and less that (i + 1) * spaceSize set 0 in array to i
+            if(clickedX >= (i * spaceSize) && clickedX < ((i+1) * spaceSize)){
+                tempCoords[0] = i;
+            }
+            //If the y is greater than or equal to i * spaceSize and less that (i + 1) * spaceSize set 1 in array to i
+            if(clickedY >= (i * spaceSize) && clickedY < ((i + 1) * spaceSize)){
+                tempCoords[1] = i;
+            }
+        }
+        return tempCoords;
     }
 
     /**
@@ -87,7 +97,6 @@ public class Board{
         blackPlayer.paint(g, panel);
 
         if(squareToHighlight){
-            System.out.println("Ok");
             g.setColor(Color.RED);
             g.drawRect((clickedCoordinates[0] * spaceSize), (clickedCoordinates[1] * spaceSize), spaceSize, spaceSize);
         }
