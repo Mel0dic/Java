@@ -1,7 +1,7 @@
 package Game;
 
 /**
- * Create an enum to hava a constant we can set to pieces.
+ * Create an enum to have a constant we can set to pieces.
  */
 
 public enum Type{

@@ -2,12 +2,12 @@ package Pieces;
 
 import Game.*;
 
-import java.awt.*;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.JPanel;
 
 public class Pawn extends Piece{
 
@@ -15,6 +15,7 @@ public class Pawn extends Piece{
     private static final byte offsetY = -6;
     private static BufferedImage whiteImg;
     private static BufferedImage blackImg;
+    private int movesMade;
     public Type type;
 
     /**
@@ -23,8 +24,8 @@ public class Pawn extends Piece{
      * @param startY the starting Y co-ordinate of the piece
      * @param player the player who owns the piece
      */
-    public Pawn(int startX, int startY, Player player){
-        super(startX, startY, player);
+    public Pawn(int startX, int startY, int spaceSize, Player player){
+        super(startX, startY, spaceSize, player);
         type = Type.PAWN;
     }
 
@@ -34,9 +35,9 @@ public class Pawn extends Piece{
     public static void loadPictures(){
         try{
             //Get the black image
-            blackImg = ImageIO.read(new File("..\\GUI\\pawnBlack.png"));
+            blackImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
             //Get the white image
-            whiteImg = ImageIO.read(new File("ChessPieceImages\\pawnWhite.png"));
+            whiteImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
             //If there was an IOException print it out
         }catch(IOException e){ System.out.println(e); }
     }
@@ -49,12 +50,30 @@ public class Pawn extends Piece{
     public void paintPiece(Graphics g, JPanel panel){
         //If the player is black draw the black image
         if(player.colour.equals("black")){
-            g.drawImage(blackImg, (x + offsetX), (y + offsetY), panel);
+            g.drawImage(blackImg, ((x * spaceSize) + offsetX), ((y * spaceSize) + offsetY), panel);
         }
         //Else if the player is white draw the white image
         else if(player.colour.equals("white")){
-            g.drawImage(whiteImg, (x + offsetX), (y + offsetY), panel);
+            g.drawImage(whiteImg, ((x * spaceSize) + offsetX), ((y * spaceSize) + offsetY), panel);
         }
+    }
+
+    /**
+     * Function that checks if the move is valid
+     * @param newX X position being moved to
+     * @param newY Y position being moved to
+     */
+    public boolean isValidMove(byte newX, byte newY){
+        if(movesMade == 0){
+            if(Math.abs(x - newX) < 3 && newY == y){
+                return true;
+            }
+        }else{
+            if(Math.abs(x - newX) == 1){
+                return true;
+            }
+        }
+        return false;
     }
 
 }
