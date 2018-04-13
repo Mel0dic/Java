@@ -8,8 +8,8 @@ import java.awt.Graphics;
 public class Player {
 
     public String colour;
+    public Board board;
     private int spaceSize;
-    private Board board;
     private byte forward;
     private byte startX;
     public Type[][] onePlayerBoard = new Type[8][8];
@@ -45,8 +45,8 @@ public class Player {
     public void initialisePieces(){
         byte spawnYPos = (byte)(startX + forward);
         for(int i = 0; i < 8; i++){
-            board.board[i][spawnYPos] = Type.PAWN;
-            onePlayerBoard[i][spawnYPos] = Type.PAWN;
+            board.board[spawnYPos][i] = Type.PAWN;
+            onePlayerBoard[spawnYPos][i] = Type.PAWN;
             pawns[i] = new Pawn(i, spawnYPos, spaceSize, this);
         }
     }
@@ -58,7 +58,7 @@ public class Player {
      * @return true or false depending on if piece in space
      */
     public boolean isPlayerInSquare(byte x, byte y){
-        if(onePlayerBoard[x][y] != null){
+        if(onePlayerBoard[y][x] != null){
             return true;
         }
         return false;

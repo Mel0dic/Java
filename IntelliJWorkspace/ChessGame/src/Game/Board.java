@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Color;
 
+import static Game.Type.PAWN;
+
 public class Board{
 
     public Type[][] board = new Type[8][8];
@@ -45,9 +47,13 @@ public class Board{
     public void printBoard(){
         for(Type[] sec : board){
             for(Type i : sec){
-                System.out.println(i);
+                if(i == PAWN) {
+                    System.out.printf("*");
+                }else{
+                    System.out.printf("-");
+                }
             }
-            System.out.println("\n");
+            System.out.println("");
         }
     }
 
@@ -84,6 +90,7 @@ public class Board{
     }
 
     public void switchTurns(){
+        printBoard();
         if(turn.colour == "black"){
             turn = whitePlayer;
         }else if(turn.colour == "white"){

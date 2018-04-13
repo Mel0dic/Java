@@ -44,10 +44,17 @@ public class Pawn extends Piece{
         }catch(IOException e){ System.out.println(e); }
     }
 
+    /**
+     *
+     * @param newX
+     * @param newY
+     */
     public void movePiece(int newX, int newY){
         movesMade++;
-        player.onePlayerBoard[x][y] = null;
-        player.onePlayerBoard[newX][newY] = type;
+        player.onePlayerBoard[y][x] = null;
+        player.onePlayerBoard[newY][newX] = type;
+        player.board.board[y][x] = null;
+        player.board.board[newY][newX] = type;
         x = (byte) newX;
         y = (byte) newY;
     }
@@ -81,6 +88,13 @@ public class Pawn extends Piece{
         }else{
             if(Math.abs(y - newY) == 1 && x == newX){
                 return true;
+            }else if(Math.abs(y - newY) == 1 && Math.abs(x - newX) == 1){
+                System.out.println("Diagonal");
+                System.out.println(player.board.board[newY][newX]);
+                if(player.board.board[newY][newX] != null){
+                    System.out.println("True");
+                    return true;
+                }
             }
         }
         return false;
