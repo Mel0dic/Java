@@ -32,7 +32,7 @@ public class ChessGame{
         //Make new ChessBoardGUI
         panel = new ChessBoardGUI(spaceSize, this);
         //Initialise board with a new board object
-        board = new Board(spaceSize);
+        board = new Board(spaceSize, this);
         //Make the JPanel
         makeJFrame(panel);
     }

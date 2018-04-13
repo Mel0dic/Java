@@ -25,6 +25,13 @@ public abstract class Piece{
     }
 
     /**
+     * Function to move piece
+     * @param x new x co-ordinate
+     * @param y new y co-ordinate
+     */
+    public abstract void movePiece(int x, int y);
+
+    /**
      * A function for painting the pieces picture
      * @param g the graphics from the JPanel's paint function
      * @param panel is the JPanel that will be painted to

@@ -35,13 +35,21 @@ public class Pawn extends Piece{
     public static void loadPictures(){
         try{
             //Get the black image
-            blackImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
-            //blackImg = ImageIO.read(new File("C:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
+            //blackImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
+            blackImg = ImageIO.read(new File("C:\\Users\\bengr\\Documents\\GitHub\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
             //Get the white image
-            whiteImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
-            //whiteImg = ImageIO.read(new File("C:\\U\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
+            //whiteImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
+            whiteImg = ImageIO.read(new File("C:\\Users\\bengr\\Documents\\GitHub\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
             //If there was an IOException print it out
         }catch(IOException e){ System.out.println(e); }
+    }
+
+    public void movePiece(int newX, int newY){
+        movesMade++;
+        player.onePlayerBoard[x][y] = null;
+        player.onePlayerBoard[newX][newY] = type;
+        x = (byte) newX;
+        y = (byte) newY;
     }
 
     /**
