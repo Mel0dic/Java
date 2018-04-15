@@ -18,6 +18,7 @@ public class Board{
     private ChessGame game;
     private byte spaceSize;
     private Player turn;
+    private Player opponent;
     private int[] clickedCoordinates;
     private boolean squareToHighlight = false;
 
@@ -34,6 +35,7 @@ public class Board{
         blackPlayer = new Player("black", this, spaceSize);
 
         turn = whitePlayer;
+        opponent = blackPlayer;
 
         this.spaceSize = spaceSize;
 
@@ -72,8 +74,12 @@ public class Board{
                 squareToHighlight = false;
                 return;
             }
+            System.out.println(turn.pieceInSquare(clickedCoordinates[0], clickedCoordinates[1]));
             //If the move is valid so move the piece repaint the frame then switch turns
             if(turn.pieceInSquare(clickedCoordinates[0], clickedCoordinates[1]).isValidMove((byte)tempCo[0], (byte)tempCo[1])){
+                if(opponent.pieceInSquare(tempCo[0], tempCo[1]) != null){
+                    opponent.pieceBeenTaken(opponent.pieceInSquare(tempCo[0], tempCo[1]));
+                }
                 turn.pieceInSquare(clickedCoordinates[0], clickedCoordinates[1]).movePiece(tempCo[0], tempCo[1]);
                 squareToHighlight = false;
                 game.frame.repaint();
@@ -93,8 +99,10 @@ public class Board{
         printBoard();
         if(turn.colour == "black"){
             turn = whitePlayer;
+            opponent = blackPlayer;
         }else if(turn.colour == "white"){
             turn = blackPlayer;
+            opponent = whitePlayer;
         }
     }
 

@@ -16,6 +16,7 @@ public class Pawn extends Piece{
     private static BufferedImage whiteImg;
     private static BufferedImage blackImg;
     private int movesMade;
+    private byte moveFoward;
     public Type type;
 
     /**
@@ -24,8 +25,13 @@ public class Pawn extends Piece{
      * @param startY the starting Y co-ordinate of the piece
      * @param player the player who owns the piece
      */
-    public Pawn(int startX, int startY, int spaceSize, Player player){
-        super(startX, startY, spaceSize, player);
+    public Pawn(int startX, int startY, int spaceSize, Player player, int arrayPos){
+        super(startX, startY, spaceSize, player, arrayPos);
+        if(player.colour.equals("white")){
+            moveFoward = 1;
+        }else{
+            moveFoward = -1;
+        }
         type = Type.PAWN;
     }
 
@@ -35,19 +41,19 @@ public class Pawn extends Piece{
     public static void loadPictures(){
         try{
             //Get the black image
-            blackImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
-            //blackImg = ImageIO.read(new File("C:\\Users\\bengr\\Documents\\GitHub\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
+            //blackImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
+            blackImg = ImageIO.read(new File("C:\\Users\\bengr\\Documents\\GitHub\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
             //Get the white image
-            whiteImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
-            //whiteImg = ImageIO.read(new File("C:\\Users\\bengr\\Documents\\GitHub\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
+            //whiteImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
+            whiteImg = ImageIO.read(new File("C:\\Users\\bengr\\Documents\\GitHub\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
             //If there was an IOException print it out
         }catch(IOException e){ System.out.println(e); }
     }
 
     /**
-     *
-     * @param newX
-     * @param newY
+     * Move piece on all boards
+     * @param newX new x position of piece
+     * @param newY new y position of piece
      */
     public void movePiece(int newX, int newY){
         movesMade++;
@@ -88,7 +94,7 @@ public class Pawn extends Piece{
         }else{
             if(Math.abs(y - newY) == 1 && x == newX){
                 return true;
-            }else if(Math.abs(y - newY) == 1 && Math.abs(x - newX) == 1){
+            }else if((y - newY) == moveFoward && Math.abs(x - newX) == 1){
                 System.out.println("Diagonal");
                 System.out.println(player.board.board[newY][newX]);
                 if(player.board.board[newY][newX] != null){

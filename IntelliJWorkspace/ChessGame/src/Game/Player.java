@@ -13,7 +13,7 @@ public class Player {
     private byte forward;
     private byte startX;
     public Type[][] onePlayerBoard = new Type[8][8];
-    private Pawn[] pawns = new Pawn[8];
+    private Piece[] pieces = new Piece[8];
 //    private castle[] castles = new castle[2];
 //    private bishop[] bishops = new bishop[2];
 //    private knight[] knights = new knight[2];
@@ -44,10 +44,11 @@ public class Player {
      */
     public void initialisePieces(){
         byte spawnYPos = (byte)(startX + forward);
-        for(int i = 0; i < 8; i++){
+        int i = 0;
+        for(i = 0; i < 8; i++){
             board.board[spawnYPos][i] = Type.PAWN;
             onePlayerBoard[spawnYPos][i] = Type.PAWN;
-            pawns[i] = new Pawn(i, spawnYPos, spaceSize, this);
+            pieces[i] = new Pawn(i, spawnYPos, spaceSize, this, i);
         }
     }
 
@@ -70,18 +71,44 @@ public class Player {
      * @param panel The JPanel being painted on
      */
     public void paint(Graphics g, JPanel panel){
-        for(Pawn i : pawns){
+        for(Piece i : pieces){
             i.paintPiece(g, panel);
         }
     }
 
+    /**
+     * Get piece in square
+     * @param x position of square to find
+     * @param y position of square to find
+     * @return piece found in position else null
+     */
     public Piece pieceInSquare(int x, int y){
-        for(Pawn i : pawns){
+        for(Piece i : pieces){
+            System.out.println(i);
             if(x == i.x && y == i.y){
                 return i;
             }
         }
         return null;
+    }
+
+    /**
+     *
+     * @param piece
+     */
+    public void pieceBeenTaken(Piece piece){
+        int arrSize = pieces.length;
+        Piece[] tempArr = new Piece[arrSize-1];
+        int count = 0;
+        for(Piece i : pieces){
+            if(i != piece) {
+                tempArr[count] = i;
+                i.takePiece();
+                i.updateArrayPosition(count);
+                count++;
+            }
+        }
+        pieces = tempArr;
     }
 
 }
