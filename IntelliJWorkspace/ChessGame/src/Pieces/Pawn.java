@@ -95,10 +95,7 @@ public class Pawn extends Piece{
             if(Math.abs(y - newY) == 1 && x == newX){
                 return true;
             }else if((y - newY) == moveFoward && Math.abs(x - newX) == 1){
-                System.out.println("Diagonal");
-                System.out.println(player.board.board[newY][newX]);
                 if(player.board.board[newY][newX] != null){
-                    System.out.println("True");
                     return true;
                 }
             }

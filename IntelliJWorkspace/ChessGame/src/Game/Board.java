@@ -70,11 +70,10 @@ public class Board{
         if(squareToHighlight){
             int[] tempCo = simplifyCoordinates(clickedX, clickedY);
             //If the same spot was clicked set space to highlight to false and return
-            if(tempCo[0] == clickedCoordinates[0] && tempCo[1] == clickedCoordinates[1]){
+            if(tempCo[0] == clickedCoordinates[0] && tempCo[1] == clickedCoordinates[1]) {
                 squareToHighlight = false;
                 return;
             }
-            System.out.println(turn.pieceInSquare(clickedCoordinates[0], clickedCoordinates[1]));
             //If the move is valid so move the piece repaint the frame then switch turns
             if(turn.pieceInSquare(clickedCoordinates[0], clickedCoordinates[1]).isValidMove((byte)tempCo[0], (byte)tempCo[1])){
                 if(opponent.pieceInSquare(tempCo[0], tempCo[1]) != null){
@@ -96,7 +95,6 @@ public class Board{
     }
 
     public void switchTurns(){
-        printBoard();
         if(turn.colour == "black"){
             turn = whitePlayer;
             opponent = blackPlayer;

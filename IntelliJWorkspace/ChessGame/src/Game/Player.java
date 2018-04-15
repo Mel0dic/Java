@@ -84,7 +84,6 @@ public class Player {
      */
     public Piece pieceInSquare(int x, int y){
         for(Piece i : pieces){
-            System.out.println(i);
             if(x == i.x && y == i.y){
                 return i;
             }
