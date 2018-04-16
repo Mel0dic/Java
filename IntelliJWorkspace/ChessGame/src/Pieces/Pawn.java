@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
@@ -39,13 +40,12 @@ public class Pawn extends Piece{
      *Function to load the pictures in a static method and var
      */
     public static void loadPictures(){
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         try{
             //Get the black image
-            blackImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
-            //blackImg = ImageIO.read(new File("C:\\Users\\bengr\\Documents\\GitHub\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
+            blackImg = ImageIO.read(classloader.getResourceAsStream("pawnBlack.png"));
             //Get the white image
-            whiteImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
-            //whiteImg = ImageIO.read(new File("C:\\Users\\bengr\\Documents\\GitHub\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
+            whiteImg = ImageIO.read(classloader.getResourceAsStream("pawnWhite.png"));
             //If there was an IOException print it out
         }catch(IOException e){ System.out.println(e); }
     }
@@ -92,7 +92,7 @@ public class Pawn extends Piece{
                 return true;
             }
         }else{
-            if(Math.abs(y - newY) == 1 && x == newX){
+            if((y - newY) == moveFoward && x == newX){
                 return true;
             }else if((y - newY) == moveFoward && Math.abs(x - newX) == 1){
                 if(player.board.board[newY][newX] != null){
@@ -101,6 +101,19 @@ public class Pawn extends Piece{
             }
         }
         return false;
+    }
+
+    /**
+     * Function to check if piece can get to end spot without
+     * any friendly or opposition pieces in the way
+     * @param newX x position piece is moving to
+     * @param newY y position piece is moving to
+     * @return true or false based on if path is valid
+     */
+    public boolean isValidPath(byte newX, byte newY){
+        //Pawn cannot move more than one space after first move so
+        //proving validity of path is not necessary
+        return true;
     }
 
 }
