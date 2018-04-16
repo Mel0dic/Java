@@ -92,8 +92,8 @@ public class Player {
     }
 
     /**
-     *
-     * @param piece
+     * Function to take piece and remove piece from array
+     * @param piece piece to remove
      */
     public void pieceBeenTaken(Piece piece){
         int arrSize = pieces.length;

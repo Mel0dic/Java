@@ -66,7 +66,7 @@ public class Board{
      * @param clickedY y co-ordinate of the mouse click
      */
     public void clickedSquare(int clickedX, int clickedY){
-        //If a space has been highlighted already get the new coordinates and
+        //If a space has been highlighted already
         if(squareToHighlight){
             int[] tempCo = simplifyCoordinates(clickedX, clickedY);
             //If the same spot was clicked set space to highlight to false and return
@@ -74,19 +74,24 @@ public class Board{
                 squareToHighlight = false;
                 return;
             }
-            //If the move is valid so move the piece repaint the frame then switch turns
+            //If the move is valid so move the piece repaint the frame then switch turns and one of own pieces is in the square
             if(turn.pieceInSquare(clickedCoordinates[0], clickedCoordinates[1]).isValidMove((byte)tempCo[0], (byte)tempCo[1]) && !turn.isPlayerInSquare((byte) tempCo[0], (byte) tempCo[1])){
+                //If opponents piece is in the space take it
                 if(opponent.pieceInSquare(tempCo[0], tempCo[1]) != null){
                     opponent.pieceBeenTaken(opponent.pieceInSquare(tempCo[0], tempCo[1]));
                 }
+                //Move the piece
                 turn.pieceInSquare(clickedCoordinates[0], clickedCoordinates[1]).movePiece(tempCo[0], tempCo[1]);
+                //Un-select the square and repaint the frame then switch turns and return
                 squareToHighlight = false;
                 game.frame.repaint();
                 switchTurns();
                 return;
             }
         }
+        //Set clicked co-ordinates x and y from 1-8
         clickedCoordinates = simplifyCoordinates(clickedX, clickedY);
+        //If there is a player in the square highlight it
         if(turn.isPlayerInSquare((byte)clickedCoordinates[0], (byte)clickedCoordinates[1])){
             squareToHighlight = true;
         }else{
