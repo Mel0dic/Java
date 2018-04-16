@@ -41,11 +41,11 @@ public class Pawn extends Piece{
     public static void loadPictures(){
         try{
             //Get the black image
-            //blackImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
-            blackImg = ImageIO.read(new File("C:\\Users\\bengr\\Documents\\GitHub\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
+            blackImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
+            //blackImg = ImageIO.read(new File("C:\\Users\\bengr\\Documents\\GitHub\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnBlack.png"));
             //Get the white image
-            //whiteImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
-            whiteImg = ImageIO.read(new File("C:\\Users\\bengr\\Documents\\GitHub\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
+            whiteImg = ImageIO.read(new File("D:\\Code\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
+            //whiteImg = ImageIO.read(new File("C:\\Users\\bengr\\Documents\\GitHub\\Java\\IntelliJWorkspace\\ChessGame\\ChessResource\\pawnWhite.png"));
             //If there was an IOException print it out
         }catch(IOException e){ System.out.println(e); }
     }

@@ -44,7 +44,7 @@ public class Player {
      */
     public void initialisePieces(){
         byte spawnYPos = (byte)(startX + forward);
-        int i = 0;
+        int i;
         for(i = 0; i < 8; i++){
             board.board[spawnYPos][i] = Type.PAWN;
             onePlayerBoard[spawnYPos][i] = Type.PAWN;
@@ -102,9 +102,10 @@ public class Player {
         for(Piece i : pieces){
             if(i != piece) {
                 tempArr[count] = i;
-                i.takePiece();
                 i.updateArrayPosition(count);
                 count++;
+            }else{
+                i.takePiece();
             }
         }
         pieces = tempArr;

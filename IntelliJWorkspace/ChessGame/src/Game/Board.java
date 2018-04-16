@@ -17,8 +17,8 @@ public class Board{
     private Player blackPlayer;
     private ChessGame game;
     private byte spaceSize;
-    private Player turn;
-    private Player opponent;
+    public Player turn;
+    public Player opponent;
     private int[] clickedCoordinates;
     private boolean squareToHighlight = false;
 
