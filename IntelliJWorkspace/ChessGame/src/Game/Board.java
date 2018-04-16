@@ -75,7 +75,7 @@ public class Board{
                 return;
             }
             //If the move is valid so move the piece repaint the frame then switch turns
-            if(turn.pieceInSquare(clickedCoordinates[0], clickedCoordinates[1]).isValidMove((byte)tempCo[0], (byte)tempCo[1])){
+            if(turn.pieceInSquare(clickedCoordinates[0], clickedCoordinates[1]).isValidMove((byte)tempCo[0], (byte)tempCo[1]) && !turn.isPlayerInSquare((byte) tempCo[0], (byte) tempCo[1])){
                 if(opponent.pieceInSquare(tempCo[0], tempCo[1]) != null){
                     opponent.pieceBeenTaken(opponent.pieceInSquare(tempCo[0], tempCo[1]));
                 }
