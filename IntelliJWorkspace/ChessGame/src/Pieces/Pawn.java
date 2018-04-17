@@ -17,7 +17,7 @@ public class Pawn extends Piece{
     private static BufferedImage whiteImg;
     private static BufferedImage blackImg;
     private int movesMade;
-    private byte moveFoward;
+    private byte moveForward;
     public Type type;
 
     /**
@@ -28,10 +28,10 @@ public class Pawn extends Piece{
      */
     public Pawn(int startX, int startY, int spaceSize, Player player, int arrayPos){
         super(startX, startY, spaceSize, player, arrayPos);
-        if(player.colour.equals("white")){
-            moveFoward = 1;
-        }else{
-            moveFoward = -1;
+        if(startY == 1){
+            moveForward = 1;
+        }else if(startY == 6){
+            moveForward = -1;
         }
         type = Type.PAWN;
     }
@@ -87,18 +87,17 @@ public class Pawn extends Piece{
      * @param newY Y position being moved to
      */
     public boolean isValidMove(byte newX, byte newY){
-        if(movesMade == 0){
-            if(Math.abs(y - newY) < 3 && newX == x){
-                return true;
-            }
-        }else{
-            if((y - newY) == moveFoward && x == newX){
-                return true;
-            }else if((y - newY) == moveFoward && Math.abs(x - newX) == 1){
-                if(player.board.board[newY][newX] != null){
-                    return true;
-                }
-            }
+        //If the move is 2 spaces forward only allow it if it is the first move
+        if((y - newY) == (-2 * moveForward) && newX == x && movesMade == 0){
+            return true;
+        }
+        //If the move is 1 space forward and nothing is in that space allow it
+        else if((y - newY) == -moveForward && x == newX && player.board.board[newY][newX] == null){
+            return true;
+        }
+        //If the move is diagonal check and a player is in that space return true
+        else if((y - newY) == -moveForward && Math.abs(x - newX) == 1 && player.board.board[newY][newX] != null){
+            return true;
         }
         return false;
     }
@@ -108,9 +107,10 @@ public class Pawn extends Piece{
      * any friendly or opposition pieces in the way
      * @param newX x position piece is moving to
      * @param newY y position piece is moving to
+     * @param board the full board where every piece is
      * @return true or false based on if path is valid
      */
-    public boolean isValidPath(byte newX, byte newY){
+    public boolean isValidPath(byte newX, byte newY, Type[][] board){
         //Pawn cannot move more than one space after first move so
         //proving validity of path is not necessary
         return true;

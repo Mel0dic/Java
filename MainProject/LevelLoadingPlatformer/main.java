@@ -96,8 +96,6 @@ public class main{
 		frame.setResizable(false);
 		//set location of JFrame
 		frame.setLocation(375, 55);
-		//call repaint on frame
-		frame.repaint();
 	}
 
 	class DrawPanel extends JPanel{

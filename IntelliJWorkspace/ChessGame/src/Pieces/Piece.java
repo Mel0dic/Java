@@ -70,8 +70,9 @@ public abstract class Piece{
      * any friendly or opposition pieces in the way
      * @param newX x position piece is moving to
      * @param newY y position piece is moving to
+     * @param board
      * @return true or false based on if path is valid
      */
-    public abstract boolean isValidPath(byte newX, byte newY);
+    public abstract boolean isValidPath(byte newX, byte newY, Type[][] board);
 
 }

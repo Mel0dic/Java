@@ -1,14 +1,11 @@
 package Game;
 
-import GUI.ChessBoardGUI;
 import GUI.ChessGame;
 import Pieces.*;
 
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Color;
-
-import static Game.Type.PAWN;
 
 public class Board{
 
@@ -38,25 +35,6 @@ public class Board{
         opponent = blackPlayer;
 
         this.spaceSize = spaceSize;
-
-        printBoard();
-    }
-
-    /**
-     * Temp function to print board
-     * TODO Remove function
-     */
-    public void printBoard(){
-        for(Type[] sec : board){
-            for(Type i : sec){
-                if(i == PAWN) {
-                    System.out.printf("*");
-                }else{
-                    System.out.printf("-");
-                }
-            }
-            System.out.println("");
-        }
     }
 
     /**
@@ -76,7 +54,7 @@ public class Board{
             }
             Piece tempPiece = turn.pieceInSquare(clickedCoordinates[0], clickedCoordinates[1]);
             //If the move is valid so move the piece repaint the frame then switch turns and one of own pieces is in the square
-            if(tempPiece.isValidMove((byte)tempCo[0], (byte)tempCo[1]) && !turn.isPlayerInSquare((byte) tempCo[0], (byte) tempCo[1]) && tempPiece.isValidPath((byte)tempCo[0], (byte)tempCo[1])){
+            if(tempPiece.isValidMove((byte)tempCo[0], (byte)tempCo[1]) && !turn.isPlayerInSquare((byte) tempCo[0], (byte) tempCo[1]) && tempPiece.isValidPath((byte)tempCo[0], (byte)tempCo[1], board)){
                 //If opponents piece is in the space take it
                 if(opponent.pieceInSquare(tempCo[0], tempCo[1]) != null){
                     opponent.pieceBeenTaken(opponent.pieceInSquare(tempCo[0], tempCo[1]));
@@ -85,6 +63,7 @@ public class Board{
                 turn.pieceInSquare(clickedCoordinates[0], clickedCoordinates[1]).movePiece(tempCo[0], tempCo[1]);
                 //Un-select the square and repaint the frame then switch turns and return
                 squareToHighlight = false;
+                //Repaint the frame and switch turns
                 game.frame.repaint();
                 switchTurns();
                 return;
@@ -142,6 +121,7 @@ public class Board{
         whitePlayer.paint(g, panel);
         blackPlayer.paint(g, panel);
 
+        //Draw square on selected square
         if(squareToHighlight){
             g.setColor(Color.RED);
             g.drawRect((clickedCoordinates[0] * spaceSize), (clickedCoordinates[1] * spaceSize), spaceSize, spaceSize);

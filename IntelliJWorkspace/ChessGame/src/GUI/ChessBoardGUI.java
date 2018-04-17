@@ -46,12 +46,12 @@ public class ChessBoardGUI extends JPanel{
                 //If j is an even number and i is an even number
                 if(j % 2 == 0 && i % 2 == 0){
                     //Set color to black and fill a square at that position
-                    g2.setColor(Color.orange);
+                    g2.setColor(Color.ORANGE);
                     g2.fillRect((j * spaceSize), (i * spaceSize), spaceSize, spaceSize);
                 }
                 //Else if j is not even (odd) and i is odd
                 else if(j % 2 != 0 && i % 2 != 0){
-                    g2.setColor(Color.orange);
+                    g2.setColor(Color.ORANGE);
                     g2.fillRect((j * spaceSize), (i * spaceSize), spaceSize, spaceSize);
                 }
             }
