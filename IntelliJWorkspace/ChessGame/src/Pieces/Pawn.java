@@ -4,9 +4,7 @@ import Game.*;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
@@ -57,10 +55,13 @@ public class Pawn extends Piece{
      */
     public void movePiece(int newX, int newY){
         movesMade++;
+        //Set the piece on the board of friendly pieces
         player.onePlayerBoard[y][x] = null;
         player.onePlayerBoard[newY][newX] = type;
+        //Set the piece on the whole board
         player.board.board[y][x] = null;
         player.board.board[newY][newX] = type;
+        //Set the x and y of piece
         x = (byte) newX;
         y = (byte) newY;
     }
@@ -112,7 +113,12 @@ public class Pawn extends Piece{
      */
     public boolean isValidPath(byte newX, byte newY, Type[][] board){
         //Pawn cannot move more than one space after first move so
-        //proving validity of path is not necessary
+        //proving validity of path is not necessary unless it is move 1
+        //If it is the first move and the move is 2 space and there is not a player in between the two spaces
+        if(movesMade == 0 && (y - newY) == (-2 * moveForward) && player.board.board[newY - moveForward][newX] != null){
+            //The path is not valid so return false
+            return false;
+        }
         return true;
     }
 
