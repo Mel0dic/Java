@@ -26,6 +26,7 @@ public class Board{
     public Board(byte spaceSize, ChessGame game){
         Pawn.loadPictures();
         Castle.loadPictures();
+        Bishop.loadPictures();
 
         this.game = game;
 
@@ -72,6 +73,7 @@ public class Board{
         }
         //Set clicked co-ordinates x and y from 1-8
         clickedCoordinates = simplifyCoordinates(clickedX, clickedY);
+
         //If there is a player in the square highlight it
         if(turn.isPlayerInSquare((byte)clickedCoordinates[0], (byte)clickedCoordinates[1])){
             squareToHighlight = true;
