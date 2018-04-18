@@ -25,6 +25,7 @@ public class Board{
      */
     public Board(byte spaceSize, ChessGame game){
         Pawn.loadPictures();
+        Castle.loadPictures();
 
         this.game = game;
 

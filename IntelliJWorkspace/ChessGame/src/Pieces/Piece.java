@@ -13,6 +13,7 @@ public abstract class Piece{
     public int spaceSize;
     public boolean onBoard = true;
     public byte arrayPosition;
+    public byte moveForward;
 
     /**
      * Constructor function of piece
@@ -28,6 +29,12 @@ public abstract class Piece{
         this.player = player;
         this.spaceSize = spaceSize;
         this.arrayPosition = (byte) arrayPosition;
+
+        if(startY < 2){
+            moveForward = 1;
+        }else if(startY > 5){
+            moveForward = -1;
+        }
     }
 
     /**

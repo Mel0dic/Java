@@ -13,8 +13,8 @@ public class Player {
     private byte forward;
     private byte startX;
     public Type[][] onePlayerBoard = new Type[8][8];
-    private Piece[] pieces = new Piece[8];
-//    private castle[] castles = new castle[2];
+    private Piece[] pieces = new Piece[10];
+//    private Castle[] castles = new Castle[2];
 //    private bishop[] bishops = new bishop[2];
 //    private knight[] knights = new knight[2];
 //    private king theKing;
@@ -44,11 +44,18 @@ public class Player {
      */
     public void initialisePieces(){
         byte spawnYPos = (byte)(startX + forward);
-        int i;
-        for(i = 0; i < 8; i++){
+        int numberInArr = 0;
+        for(int i = 0; i < 8; i++){
             board.board[spawnYPos][i] = Type.PAWN;
             onePlayerBoard[spawnYPos][i] = Type.PAWN;
-            pieces[i] = new Pawn(i, spawnYPos, spaceSize, this, i);
+            pieces[numberInArr] = new Pawn(i, spawnYPos, spaceSize, this, numberInArr);
+            numberInArr++;
+        }
+        for(int i = 0; i < 2; i++){
+            board.board[spawnYPos + (-forward)][(i * 7)] = Type.CASTLE;
+            onePlayerBoard[spawnYPos + (-forward)][(i * 7)] = Type.CASTLE;
+            pieces[numberInArr] = new Castle((i * 7), (spawnYPos + (-forward)), spaceSize, this, numberInArr);
+            numberInArr++;
         }
     }
 
