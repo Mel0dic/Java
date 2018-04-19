@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class palindromeProduct{
+public class palindrome{
 
 	public static void main(String[] args){
-		new palindromeProduct();
+		new palindrome();
 	}
 
-	public palindromeProduct(){
+	public palindrome(){
 		int largestPalindrome = 0;
 		for(int i = 100; i < 1000; i++){
 			for(int k = 100; k < 1000; k++){
