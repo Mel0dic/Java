@@ -26,13 +26,14 @@ public class main{
 	public main(){
 		//Set paint level to new levelFrame object
 		paintLevel = new levelFrame(blockSize);
-		//Make the jframe
-		makeJFrame();
 		//Set allPlatforms to new platforms object geting the 2D array from paintLevel and passing that
 		allPlatforms = new platforms(paintLevel.getMap(), blockSize);
 		//Set mainPlayer to new player passing wall positions and spawn point
-		mainPlayer = new player(frame, blockSize, (allPlatforms.getLeftWall() * blockSize), (allPlatforms.getRightWall() * blockSize), paintLevel.getSpawnX(), paintLevel.getSpawnY(), paintLevel.getFinishX(), paintLevel.getFinishY());
-		// mainPlayer = new player(frame, blockSize, 10, 395);
+		mainPlayer = new player(blockSize, (allPlatforms.getLeftWall() * blockSize), (allPlatforms.getRightWall() * blockSize), paintLevel.getSpawnX(), paintLevel.getSpawnY(), paintLevel.getFinishX(), paintLevel.getFinishY());
+		//Make the jframe
+		makeJFrame();
+		//Add the key listener
+		mainPlayer.addKeyListener(frame);
 		//Get the floor level
 		floor = paintLevel.getFloor();
 		//Call start game function
@@ -96,6 +97,8 @@ public class main{
 		frame.setResizable(false);
 		//set location of JFrame
 		frame.setLocation(375, 55);
+		//
+		frame.repaint();
 	}
 
 	class DrawPanel extends JPanel{

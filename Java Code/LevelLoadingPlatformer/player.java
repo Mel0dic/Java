@@ -25,9 +25,7 @@ public class player{
 	private int jumpHeight = 50;
 	private boolean jump = false;
 
-	public player(JFrame frame, int blockSize, int leftWall, int rightWall, int spawnX, int spawnY, int finishX, int finishY){
-		//add a key listener to frame with a new playerMovement object for controls
-		frame.addKeyListener(new playerMovement());
+	public player(int blockSize, int leftWall, int rightWall, int spawnX, int spawnY, int finishX, int finishY){
 		//set player size to be half of blockSize
 		playerSize = (int) blockSize/2;
 		//Set vars to arguments
@@ -42,6 +40,11 @@ public class player{
 		x = spawnX + ((int) playerSize / 2);
 		//Set y to spawn position - player size
 		y = spawnY - playerSize;
+	}
+
+	public void addKeyListener(JFrame frame){
+		//add a key listener to frame with a new playerMovement object for controls
+		frame.addKeyListener(new playerMovement());
 	}
 
 	public void moverPlayer(){

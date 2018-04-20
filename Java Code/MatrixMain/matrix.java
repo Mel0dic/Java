@@ -24,11 +24,9 @@ public class matrix{
 		//Create Infinite loop
 		while(true){
 			//Sleep for 30 miliseconds
-			try{Thread.sleep(30);}catch(Exception exe){}
+			try{ Thread.sleep(30); }catch(Exception exe){ System.out.println(exe); }
 			//Loop through stream classes call render on the classes
-			for(int i = 0; i < panelWidth; i++){
-				streamClasses[i].render();
-			}
+			for(int i = 0; i < panelWidth; i++){ streamClasses[i].render(); }
 		}
 
 	}
