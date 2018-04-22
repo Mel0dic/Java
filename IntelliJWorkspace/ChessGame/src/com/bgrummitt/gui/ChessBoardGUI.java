@@ -1,4 +1,4 @@
-package GUI;
+package com.bgrummitt.gui;
 
 import javax.swing.JPanel;
 import java.awt.Graphics;

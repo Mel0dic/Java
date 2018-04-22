@@ -1,4 +1,4 @@
-package Game;
+package com.bgrummitt.game;
 
 /**
  * Create an enum to have a constant we can set to pieces.

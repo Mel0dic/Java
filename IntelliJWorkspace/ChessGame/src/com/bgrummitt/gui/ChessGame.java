@@ -1,6 +1,6 @@
-package GUI;
+package com.bgrummitt.gui;
 
-import Game.Board;
+import com.bgrummitt.game.Board;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

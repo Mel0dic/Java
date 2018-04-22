@@ -1,7 +1,11 @@
-package Game;
+package com.bgrummitt.game;
 
-import GUI.ChessGame;
-import Pieces.*;
+import com.bgrummitt.gui.ChessGame;
+
+import com.bgrummitt.pieces.Bishop;
+import com.bgrummitt.pieces.Castle;
+import com.bgrummitt.pieces.Pawn;
+import com.bgrummitt.pieces.Piece;
 
 import javax.swing.JPanel;
 import java.awt.Graphics;

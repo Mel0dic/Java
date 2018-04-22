@@ -1,6 +1,7 @@
-package Pieces;
+package com.bgrummitt.pieces;
 
-import Game.*;
+import com.bgrummitt.game.Player;
+import com.bgrummitt.game.Type;
 
 import javax.swing.JPanel;
 import java.awt.Graphics;
