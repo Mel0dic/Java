@@ -40,10 +40,10 @@ public abstract class Piece{
 
     /**
      * Function to move piece
-     * @param x new x co-ordinate
-     * @param y new y co-ordinate
+     * @param newX new x co-ordinate
+     * @param newY new y co-ordinate
      */
-    public abstract void movePiece(int x, int y);
+    public abstract void movePiece(int newX, int newY);
 
     /**
      * A function for painting the pieces picture

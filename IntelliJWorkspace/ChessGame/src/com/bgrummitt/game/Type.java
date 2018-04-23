@@ -10,5 +10,5 @@ public enum Type{
     BISHOP,
     KNIGHT,
     KING,
-    QUEEN;
+    QUEEN
 }

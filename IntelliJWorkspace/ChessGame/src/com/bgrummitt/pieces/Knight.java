@@ -4,12 +4,12 @@ import com.bgrummitt.game.Player;
 import com.bgrummitt.game.Type;
 
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
-import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Bishop extends Piece{
+public class Knight extends Piece{
 
 	private static final byte offsetX = -7;
 	private static final byte offsetY = -6;
@@ -17,22 +17,22 @@ public class Bishop extends Piece{
 	private static BufferedImage blackImg;
 	private Type type;
 
-	public Bishop(int startX, int startY, int spaceSize, Player player, int arrayPosition){
+	public Knight(int startX, int startY, int spaceSize, Player player, int arrayPosition, Type[][] mainBoard, Type[][] singlePlayerBoard){
 		super(startX, startY, spaceSize, player, arrayPosition);
 
-		type = Type.CASTLE;
+		type = Type.KNIGHT;
+
+		mainBoard[this.y][this.x] = type;
+		singlePlayerBoard[this.y][this.x] = type;
 	}
 
-	/**
-	 *Function to load the pictures in a static method and var
-	 */
 	public static void loadPictures(){
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 		try{
 			//Get the black image
-			blackImg = ImageIO.read(classloader.getResourceAsStream("bishopBlack.png"));
+			blackImg = ImageIO.read(classloader.getResourceAsStream("knightBlack.png"));
 			//Get the white image
-			whiteImg = ImageIO.read(classloader.getResourceAsStream("bishopWhite.png"));
+			whiteImg = ImageIO.read(classloader.getResourceAsStream("knightWhite.png"));
 			//If there was an IOException print it out
 		}catch(IOException e){ System.out.println(e); }
 	}
@@ -79,7 +79,12 @@ public class Bishop extends Piece{
 	 * @param newY
 	 */
 	public boolean isValidMove(byte newX, byte newY) {
-		return (Math.abs(newX - x) == Math.abs(newY - y));
+		if(Math.abs(x - newX) == 2 && Math.abs(y - newY) == 1){
+			return true;
+		}else if(Math.abs(x - newX) == 1 && Math.abs(y - newY) == 2){
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -88,23 +93,10 @@ public class Bishop extends Piece{
 	 *
 	 * @param newX  x position piece is moving to
 	 * @param newY  y position piece is moving to
-	 * @param board the board with positions of all pieces on the board
+	 * @param board
 	 * @return true or false based on if path is valid
 	 */
 	public boolean isValidPath(byte newX, byte newY, Type[][] board) {
-		byte xMove;
-		byte yMove;
-		if(newX - x < 0) xMove = -1;
-		else xMove = 1;
-		if(newY - y < 0) yMove = -1;
-		else yMove = 1;
-		byte tempX = (byte) (x + xMove);
-		byte tempY = (byte) (y + yMove);
-		while(tempX != newX && tempY != newY){
-			if(board[tempY][tempX] != null) return false;
-			tempX += xMove;
-			tempY += yMove;
-		}
-		return true;
+		return false;
 	}
 }

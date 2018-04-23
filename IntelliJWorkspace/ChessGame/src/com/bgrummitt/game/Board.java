@@ -2,10 +2,7 @@ package com.bgrummitt.game;
 
 import com.bgrummitt.gui.ChessGame;
 
-import com.bgrummitt.pieces.Bishop;
-import com.bgrummitt.pieces.Castle;
-import com.bgrummitt.pieces.Pawn;
-import com.bgrummitt.pieces.Piece;
+import com.bgrummitt.pieces.*;
 
 import javax.swing.JPanel;
 import java.awt.Graphics;
@@ -31,6 +28,9 @@ public class Board{
         Pawn.loadPictures();
         Castle.loadPictures();
         Bishop.loadPictures();
+        Queen.loadPictures();
+        King.loadPictures();
+        Knight.loadPictures();
 
         this.game = game;
 

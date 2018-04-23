@@ -13,12 +13,7 @@ public class Player {
     private byte forward;
     private byte startX;
     public Type[][] onePlayerBoard = new Type[8][8];
-    private Piece[] pieces = new Piece[12];
-//    private Castle[] castles = new Castle[2];
-//    private bishop[] bishops = new bishop[2];
-//    private knight[] knights = new knight[2];
-//    private king theKing;
-//    private queen theQueen;
+    private Piece[] pieces = new Piece[16];
 
     /**
      * Player constructor function
@@ -63,6 +58,14 @@ public class Player {
             pieces[numberInArr] = new Bishop(((i * 3) + 2), (spawnYPos + (-forward)), spaceSize, this, numberInArr);
             numberInArr++;
         }
+        for(int i = 0; i < 2; i++){
+			pieces[numberInArr] = new Knight(((i * 5) + 1), (spawnYPos + (-forward)), spaceSize, this, numberInArr, board.board, onePlayerBoard);
+			numberInArr++;
+		}
+
+        pieces[numberInArr] = new Queen(3, (spawnYPos - forward), spaceSize, this, numberInArr, board.board, onePlayerBoard);
+        numberInArr++;
+        pieces[numberInArr] = new King(4, (spawnYPos - forward), spaceSize, this, numberInArr, board.board, onePlayerBoard);
     }
 
     /**

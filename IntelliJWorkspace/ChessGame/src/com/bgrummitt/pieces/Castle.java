@@ -74,10 +74,7 @@ public class Castle extends Piece{
      * Function to check if move is valid
      */
     public boolean isValidMove(byte newX, byte newY){
-        if(x == newX || y == newY){
-            return true;
-        }
-        return false;
+        return x == newX || y == newY;
     }
 
     /**
