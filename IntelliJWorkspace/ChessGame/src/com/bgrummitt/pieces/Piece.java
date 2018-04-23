@@ -43,7 +43,11 @@ public abstract class Piece{
      * @param newX new x co-ordinate
      * @param newY new y co-ordinate
      */
-    public abstract void movePiece(int newX, int newY);
+    public void movePiece(int newX, int newY){
+        //Set the x and y of piece
+        x = (byte) newX;
+        y = (byte) newY;
+    }
 
     /**
      * A function for painting the pieces picture

@@ -44,15 +44,13 @@ public class Queen extends Piece{
 	 * @param newY new y co-ordinate
 	 */
 	public void movePiece(int newX, int newY){
+		super.movePiece(newX, newY);
 		//Set the piece on the board of friendly pieces
 		player.onePlayerBoard[y][x] = null;
 		player.onePlayerBoard[newY][newX] = type;
 		//Set the piece on the whole board
 		player.board.board[y][x] = null;
 		player.board.board[newY][newX] = type;
-		//Set the x and y of piece
-		x = (byte) newX;
-		y = (byte) newY;
 	}
 
 	/**
@@ -91,23 +89,31 @@ public class Queen extends Piece{
 	 * @param board
 	 * @return true or false based on if path is valid
 	 */
-	@Override
 	public boolean isValidPath(byte newX, byte newY, Type[][] board){
+		//If the move was diagonal
 		if((Math.abs(newX - x) == Math.abs(newY - y))){
 			byte xMove;
 			byte yMove;
+			//Set the direction of the x movement
 			if(newX - x < 0) xMove = -1;
 			else xMove = 1;
+			//Set the direction of the y movement
 			if(newY - y < 0) yMove = -1;
 			else yMove = 1;
+			//Set the temp co-ordinates
 			byte tempX = (byte) (x + xMove);
 			byte tempY = (byte) (y + yMove);
+			//While the temp co-ordinates are not equal to the new co-ordinates
 			while(tempX != newX && tempY != newY){
+				//If there is is a player in the space return false
 				if(board[tempY][tempX] != null) return false;
+				//Update the position
 				tempX += xMove;
 				tempY += yMove;
 			}
-		}else if((x == newX || y == newY)){
+		}
+		//Else if the move was horizontal or vertical
+		else if((x == newX || y == newY)){
 			//Determine direction of movement
 			int dir = 0;
 			if(x > newX || y > newY){ dir = -1; }

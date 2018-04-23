@@ -43,16 +43,15 @@ public class Knight extends Piece{
 	 * @param newX new x co-ordinate
 	 * @param newY new y co-ordinate
 	 */
+	@Override
 	public void movePiece(int newX, int newY) {
+		super.movePiece(newX, newY);
 		//Set the piece on the board of friendly pieces
 		player.onePlayerBoard[y][x] = null;
 		player.onePlayerBoard[newY][newX] = type;
 		//Set the piece on the whole board
 		player.board.board[y][x] = null;
 		player.board.board[newY][newX] = type;
-		//Set the x and y of piece
-		x = (byte) newX;
-		y = (byte) newY;
 	}
 
 	/**

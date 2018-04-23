@@ -3,11 +3,11 @@ package com.bgrummitt.pieces;
 import com.bgrummitt.game.Player;
 import com.bgrummitt.game.Type;
 
-import java.awt.Graphics;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 
 public class Pawn extends Piece{
 
@@ -49,6 +49,7 @@ public class Pawn extends Piece{
      * @param newY new y position of piece
      */
     public void movePiece(int newX, int newY){
+        super.movePiece(newX, newY);
         movesMade++;
         //Set the piece on the board of friendly pieces
         player.onePlayerBoard[y][x] = null;
@@ -56,9 +57,6 @@ public class Pawn extends Piece{
         //Set the piece on the whole board
         player.board.board[y][x] = null;
         player.board.board[newY][newX] = type;
-        //Set the x and y of piece
-        x = (byte) newX;
-        y = (byte) newY;
     }
 
     /**
