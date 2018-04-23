@@ -97,6 +97,7 @@ public class Knight extends Piece{
 	 * @return true or false based on if path is valid
 	 */
 	public boolean isValidPath(byte newX, byte newY, Type[][] board) {
-		return false;
+		//The horse can jump over friendly or enemy pieces so the path doesn't matter
+		return true;
 	}
 }
