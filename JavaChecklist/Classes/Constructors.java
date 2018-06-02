@@ -15,6 +15,8 @@ public class Constructors{
 
 }
 
+/*Hava multiple constructors for different arguments */
+
 class example{
 
 	private int varOne;

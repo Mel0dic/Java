@@ -5,7 +5,7 @@
 ### Classes
 - [x] Constructors
 - [ ] fields
-- [ ] Access Modifiers - public, protected, private
+- [x] Access Modifiers - public, protected, private
 - [ ] Nested Classes
 - [ ] Anonymous Classes
 - [ ] Lambda References
@@ -191,12 +191,12 @@ Java tuts for most of this info [here](https://docs.oracle.com/javase/tutorial/i
 - [ ] XML
 
 ### Persistency
-* SQL
-	* mySQL
-	* JDBC
-* JPA
-	* Hibernate
-		* EclipseLink
+- [ ] SQL
+	- [ ] mySQL
+	- [ ] JDBC
+- [ ] JPA
+	- [ ] Hibernate
+		- [ ] EclipseLink
 
 ### Serialization
-* JSON
+- [ ] JSON
