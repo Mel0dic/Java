@@ -6,8 +6,8 @@
 - [x] Constructors
 - [ ] fields
 - [x] Access Modifiers - public, protected, private
-- [ ] Nested Classes
-- [ ] Anonymous Classes
+- [x] Nested Classes
+- [x] Anonymous Classes
 - [ ] Lambda References
 
 ### Interfaces

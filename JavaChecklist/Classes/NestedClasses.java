@@ -9,9 +9,9 @@ public class NestedClasses{
 	public NestedClasses(){
 		varInClass = 10;
 		InsideClass inside = new InsideClass();
-		//Cannot access any variables in the nested class unless public
-		System.out.println(varInInsideClass);
-		System.out.println(publicVarInInsideClass);
+		//Cannot access any variables in the nested class
+		// System.out.println(varInInsideClass);
+		// System.out.println(publicVarInInsideClass);
 	}
 
 	public class InsideClass{
