@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * A simple Swing-based client for the chat server.  Graphically
@@ -35,6 +37,7 @@ public class ChatClient {
     JFrame frame = new JFrame("Chatter");
     JTextField textField = new JTextField(40);
     JTextArea messageArea = new JTextArea(8, 40);
+    Boolean isRunning = true;
 
     /**
      * Constructs the client by laying out the GUI and registering a
@@ -65,28 +68,27 @@ public class ChatClient {
                 textField.setText("");
             }
         });
+
+        frame.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                isRunning = false;
+                frame.dispose();
+            }
+        });
     }
 
     /**
      * Prompt for and return the address of the server.
      */
     private String getServerAddress() {
-        return JOptionPane.showInputDialog(
-            frame,
-            "Enter IP Address of the Server:",
-            "Welcome to the Chatter",
-            JOptionPane.QUESTION_MESSAGE);
+        return JOptionPane.showInputDialog(frame, "Enter IP Address of the Server:", "Welcome to the Chatter", JOptionPane.QUESTION_MESSAGE);
     }
 
     /**
      * Prompt for and return the desired screen name.
      */
     private String getName() {
-        return JOptionPane.showInputDialog(
-            frame,
-            "Choose a screen name:",
-            "Screen name selection",
-            JOptionPane.PLAIN_MESSAGE);
+        return JOptionPane.showInputDialog(frame, "Choose a screen name:", "Screen name selection", JOptionPane.PLAIN_MESSAGE);
     }
 
     /**
@@ -103,7 +105,7 @@ public class ChatClient {
         out = new PrintWriter(socket.getOutputStream(), true);
 
         // Process all messages from server, according to the protocol.
-        while (true) {
+        while (isRunning) {
             String line = in.readLine();
             if (line.startsWith("SUBMITNAME")) {
                 out.println(getName());
@@ -113,6 +115,8 @@ public class ChatClient {
                 messageArea.append(line.substring(8) + "\n");
             }
         }
+
+        socket.close();
     }
 
     /**

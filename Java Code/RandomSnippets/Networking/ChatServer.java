@@ -54,7 +54,7 @@ public class ChatServer {
         ServerSocket listener = new ServerSocket(PORT);
         try {
             while (true) {
-                new Handler(listener.accept()).start();
+                new Thread(new Handler(listener.accept())).start();
             }
         } finally {
             listener.close();
@@ -66,7 +66,7 @@ public class ChatServer {
      * loop and are responsible for a dealing with a single client
      * and broadcasting its messages.
      */
-    private static class Handler extends Thread {
+    private static class Handler implements Runnable {
         private String name;
         private Socket socket;
         private BufferedReader in;
@@ -131,7 +131,7 @@ public class ChatServer {
                     }
                 }
             } catch (IOException e) {
-                System.out.println(e);
+                System.out.println(name + " disconnected");
             } finally {
                 // This client is going down!  Remove its name and its print
                 // writer from the sets, and close its socket.
