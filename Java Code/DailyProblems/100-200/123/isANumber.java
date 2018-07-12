@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
 
 public class isANumber{
 
@@ -19,17 +21,45 @@ public class isANumber{
 	 *		"-"
 	 */
 	public static void main(String[] args){
-		System.out.println(isNumber("124-"));
+		System.out.println(isNumber("23."));
 	}
 
 	public static boolean isNumber(String number){
-		char[] stringInArr = number.toCharArray();
+		char[] charTemp = number.toCharArray();
+		List<Character> stringInArr = new ArrayList<Character>();
 
-		char[] allowedChars = {'.', '-', 'e', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
+		for(int i = 0; i < charTemp.length; i++){
+			stringInArr.add(charTemp[i]);
+		}
 
-		for(int i = 0; i < stringInArr.length; i++){
-			System.out.println(Arrays.asList(allowedChars).contains(stringInArr[i]) + " : " + stringInArr[i]);
-			if(!Arrays.asList(allowedChars).contains(stringInArr[i])){
+		List<Character> charArr = Arrays.asList('.', '-', 'e', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0');
+		List<Character> numberArr = Arrays.asList('1', '2', '3', '4', '5', '6', '7', '8', '9', '0');
+
+		if(stringInArr.contains('-') && stringInArr.get(0) != '-'){
+			if(stringInArr.get(stringInArr.indexOf('-') - 1) != 'e'){
+				return false;
+			}
+		}
+
+		if(stringInArr.size() == 1 && stringInArr.get(0) == '-'){
+			return false;
+		}
+
+		if(stringInArr.contains('.')){
+			if(stringInArr.size() > 1 && (stringInArr.get(0) == '.' || stringInArr.get(stringInArr.size() - 1) == '.')){
+				return false;
+			}else if(!numberArr.contains(stringInArr.get(stringInArr.indexOf('.') - 1)) || !numberArr.contains(stringInArr.get(stringInArr.indexOf('.') + 1))){
+				return false;
+			}
+		}
+
+		if(stringInArr.contains('e') && (stringInArr.get(0) == 'e' || stringInArr.get(stringInArr.size() - 1) == 'e')){
+			return false;
+		}
+
+		for(int i = 0; i < stringInArr.size(); i++){
+			System.out.println(charArr.contains(stringInArr.get(i)) + " : " + stringInArr.get(i));
+			if(!charArr.contains(stringInArr.get(i))){
 				return false;
 			}
 		}
