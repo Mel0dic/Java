@@ -19,7 +19,7 @@ public class Singleton{
 	public static Singleton getInstance(){
 
 		if(singletonInstanceOne == null){
-			singletonInstanceOne = new Singleton("One");		
+			singletonInstanceOne = new Singleton("One");
 			singletonInstanceTwo = new Singleton("Two");
 		}
 

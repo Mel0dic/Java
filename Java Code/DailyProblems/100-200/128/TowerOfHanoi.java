@@ -23,10 +23,13 @@ public class TowerOfHanoi{
 	}
 
 	public void printMoves(int numberOfDisks){
+		int a = 1;
+		int b = 2;
+		int c = 3;
 		if(numberOfDisks >= 1){
-			printMoves(numberOfDisks-1, 1, 3, 2);
-			System.out.println(String.format(stringFormat, 1, 3));
-			printMoves(numberOfDisks-1, 2, 1, 3);
+			printMoves(numberOfDisks-1, a, b, c);
+			System.out.println(String.format(stringFormat, a, c));
+			printMoves(numberOfDisks-1, b, a, c);
 		}
 	}
 
