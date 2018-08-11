@@ -58,11 +58,6 @@ public class Symbol{
 		setRandomSymbol();
 	}
 
-
-
-
-
-
 	public void setJLabel(JLabel inputLabel){
 		label = inputLabel;
 	}
