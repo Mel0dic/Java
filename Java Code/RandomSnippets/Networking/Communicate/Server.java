@@ -14,6 +14,7 @@ public class Server{
 		ServerSocket listener = new ServerSocket(PORT);
 		try {
 			while (true) {
+				System.out.println("Looper");
 				new Thread(new Handler(listener.accept())).start();
 			}
 		} finally {
@@ -39,17 +40,24 @@ public class Server{
 				in = new BufferedReader(new InputStreamReader(
 				    socket.getInputStream()));
 				out = new PrintWriter(socket.getOutputStream(), true);
-				out.println("NAMEACCEPTED");
-				receive = in.readLine();
+				out.println("CONNECTED");
 				while(true){
 					receive = in.readLine();
-					System.out.println(in.readLine());
+					if(receive.equals("GET_SCORES")){
+						for(int i = 0; i < 10; i++){
+							out.println("Score Name");
+							out.println("Score Score");
+							out.println("Score Position");
+						}
+					}else if(receive.equals("ADD_SCORE")){
+						out.println("ADDING_SCORE");
+					}
+					System.out.println(receive);
 				}
 			} catch (IOException e) {
 				System.out.println(receive);
 			} finally {
-				// This client is going down!  Remove its name and its print
-				// writer from the sets, and close its socket.
+				// This client is going down! Finish and close any outstandings
 				try {
 				    socket.close();
 				} catch (IOException e) {
