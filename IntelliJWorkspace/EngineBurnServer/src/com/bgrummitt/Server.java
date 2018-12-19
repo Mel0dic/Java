@@ -69,10 +69,9 @@ public class Server{
                 out = new PrintWriter(socket.getOutputStream(), true);
                 // Tell the connecting device that a stream has been successfully created
                 out.println("CONNECTED");
-                // While true (while the device is connected)
-                while(true){
-                    // Take an input from the input stream
-                    receive = in.readLine();
+                // While messages are being sent that are != null
+                while((receive = in.readLine()) != null){
+                    System.out.println("RUNNING");
                     // If the input is not null and the input is the command GET_SCORES
                     if(receive != null && receive.equals("GET_SCORES")){
 
@@ -111,6 +110,7 @@ public class Server{
                 try {
                     in.close();
                     out.close();
+                    System.out.println("User Disconnected");
                 } catch (IOException e) {
                     System.out.println(e.toString());
                 }
