@@ -4,7 +4,7 @@ public class LeaderboardDB {
 
     private static int iTimeout = 30;
 
-    final static public String TABLE_NAME = "LOCAL_LEADERBOARD";
+    final static public String TABLE_NAME = "GLOBAL_LEADERBOARD";
     final static public String COLUMN_NAME = "USER_NAME";
     final static public String COLUMN_SCORE = "USER_SCORE";
     final static public String COLUMN_POSITION = "USER_POSITION";
