@@ -6,10 +6,17 @@ public class SudokuSolver {
 
 	public SudokuSolver(Board board){
 		sudoku = board;
-		System.out.println((checkSection(board.getRow(5))));
 	}
 
 	public Board solveBoard(){
+		int[] pos = {0, 0};
+
+		if(sudoku.getCell(0, 0) != 0){
+			pos = findNextPos(0, 0);
+		}
+
+		solveCell(pos[0], pos[1]);
+
 		return sudoku;
 	}
 
@@ -30,6 +37,10 @@ public class SudokuSolver {
 
 			do {
 				number++;
+				if(number == 10){
+					sudoku.updateCell(row, col, 0);
+					return false;
+				}
 				sudoku.updateCell(row, col, number);
 			} while (!checkIfValid(row, col));
 
@@ -64,7 +75,23 @@ public class SudokuSolver {
 	}
 
 	private int[] findNextPos(int row, int col){
-		int[] position = new int[2];
+		int[] position = {row, col};
+
+		try {
+
+			do {
+				if (position[1] == 8) {
+					position[0]++;
+					position[1] = 0;
+				} else {
+					position[1]++;
+				}
+			} while (sudoku.getCell(position[0], position[1]) != 0);
+
+		}catch (ArrayIndexOutOfBoundsException err){
+			position[0] = 9;
+			position[1] = 0;
+		}
 
 		return position;
 	}

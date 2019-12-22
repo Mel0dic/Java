@@ -9,6 +9,7 @@ public class Main {
 
         SudokuSolver solver = new SudokuSolver(board);
 
+        solver.solveBoard().printBoard();
     }
 
 }
