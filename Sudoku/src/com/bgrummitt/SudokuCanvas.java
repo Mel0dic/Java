@@ -4,74 +4,91 @@ import java.awt.*;
 
 public class SudokuCanvas extends Canvas {
 
-	public SudokuCanvas(){
+	private Board sudokuBoard;
+
+	public SudokuCanvas(Board board){
 		super();
+		sudokuBoard = board;
 	}
 
-	private static final float lineThickness = 5f;
-	private static final float halfLineThickness = lineThickness / 2;
-	private static final float quaterLineThickness = halfLineThickness / 2;
+	private static final int lineThickness = 5;
+	private static final int halfLineThickness = lineThickness / 2;
+	private static final int quarterLineThickness = halfLineThickness / 2;
 
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 
-		float boxWidth = (getWidth() - (lineThickness * 3 + (lineThickness / 2) * 6)) / 9;
+		int boxWidth = (getWidth() - (lineThickness * 4 + (halfLineThickness) * 6)) / 9;
 
-		paintLines(g, boxWidth, getWidth());
-
+		paintLines((Graphics2D) g, boxWidth, getWidth());
+		paintNumbers((Graphics2D) g, boxWidth);
 	}
 
-	private void paintLines(Graphics g, float widthPerBox, int width){
-		Graphics2D g2 = (Graphics2D)g;
+	private void paintLines(Graphics2D g2, int widthPerBox, int width){
 
 		g2.setStroke(new BasicStroke(lineThickness));
 		g2.setColor(Color.BLACK);
 
 		// Borders
-		g2.drawLine((int)(0 + halfLineThickness), (int)(0 + halfLineThickness), (int)(width - halfLineThickness), (int)(0 + halfLineThickness));
-		g2.drawLine((int)(0 + halfLineThickness), (int)(0 + halfLineThickness), (int)(0 + halfLineThickness), (int)(width - halfLineThickness));
-		g2.drawLine((int)(0 + halfLineThickness), (int)(width - halfLineThickness), (int)(width - halfLineThickness), (int)(width - halfLineThickness));
-		g2.drawLine((int)(width - halfLineThickness), (int)(0 + halfLineThickness), (int)(width - halfLineThickness), (int)(width - halfLineThickness));
+		int frequent = (width - halfLineThickness);
+		g2.drawLine(halfLineThickness, halfLineThickness, frequent, halfLineThickness);
+		g2.drawLine(halfLineThickness, halfLineThickness, halfLineThickness, frequent);
+		g2.drawLine(halfLineThickness, frequent, frequent, frequent);
+		g2.drawLine(frequent, halfLineThickness, frequent, frequent);
 
 		// Thick Left To Right
-		g2.drawLine((int)(0 + halfLineThickness), (int)(widthPerBox * 3 + lineThickness * 2 + halfLineThickness), (int)(width - halfLineThickness), (int)(widthPerBox * 3 + lineThickness * 2 + halfLineThickness));
-		g2.drawLine((int)(0 + halfLineThickness), (int)(widthPerBox * 6 + lineThickness * 4 + halfLineThickness), (int)(width - halfLineThickness), (int)(widthPerBox * 6 + lineThickness * 4 + halfLineThickness));
+		int yPos = widthPerBox * 3 + lineThickness * 2 + halfLineThickness;
+		int xPos;
+		g2.drawLine(halfLineThickness, yPos, frequent, yPos);
+		yPos = yPos + 3 * widthPerBox + lineThickness * 2;
+		g2.drawLine(halfLineThickness, yPos, frequent, yPos);
 
 		// Thick Top To Bottom
-		g2.drawLine((int)(widthPerBox * 3 + lineThickness + 3 * halfLineThickness), (int)(0 + halfLineThickness), (int)(widthPerBox * 3 + lineThickness + 3 * halfLineThickness), (int)(width - halfLineThickness));
-		g2.drawLine((int)(widthPerBox * 6 + 2 * lineThickness + 5 * halfLineThickness), (int)(0 + halfLineThickness), (int)(widthPerBox * 6 + 2 * lineThickness + 5 * halfLineThickness), (int)(width - halfLineThickness));
+		xPos = widthPerBox * 3 + lineThickness + 3 * halfLineThickness;
+		g2.drawLine(xPos, halfLineThickness, xPos, frequent);
+		xPos = xPos + widthPerBox * 3 + lineThickness * 2;
+		g2.drawLine(xPos, halfLineThickness, xPos, frequent);
 
 		g2.setStroke(new BasicStroke(halfLineThickness));
 
 		// Thin Left To Right
-		float yPos = widthPerBox + lineThickness + quaterLineThickness;
-		int xPos = (int)(width - halfLineThickness);
-		g2.drawLine((int)(halfLineThickness), (int)(yPos), xPos, (int)(yPos));
+		yPos = widthPerBox + lineThickness + quarterLineThickness;
+		xPos = width - halfLineThickness;
+		g2.drawLine(halfLineThickness, yPos, xPos, yPos);
 		yPos = yPos + widthPerBox + halfLineThickness;
-		g2.drawLine((int)(halfLineThickness), (int)(yPos), xPos, (int)(yPos));
+		g2.drawLine(halfLineThickness, yPos, xPos, yPos);
 		yPos = yPos + 2 * widthPerBox + halfLineThickness + lineThickness;
-		g2.drawLine((int)(halfLineThickness), (int)(yPos), xPos, (int)(yPos));
+		g2.drawLine(halfLineThickness, yPos, xPos, yPos);
 		yPos = yPos + widthPerBox + halfLineThickness;
-		g2.drawLine((int)(halfLineThickness), (int)(yPos), xPos, (int)(yPos));
+		g2.drawLine(halfLineThickness, yPos, xPos, yPos);
 		yPos = yPos + 2 * widthPerBox + halfLineThickness + lineThickness;
-		g2.drawLine((int)(halfLineThickness), (int)(yPos), xPos, (int)(yPos));
+		g2.drawLine(halfLineThickness, yPos, xPos, yPos);
 		yPos = yPos + widthPerBox + halfLineThickness;
-		g2.drawLine((int)(halfLineThickness), (int)(yPos), xPos, (int)(yPos));
+		g2.drawLine(halfLineThickness, yPos, xPos, yPos);
 
 		// Thin Top To Bottom
-		float xPos = (widthPerBox + lineThickness + quaterLineThickness);
-		g2.drawLine((int)(xPos), (int)(halfLineThickness), (int)(xPos), (int)(width - halfLineThickness));
+		xPos = (widthPerBox + lineThickness + quarterLineThickness);
+		yPos = width - halfLineThickness;
+		g2.drawLine(xPos, halfLineThickness, xPos, yPos);
 		xPos = xPos + widthPerBox + halfLineThickness;
-		g2.drawLine((int)(xPos), (int)(halfLineThickness), (int)(xPos), (int)(width - halfLineThickness));
+		g2.drawLine(xPos, halfLineThickness, xPos, yPos);
 		xPos = xPos + 2 * widthPerBox + halfLineThickness + lineThickness;
-		g2.drawLine((int)(xPos), (int)(halfLineThickness), (int)(xPos), (int)(width - halfLineThickness));
+		g2.drawLine(xPos, halfLineThickness, xPos, yPos);
 		xPos = xPos + widthPerBox + halfLineThickness;
-		g2.drawLine((int)(xPos), (int)(halfLineThickness), (int)(xPos), (int)(width - halfLineThickness));
+		g2.drawLine(xPos, halfLineThickness, xPos, yPos);
 		xPos = xPos + 2 * widthPerBox + halfLineThickness + lineThickness;
-		g2.drawLine((int)(xPos), (int)(halfLineThickness), (int)(xPos), (int)(width - halfLineThickness));
+		g2.drawLine(xPos, halfLineThickness, xPos, yPos);
 		xPos = xPos + widthPerBox + halfLineThickness;
-		g2.drawLine((int)(xPos), (int)(halfLineThickness), (int)(xPos), (int)(width - halfLineThickness));
+		g2.drawLine(xPos, halfLineThickness, xPos, yPos);
+	}
+
+	public void paintNumbers(Graphics2D g2d, int boxWidth){
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				g2d.drawString(Integer.toString(sudokuBoard.getCell(i, j)), (i * boxWidth) + boxWidth / 2 + ((int)Math.floor(i / 3) + 1) * lineThickness, (j * boxWidth) + boxWidth / 2);
+			}
+		}
 	}
 
 }

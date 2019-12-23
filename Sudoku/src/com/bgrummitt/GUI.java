@@ -24,7 +24,7 @@ public class GUI extends JFrame {
 
         super(title);
 
-        add(new SudokuCanvas());
+        add(new SudokuCanvas(new Board()));
 
     }
 
