@@ -10,13 +10,15 @@ public class GUI extends JFrame {
 
     public static void main(String[] args) {
 
-        GUI frame = new GUI("Sudoku");
-        // Placeholder size
-        frame.setSize(600, 600 + 23);
-        //Position frame in centre
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+//        GUI frame = new GUI("Sudoku");
+//        // Placeholder size
+//        frame.setSize(600, 600 + 23);
+//        //Position frame in centre
+//        frame.setLocationRelativeTo(null);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setVisible(true);
+
+        new SudokuFrame();
 
     }
 

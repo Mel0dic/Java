@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d65bde9a-22bb-4bf4-a69a-e8a3f13b7a39" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/bgrummitt/SudokuPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/bgrummitt/SudokuFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/bgrummitt/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bgrummitt/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/bgrummitt/SectionHolder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/bgrummitt/SudokuCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bgrummitt/SudokuCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/bgrummitt/SudokuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bgrummitt/SudokuPanel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
