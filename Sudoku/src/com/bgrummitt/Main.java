@@ -7,9 +7,9 @@ public class Main {
 
 	    board.printBoard();
 
-        SudokuSolver solver = new SudokuSolver(board);
+//        SudokuSolver solver = new SudokuSolver(board);
 
-        solver.solveBoard().printBoard();
+//        solver.solveBoard().printBoard();
     }
 
 }

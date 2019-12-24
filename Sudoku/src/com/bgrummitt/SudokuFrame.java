@@ -7,7 +7,7 @@ public class SudokuFrame {
     private final JFrame frame = new JFrame("Sudoku solver");
 
     public SudokuFrame(){
-        frame.getContentPane().add(new SudokuPanel());
+        frame.getContentPane().add(new SudokuPanel(new Board()));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setResizable(false);

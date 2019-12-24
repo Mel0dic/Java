@@ -1,11 +1,15 @@
 package com.bgrummitt;
 
-public class SudokuSolver {
+import javax.swing.*;
 
-	Board sudoku;
+public class SudokuSolver extends Thread{
 
-	public SudokuSolver(Board board){
+	private Board sudoku;
+	private SudokuPanel sudokuBoardUI;
+
+	public SudokuSolver(Board board, SudokuPanel boardPanel){
 		sudoku = board;
+		sudokuBoardUI = boardPanel;
 	}
 
 	/**
@@ -27,6 +31,11 @@ public class SudokuSolver {
 		return sudoku;
 	}
 
+	@Override
+	public void run() {
+		solveBoard();
+	}
+
 	/**
 	 * Recursive function to solve an individual cell then move on to the next cell until full board solved
 	 * @param row of cell solve
@@ -43,9 +52,12 @@ public class SudokuSolver {
 		// Get the number at position row, col and the find the next position to solve after current cell
 		int number = sudoku.getCell(row, col);
 		int[] nextPos = findNextPos(row, col);
+		JTextField cellField = sudokuBoardUI.getPanel(row, col);
 
 		// While the next cell is not successfully solved repeat trying to find a new valid number for current cell
 		do {
+			cellField.setBorder(SudokuPanel.solvingBorder);
+			sudokuBoardUI.revalidate();
 			// The number should be increased and the cell updated while the number in that cell is not valid
 			do {
 				number++;
@@ -53,10 +65,23 @@ public class SudokuSolver {
 				// unsuccessful
 				if(number == 10){
 					sudoku.updateCell(row, col, 0);
+					cellField.setText("0");
+					cellField.setBorder(SudokuPanel.solvingBorder);
+					sudokuBoardUI.revalidate();
 					return false;
 				}
 				sudoku.updateCell(row, col, number);
+				cellField.setText(Integer.toString(number));
+				sudokuBoardUI.revalidate();
+				try{
+					Thread.sleep( 25);
+				}catch (InterruptedException err){
+					System.out.println(err);
+				}
 			} while (!checkIfValid(row, col));
+
+			cellField.setBorder(SudokuPanel.solvedBorder);
+			sudokuBoardUI.revalidate();
 
 		}while(!solveCell(nextPos[0], nextPos[1]));
 
@@ -78,7 +103,7 @@ public class SudokuSolver {
 	 * @param section an integer array of all the numbers in a section (row / column / box)
 	 * @return true if the numbers supplied are all different else false
 	 */
-	private static boolean checkSection(int[] section){
+	public static boolean checkSection(int[] section){
 		boolean[] numCheck = new boolean[]{false, false, false, false, false, false, false, false, false};
 
 		boolean rowPass = true;
