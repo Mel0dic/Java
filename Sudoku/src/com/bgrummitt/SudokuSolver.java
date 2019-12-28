@@ -50,7 +50,7 @@ public class SudokuSolver{
 
 		// While the next cell is not successfully solved repeat trying to find a new valid number for current cell
 		do {
-			cellField.setBorder(SudokuPanel.solvingBorder);
+			cellField.setBackground(SudokuPanel.solvingBackground);
 			sudokuBoardUI.revalidate();
 			// The number should be increased and the cell updated while the number in that cell is not valid
 			do {
@@ -60,7 +60,7 @@ public class SudokuSolver{
 				if(number == 10){
 					sudoku.updateCell(row, col, 0);
 					cellField.setText("0");
-					cellField.setBorder(SudokuPanel.solvingBorder);
+					cellField.setBackground(SudokuPanel.solvingBackground);
 					sudokuBoardUI.revalidate();
 					return false;
 				}
@@ -74,7 +74,7 @@ public class SudokuSolver{
 				}
 			} while (!checkIfValid(row, col));
 
-			cellField.setBorder(SudokuPanel.solvedBorder);
+			cellField.setBackground(SudokuPanel.solvedBackground);
 			sudokuBoardUI.revalidate();
 
 		}while(!solveCell(nextPos[0], nextPos[1]));

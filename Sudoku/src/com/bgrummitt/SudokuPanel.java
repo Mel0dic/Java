@@ -10,6 +10,9 @@ class SudokuPanel extends JPanel {
     public static final Border defaultBorder = BorderFactory.createLineBorder(Color.BLACK, 1);
     public static final Border solvedBorder = BorderFactory.createLineBorder(Color.GREEN, 1);
     public static final Border solvingBorder = BorderFactory.createLineBorder(Color.RED, 1);
+    public static final Color defaultBackground = Color.WHITE;
+    public static final Color solvedBackground = Color.GREEN;
+    public static final Color solvingBackground = Color.RED;
 
     private JTextField[][] grid;
     private JPanel[][] subSquarePanels;
@@ -111,7 +114,7 @@ class SudokuPanel extends JPanel {
             for(int j = 0; j < 9; j++) {
                 if(rowNumbs[j] == 0){
                     grid[i][j].setText("");
-                    grid[i][j].setBorder(defaultBorder);
+                    grid[i][j].setBackground(defaultBackground);
                     grid[i][j].setEditable(true);
                 }
             }
