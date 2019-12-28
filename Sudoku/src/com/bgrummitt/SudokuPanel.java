@@ -112,6 +112,7 @@ class SudokuPanel extends JPanel {
                 if(rowNumbs[j] == 0){
                     grid[i][j].setText("");
                     grid[i][j].setBorder(defaultBorder);
+                    grid[i][j].setEditable(true);
                 }
             }
         }
