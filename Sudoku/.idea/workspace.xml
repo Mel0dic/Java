@@ -3,13 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="d65bde9a-22bb-4bf4-a69a-e8a3f13b7a39" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sudoku/META-INF/Sudoku.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Sudoku/META-INF/Sudoku.kotlin_module" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/bgrummitt/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bgrummitt/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/bgrummitt/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bgrummitt/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/bgrummitt/SudokuFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bgrummitt/SudokuFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/bgrummitt/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bgrummitt/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/bgrummitt/SudokuFrame.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/bgrummitt/SudokuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bgrummitt/SudokuPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/bgrummitt/SudokuSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bgrummitt/SudokuSolver.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,18 +35,6 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.GUI">
     <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -78,6 +66,18 @@
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -114,26 +114,31 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1577123843609" />
-    <state width="1493" height="186" key="GridCell.Tab.0.bottom" timestamp="1577132508659">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1577539589604">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="186" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1577132508659" />
-    <state width="1493" height="186" key="GridCell.Tab.0.center" timestamp="1577132508659">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1577539589604" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1577539589604">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="186" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1577132508659" />
-    <state width="1493" height="186" key="GridCell.Tab.0.left" timestamp="1577132508659">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1577539589604" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1577539589604">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="186" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1577132508659" />
-    <state width="1493" height="186" key="GridCell.Tab.0.right" timestamp="1577132508659">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1577539589604" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1577539589604">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="186" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1577132508659" />
-    <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1577123648027">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1577539589604" />
+    <state x="581" y="300" key="com.intellij.ide.util.TipDialog" timestamp="1577533094796">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1577123648027" />
+    <state x="581" y="300" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1577533094796" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1577031002286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

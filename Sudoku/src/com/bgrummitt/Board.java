@@ -1,16 +1,31 @@
 package com.bgrummitt;
 
+import java.util.Arrays;
+
 public class Board {
 
-    private int[][] board = {{7, 8, 0, 4, 0, 0, 1, 2, 0},
-                             {6, 0, 0, 0, 7, 5, 0, 0, 9},
-                             {0, 0, 0, 6, 0, 1, 0, 7, 8},
-                             {0, 0, 7, 0, 4, 0, 2, 6, 0},
-                             {0, 0, 1, 0, 5, 0, 9, 3, 0},
-                             {9, 0, 4, 0, 6, 0, 0, 0, 5},
-                             {0, 7, 0, 3, 0, 0, 0, 1, 2},
-                             {1, 2, 0, 0, 0, 7, 4, 0, 0},
-                             {0, 4, 9, 2, 0, 6, 0, 0, 7}};
+    private int[][] board;
+
+    private int[][] usedBoard;
+
+    public Board(){
+        board = new int[][]{{7, 8, 0, 4, 0, 0, 1, 2, 0},
+                            {6, 0, 0, 0, 7, 5, 0, 0, 9},
+                            {0, 0, 0, 6, 0, 1, 0, 7, 8},
+                            {0, 0, 7, 0, 4, 0, 2, 6, 0},
+                            {0, 0, 1, 0, 5, 0, 9, 3, 0},
+                            {9, 0, 4, 0, 6, 0, 0, 0, 5},
+                            {0, 7, 0, 3, 0, 0, 0, 1, 2},
+                            {1, 2, 0, 0, 0, 7, 4, 0, 0},
+                            {0, 4, 9, 2, 0, 6, 0, 0, 7}};
+
+        usedBoard = cloneBoard(board);
+    }
+
+    public Board(int[][] unsolvedBoard){
+        board = unsolvedBoard;
+        usedBoard = cloneBoard(board);
+    }
 
     /**
      * Function to print board in a formatted way
@@ -18,7 +33,7 @@ public class Board {
     public void printBoard(){
 
         System.out.println("-------------------------------------");
-        for(int[] row : board){
+        for(int[] row : usedBoard){
 
             System.out.print("|");
 
@@ -40,7 +55,7 @@ public class Board {
      * @return value in cell
      */
     public int getCell(int row, int column){
-        return board[row][column];
+        return usedBoard[row][column];
     }
 
     /**
@@ -50,7 +65,7 @@ public class Board {
      * @param value value to give to cell
      */
     public void updateCell(int row, int column, int value){
-        board[row][column] = value;
+        usedBoard[row][column] = value;
     }
 
     /**
@@ -59,7 +74,7 @@ public class Board {
      * @return an int array of numbers in row
      */
     public int[] getRow(int rowNo){
-        return board[rowNo];
+        return usedBoard[rowNo];
     }
 
     /**
@@ -71,7 +86,7 @@ public class Board {
         int[] col = new int[9];
 
         for(int i = 0; i < 9; i++){
-            col[i] = board[i][colNo];
+            col[i] = usedBoard[i][colNo];
         }
 
         return col;
@@ -96,12 +111,33 @@ public class Board {
             // For every column in the box
             for(int j = col * 3; j < (col + 1) * 3; j++){
                 // Add the integer at the box position and then increase position in array
-                box[boxArrPos] = board[i][j];
+                box[boxArrPos] = usedBoard[i][j];
                 boxArrPos++;
             }
         }
 
         return box;
+    }
+
+    public void resetBoard(){
+        usedBoard = cloneBoard(board);
+    }
+
+    /**
+     * Function to clone a 2d array
+     * @param board array to clone
+     * @return return array as separate object
+     */
+    public static int[][] cloneBoard(int[][] board){
+        int[][] clonedBoard = new int[board.length][board[0].length];
+
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[0].length; j++){
+                clonedBoard[i][j] = board[i][j];
+            }
+        }
+
+        return clonedBoard;
     }
 
 }

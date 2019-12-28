@@ -1,32 +1,19 @@
 package com.bgrummitt;
 
 import javax.swing.*;
-import java.awt.*;
-import javax.swing.border.Border;
 
-public class GUI extends JFrame {
+public class GUI {
 
-    private JLabel[][] jLabels = new JLabel[9][9];
+    private final static JFrame frame = new JFrame("Sudoku solver");
 
     public static void main(String[] args) {
 
-//        GUI frame = new GUI("Sudoku");
-//        // Placeholder size
-//        frame.setSize(600, 600 + 23);
-//        //Position frame in centre
-//        frame.setLocationRelativeTo(null);
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setVisible(true);
-
-        new SudokuFrame();
-
-    }
-
-    public GUI(String title){
-
-        super(title);
-
-        add(new SudokuCanvas(new Board()));
+        frame.getContentPane().add(new SudokuPanel(new Board()));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
 
     }
 

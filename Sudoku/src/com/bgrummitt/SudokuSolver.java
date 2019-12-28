@@ -2,7 +2,7 @@ package com.bgrummitt;
 
 import javax.swing.*;
 
-public class SudokuSolver extends Thread{
+public class SudokuSolver{
 
 	private Board sudoku;
 	private SudokuPanel sudokuBoardUI;
@@ -16,7 +16,7 @@ public class SudokuSolver extends Thread{
 	 * Function to solve the board passed to the object when created
 	 * @return the solved board
 	 */
-	public Board solveBoard(){
+	public boolean solveBoard(){
 		// Initialise first position to solve at 0,0
 		int[] pos = {0, 0};
 
@@ -26,14 +26,8 @@ public class SudokuSolver extends Thread{
 		}
 
 		// Begin solving the puzzle with the first unknown cell
-		solveCell(pos[0], pos[1]);
 
-		return sudoku;
-	}
-
-	@Override
-	public void run() {
-		solveBoard();
+		return solveCell(pos[0], pos[1]);
 	}
 
 	/**

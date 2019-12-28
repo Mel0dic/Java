@@ -4,8 +4,6 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.HashMap;
-import java.util.Map;
 
 class SudokuPanel extends JPanel {
 
@@ -14,72 +12,62 @@ class SudokuPanel extends JPanel {
     public static final Border solvingBorder = BorderFactory.createLineBorder(Color.RED, 1);
 
     private JTextField[][] grid;
-    private Map<JTextField, Point> mapFieldToCoordinates = new HashMap<>();
+    private JPanel[][] subSquarePanels;
 
     private Board sudoku;
-    private JPanel gridPanel;
-    private JPanel buttonPanel;
     private JButton solveButton;
     private JButton resetButton;
-    private JPanel[][] subSquarePanels;
+    private JPanel gridPanel;
+    private JPanel buttonPanel;
 
     public SudokuPanel(Board sudokuBoard){
         grid = new JTextField[9][9];
         sudoku = sudokuBoard;
 
+        // For every row in the board
         for(int i = 0; i < 9; i++) {
+            int[] rowNumbs = sudoku.getRow(i);
+            // For every column in the board
             for(int j = 0; j < 9; j++) {
-                JTextField field = new JTextField();
-                mapFieldToCoordinates.put(field, new Point(j, i));
-                grid[i][j] = field;
+                // Create new text field and assign it to position in grid and centre text
+                grid[i][j] = new JTextField();
                 grid[i][j].setHorizontalAlignment(JLabel.CENTER);
-            }
-        }
-
-        gridPanel   = new JPanel();
-        buttonPanel = new JPanel();
-
-        Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
-        Dimension fieldDimension = new Dimension(50, 50);
-
-        for(int i = 0; i < 9; i++) {
-            int[] rowNumbs = sudokuBoard.getRow(i);
-            for(int j = 0; j < 9; j++) {
-                JTextField field = grid[i][j];
-                field.setBorder(border);
-                field.setPreferredSize(fieldDimension);
+                grid[i][j].setBorder(defaultBorder);
+                grid[i][j].setPreferredSize(new Dimension(50, 50));
                 if(rowNumbs[j] != 0){
-                    field.setText(Integer.toString(rowNumbs[j]));
-                    field.setEditable(false);
+                    grid[i][j].setText(Integer.toString(rowNumbs[j]));
+                    grid[i][j].setEditable(false);
                 }
             }
         }
 
+        // Create a panel for the full 9x9 sudoku board and buttons below
+        gridPanel = new JPanel();
+        buttonPanel = new JPanel();
+
+        // Set the grid to be 3x3 for each mini box
         gridPanel.setLayout(new GridLayout(3, 3));
 
         subSquarePanels = new JPanel[3][3];
 
-        Border subSquareBorder = BorderFactory.createLineBorder(Color.BLACK, 1);
-
+        // For every sub square (contains the 3x3 squares with numbers)
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < 3; j++) {
-                JPanel panel = new JPanel();
-                panel.setLayout(new GridLayout(3, 3));
-                panel.setBorder(subSquareBorder);
-                subSquarePanels[i][j] = panel;
-                gridPanel.add(panel);
+                subSquarePanels[i][j] = new JPanel();
+                subSquarePanels[i][j].setLayout(new GridLayout(3, 3));
+                subSquarePanels[i][j].setBorder(defaultBorder);
+                gridPanel.add(subSquarePanels[i][j]);
             }
         }
 
+        // Assign correct JPanel to sub square position
         for(int i = 0; i < 9; i++) {
             for(int j = 0; j < 9; j++) {
-                int subSquareX = j / 3;
-                int subSquareY = i / 3;
-
-                subSquarePanels[subSquareY][subSquareX].add(grid[i][j]);
+                subSquarePanels[i / 3][j / 3].add(grid[i][j]);
             }
         }
 
+        // Set the outline border and add buttons
         gridPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         resetButton = new JButton("Clear");
         solveButton = new JButton("Solve");
@@ -98,16 +86,33 @@ class SudokuPanel extends JPanel {
         });
 
         solveButton.addActionListener((ActionEvent e) -> {
-            SudokuSolver sudokuSolver = new SudokuSolver(new Board(), this);
-            sudokuSolver.start();
+            SudokuSolver sudokuSolver = new SudokuSolver(sudokuBoard, this);
+            // Create new runnable to run asynchronously
+            Runnable solvePuzzle = () -> {
+                if(sudokuSolver.solveBoard()){
+                    resetButton.setEnabled(true);
+                }
+            };
+            // Start thread
+            Thread thread = new Thread(solvePuzzle);
+            thread.start();
+            resetButton.setEnabled(false);
             solveButton.setEnabled(false);
         });
     }
 
+    /**
+     * Function to reset the board to it's original state
+     */
     void clearAll(){
-        for (JTextField[] row : grid) {
-            for (JTextField field : row) {
-                field.setText("");
+        sudoku.resetBoard();
+        for(int i = 0; i < 9; i++) {
+            int[] rowNumbs = sudoku.getRow(i);
+            for(int j = 0; j < 9; j++) {
+                if(rowNumbs[j] == 0){
+                    grid[i][j].setText("");
+                    grid[i][j].setBorder(defaultBorder);
+                }
             }
         }
     }
