@@ -36,6 +36,8 @@ public class AStar {
             testSurroundingNodes(closedNodes.get(closedNodes.size() - 1), endPoint);
         }
 
+        System.out.printf("NODE TYPE = %s, OPEN SIZE = %d\n", endNode.getType(), openNodes.size());
+
         if(endNode.getParent() != null){
             showRoute(endNode, startPoint, baseMaze);
         }else{
@@ -106,7 +108,7 @@ public class AStar {
 //                    }
 //
 //                    if(surrounding.getType() == Node.OPEN){
-//                        if(surrounding.getG() > currentNode.getG() + 1){
+//                        if(surrounding.getG() > (currentNode.getG() + 1)){
 //                            surrounding.setParent(currentNode);
 //                            surrounding.setG(currentNode.getG() + 1);
 //                            surrounding.recalculateF();
@@ -125,19 +127,31 @@ public class AStar {
 //    }
 
     private void testSurroundingNodes(Node currentNode, int[] endPoint){
+        System.out.printf("X = %d --- Y = %d -- F = %d\n", currentNode.getCoordinates()[0], currentNode.getCoordinates()[1], currentNode.getF());
+
         Node[] children = getChildren(currentNode, endPoint);
 
         for(Node child : children){
 
-            child.setParent(currentNode);
-            child.setG(currentNode.getG() + 1);
-            child.recalculateF();
+//            System.out.printf(" CHILD --- X = %d --- Y = %d\n", child.getCoordinates()[0], child.getCoordinates()[1]);
 
-            if(child.getType() != Node.OPEN){
-                openNodes.add(child);
+            if(child.getType() != Node.CLOSED){
+
+                if(child.getType() == Node.OPEN && child.getG() < currentNode.getG() + 1){
+                    child.setParent(currentNode);
+                    child.setG(currentNode.getG() + 1);
+                    child.recalculateF();
+                }else if(child.getType() == Node.UNASSIGNED){
+                    child.setParent(currentNode);
+                    child.setG(currentNode.getG() + 1);
+                    child.updateType(Node.OPEN);
+                    child.recalculateF();
+                    openNodes.add(child);
+                }
+
+                openNodes.sort(new SortNodesByG());
+
             }
-
-            openNodes.sort(new SortNodesByG());
 
         }
     }

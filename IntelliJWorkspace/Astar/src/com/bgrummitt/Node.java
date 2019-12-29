@@ -7,10 +7,11 @@ public class Node {
     public static final int OPEN = 14;
     public static final int CLOSED = 33;
     public static final int BLOCKED = 37;
+    public static final int UNASSIGNED = -1;
 
     private int[] coordinates;
     private Node parentNode;
-    private int type = -1;
+    private int type = UNASSIGNED;
     // F = total predicted distance to goal
     private int f;
     // Shortest found distance from home to current node
