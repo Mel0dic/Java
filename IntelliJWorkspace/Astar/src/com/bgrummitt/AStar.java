@@ -137,18 +137,16 @@ public class AStar {
 
             if(child.getType() != Node.CLOSED){
 
-                if(child.getType() == Node.OPEN && child.getG() < currentNode.getG() + 1){
-                    child.setParent(currentNode);
-                    child.setG(currentNode.getG() + 1);
-                    child.recalculateF();
-                }else if(child.getType() == Node.UNASSIGNED){
-                    child.setParent(currentNode);
-                    child.setG(currentNode.getG() + 1);
-                    child.updateType(Node.OPEN);
-                    child.recalculateF();
-                    openNodes.add(child);
+                if(child.getType() == Node.OPEN && child.getG() >= currentNode.getG() + 1){
+                    continue;
                 }
 
+                child.setParent(currentNode);
+                child.setG(currentNode.getG() + 1);
+                child.updateType(Node.OPEN);
+                child.recalculateF();
+
+                openNodes.add(child);
                 openNodes.sort(new SortNodesByG());
 
             }
