@@ -36,8 +36,8 @@ public class Node {
 
     private void calculateH(int[] endPos){
         // Use pythagoras to get estimate of distance to end
-        int xChange = endPos[0] - coordinates[0];
-        int yChange = endPos[1] - coordinates[1];
+        int xChange =  coordinates[0] - endPos[0];
+        int yChange = coordinates[1] - endPos[1];
         h = (xChange * xChange) + (yChange * yChange);
     }
 

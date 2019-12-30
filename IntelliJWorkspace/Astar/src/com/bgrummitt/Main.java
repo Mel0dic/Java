@@ -3,11 +3,11 @@ package com.bgrummitt;
 public class Main {
 
     private static final int[][] maze = {{0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-                                         {0, 0, 0, 0, 1, 1, 0, 0, 0, 0},
-                                         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                         {0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
-                                         {0, 0, 0, 0, 1, 0, 0, 0, 1, 1},
-                                         {0, 0, 0, 0, 1, 0, 1, 1, 1, 0},
+                                         {0, 1, 1, 1, 1, 1, 0, 0, 0, 0},
+                                         {0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+                                         {0, 1, 0, 0, 1, 1, 1, 0, 0, 0},
+                                         {0, 1, 0, 0, 1, 0, 0, 0, 1, 1},
+                                         {0, 1, 0, 0, 1, 0, 1, 1, 1, 0},
                                          {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
                                          {0, 0, 0, 0, 1, 1, 1, 1, 1, 0},
                                          {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
@@ -22,7 +22,18 @@ public class Main {
         // Print the solved maze
         for(int[] row : mazeSolved){
             for(int node : row){
-                System.out.print(node);
+                String print;
+                switch(node){
+                    case 1:
+                        print = "\u2588\u2588\u2588";
+                        break;
+                    case 5:
+                        print = " x ";
+                        break;
+                    default:
+                        print = "   ";
+                }
+                System.out.print(print);
             }
             System.out.println("");
         }

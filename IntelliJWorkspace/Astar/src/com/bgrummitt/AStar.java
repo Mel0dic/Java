@@ -83,10 +83,10 @@ public class AStar {
         for(Node child : children){
 
             // If the node is closed or blocked do nothing
-            if(child.getType() != Node.CLOSED && child.getType() != Node.BLOCKED){
+            if(child.getType() != Node.CLOSED){
 
                 // If the is open and its G value is smaller than this route continue to next child
-                if(child.getType() == Node.OPEN && child.getG() >= currentNode.getG() + 1){
+                if(child.getType() == Node.OPEN && child.getG() < currentNode.getG() + 1){
                     continue;
                 }
 
@@ -131,7 +131,7 @@ public class AStar {
             newCoordinates[1] = mainCoordinates[1] + position[1];
 
             // If the within bounds add to the children if node not already created create it
-            if(withinBounds(newCoordinates[0], newCoordinates[1])){
+            if(withinBounds(newCoordinates[0], newCoordinates[1]) && baseMaze[newCoordinates[1]][newCoordinates[0]] != 1){
 
                 if(nodeMaze[newCoordinates[1]][newCoordinates[0]] == null){
                     initialiseNode(newCoordinates[0], newCoordinates[1], endPoint, mainNode);
