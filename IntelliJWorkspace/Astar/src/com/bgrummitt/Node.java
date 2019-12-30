@@ -34,10 +34,6 @@ public class Node {
         f = g + h;
     }
 
-    public Boolean isGreaterThan(Node node){
-        return f > node.getF();
-    }
-
     private void calculateH(int[] endPos){
         // Use pythagoras to get estimate of distance to end
         int xChange = endPos[0] - coordinates[0];
