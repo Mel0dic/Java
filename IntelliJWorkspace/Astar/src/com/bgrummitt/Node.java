@@ -8,6 +8,9 @@ public class Node {
     public static final int CLOSED = 33;
     public static final int BLOCKED = 37;
     public static final int UNASSIGNED = -1;
+    public static final int OPEN_NODE_ELEMENT = 0;
+    public static final int BLOCKED_NODE_ELEMENT = 1;
+    public static final int PATH_NODE_ELEMENT = 5;
 
     private int[] coordinates;
     private Node parentNode;

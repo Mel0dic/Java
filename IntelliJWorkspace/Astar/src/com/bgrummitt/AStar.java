@@ -62,11 +62,11 @@ public class AStar {
      */
     public void showRoute(Node node, int[] base, int[][] map){
         if(node.getCoordinates() == base){
-            map[base[1]][base[0]] = 5;
+            map[base[1]][base[0]] = Node.PATH_NODE_ELEMENT;
         }else{
             int[] coords = node.getCoordinates();
             showRoute(node.getParent(), base, map);
-            map[coords[1]][coords[0]] = 5;
+            map[coords[1]][coords[0]] = Node.PATH_NODE_ELEMENT;
         }
     }
 
@@ -131,7 +131,7 @@ public class AStar {
             newCoordinates[1] = mainCoordinates[1] + position[1];
 
             // If the within bounds add to the children if node not already created create it
-            if(withinBounds(newCoordinates[0], newCoordinates[1]) && baseMaze[newCoordinates[1]][newCoordinates[0]] != 1){
+            if(withinBounds(newCoordinates[0], newCoordinates[1]) && baseMaze[newCoordinates[1]][newCoordinates[0]] != Node.BLOCKED_NODE_ELEMENT){
 
                 if(nodeMaze[newCoordinates[1]][newCoordinates[0]] == null){
                     initialiseNode(newCoordinates[0], newCoordinates[1], endPoint, mainNode);
@@ -155,7 +155,7 @@ public class AStar {
      */
     public void initialiseNode(int x, int y, int[] endPoint, Node parent){
         Node nodeToAdd = new Node(new int[]{x,y}, endPoint);
-        if(baseMaze[y][x] == 1){
+        if(baseMaze[y][x] == Node.BLOCKED_NODE_ELEMENT){
             nodeToAdd.updateType(Node.BLOCKED);
         }
         nodeMaze[y][x] = nodeToAdd;

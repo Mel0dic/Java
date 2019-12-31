@@ -24,10 +24,10 @@ public class Main {
             for(int node : row){
                 String print;
                 switch(node){
-                    case 1:
+                    case Node.BLOCKED_NODE_ELEMENT:
                         print = "\u2588\u2588\u2588";
                         break;
-                    case 5:
+                    case Node.PATH_NODE_ELEMENT:
                         print = " x ";
                         break;
                     default:
