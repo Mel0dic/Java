@@ -119,8 +119,9 @@ public class AStar {
     public Node[] getChildren(Node mainNode, int[] endPoint){
         List<Node> children = new ArrayList<>();
         int[] mainCoordinates = mainNode.getCoordinates();
-        // The coordinates for every surrounding square
+        // The coordinates for every surrounding square (one includes diagonal moves)
         int[][] surroundings = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
+        //int[][] surroundings = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
 
         int[] newCoordinates = new int[2];
 

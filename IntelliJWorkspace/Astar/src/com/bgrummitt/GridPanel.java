@@ -25,7 +25,7 @@ public class GridPanel extends JPanel {
             for(int j = 0; j < numberOfSquaresX; j++){
                 jLabelGrid[i][j] = new StepLabel(j, i);
                 jLabelGrid[i][j].setBorder(defaultBorder);
-                jLabelGrid[i][j].setPreferredSize(new Dimension(50, 50));
+                jLabelGrid[i][j].setPreferredSize(new Dimension(15, 15));
                 this.add(jLabelGrid[i][j]);
             }
         }

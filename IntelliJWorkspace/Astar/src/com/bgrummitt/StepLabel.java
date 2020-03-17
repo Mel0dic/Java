@@ -18,6 +18,7 @@ public class StepLabel extends JLabel implements MouseListener {
     private int xPosition;
     private int yPosition;
     private boolean isSelected = false;
+    private boolean isMouseListenerAttached = true;
 
     public StepLabel(int x, int y){
         super();
@@ -73,8 +74,9 @@ public class StepLabel extends JLabel implements MouseListener {
     }
 
     public void setState(int squareType, boolean editable){
-        if(!editable){
+        if(!editable && isMouseListenerAttached){
             this.removeMouseListener(this);
+            isMouseListenerAttached = false;
         }
         switch(squareType){
             case Node.BLOCKED_NODE_ELEMENT:
@@ -91,7 +93,10 @@ public class StepLabel extends JLabel implements MouseListener {
     public void reset(){
         isSelected = false;
         this.setBackground(DEFAULT_BACKGROUND);
-        this.addMouseListener(this);
+        if(!isMouseListenerAttached){
+            this.addMouseListener(this);
+            isMouseListenerAttached = true;
+        }
     }
 
     @Override
